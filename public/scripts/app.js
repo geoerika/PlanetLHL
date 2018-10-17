@@ -1,13 +1,68 @@
+
+
+// THIS IS A GET TO THE HOMEPAGE
 $(() => {
   $.ajax({
     method: "GET",
-    url: "/api/users"
+    url: "/planetLHL"
   }).done((users) => {
     for(user of users) {
       $("<div>").text(user.name).appendTo($("body"));
     }
-  });;
+  });
 });
 
+//THIS IS GET TO THE USER PAGE   ** WILL USE /user/:id when user ids are available
+$(() => {
+  $.ajax({
+    method: "GET",
+    url: "/planetLHL/users"
+  }).done((migrations) => {
+    for(migration of migrations) {
+      $("<div>").text(migration.name).appendTo($("body"));
+    }
+  });
+});
 
-//This sends a get request to /api/users
+//SEARCH REQUEST ENDPOINT
+// function searchResources () {
+
+  $(() => {
+    $.ajax({
+      method: "GET",
+      url: "/planetLHL/results"
+    }).done((users) => {
+      for(user of users) {
+        $("<div>").text(user.name).prependTo($("body"));
+      }
+    });
+  });
+// }
+
+
+//THESE WILL BE USED LATER
+// function loadResources () {
+//     $.getJSON('/planetLHL/resources').done(renderResources);
+//   }
+
+// function renderResources (data) {    // PLACE HOLDER FUNCTIONS
+//   $('#resource-container').empty();
+//   for (var resource of data) {
+//     var $resource = createNewResource(resource);
+//     $('#resource-container').prepend($resource);
+//   }
+// }
+
+
+// $(() => {
+//   $.ajax({
+//     method: "POST",
+//     url: "/planetLHL/resource/:id"
+//   }).done((resource) => {
+//       newResource.appendTo($("body")); //newResource is placeholder html variable thats not yet created
+//   });;
+// });
+
+
+
+//This File THE URL Points to Server.js actual url
