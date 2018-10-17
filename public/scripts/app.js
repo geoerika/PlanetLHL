@@ -8,3 +8,6 @@ $(() => {
     }
   });;
 });
+
+
+//This sends a get request to /api/users
