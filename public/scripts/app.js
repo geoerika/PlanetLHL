@@ -12,9 +12,10 @@ $(() => {
     method: "GET",
     url: "/planetLHL"
   }).done((users) => {
-    for(user of users) {
-      $("<div>").text(user.name).appendTo($("body"));
-    }
+    // for(user of users) {
+    //   $("<div>").text(user.name).appendTo($("body"));
+    // }
+    renderResources(users);
   });
 });
 
@@ -33,7 +34,7 @@ $(() => {
 //SEARCH REQUEST ENDPOINT
 
 function searchResources() {
-  var $form = $('#searchForm');
+  var $form = $('#newSearchForm');
     $form.on('submit', function (event) {
       event.preventDefault();
       let search = $(this).children('.tweeterText').val()
@@ -45,7 +46,9 @@ function searchResources() {
         method: "GET",
         url: `/planetLHL/results/${safeHTML}`,
         success: function(result) {
-                  console.log("sent successfully")
+
+                  //console.log(result)
+                  renderResources(result)
                  }
       })
     })
