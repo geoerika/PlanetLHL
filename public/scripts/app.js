@@ -32,23 +32,20 @@ $(() => {
 
 //SEARCH REQUEST ENDPOINT
 
-
 function searchResources() {
   var $form = $('#searchForm');
     $form.on('submit', function (event) {
-      console.log("IVE BEEN CLICKED")
       event.preventDefault();
       let search = $(this).children('.tweeterText').val()
       const safeSearch = escape(search); //Creates safe html from form input
       $(this).children('.tweeterText').val(safeSearch);
       let safeHTML = $(this).serialize();
-      console.log(safeHTML)
 
       $.ajax({
         method: "GET",
         url: `/planetLHL/results/${safeHTML}`,
         success: function(result) {
-                  console.log("send successfully")
+                  console.log("sent successfully")
                  }
       })
     })
