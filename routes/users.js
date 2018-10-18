@@ -22,7 +22,7 @@ module.exports =  (knex) => {
   router.get("/", (req, res) => {
     knex
       .select("*")
-      .from("users")
+      .from("resources")
       //.where("id", "=", 2)
       .then((results) => {
         res.json(results);
@@ -46,18 +46,18 @@ module.exports =  (knex) => {
 
     knex
       .select("*")
-      .from("users")
-      .where("name", "ilike", `${finalArray[0]}%`)
+      .from("resources")
+      .where("title", "ilike", `%${finalArray[0]}%`)
       // .orWhere("title", "ilike", `%${finalArray[0]}%`)
-      .orWhere("name", "ilike", `${finalArray[1]}%`)
+      .orWhere("title", "ilike", `%${finalArray[1]}%`)
       // .orWhere("title", "ilike", `%${finalArray[1]}%`)
-      .orWhere("name", "ilike", `${finalArray[2]}%`)
+      .orWhere("title", "ilike", `%${finalArray[2]}%`)
       // .orWhere("title", "ilike", `%${finalArray[2]}%`)
-      .orWhere("name", "ilike", `${finalArray[3]}%`)
+      .orWhere("title", "ilike", `%${finalArray[3]}%`)
       // .orWhere("title", "ilike", `%${finalArray[3]}%`)
-      .orWhere("name", "ilike", `${finalArray[4]}%`)
+      .orWhere("title", "ilike", `%${finalArray[4]}%`)
       // .orWhere("title", "ilike", `%${finalArray[4]}%`)
-      .orWhere("name", "ilike", `${finalArray[5]}%`)
+      .orWhere("title", "ilike", `%${finalArray[5]}%`)
       // .orWhere("title", "ilike", `%${finalArray[5]}%`)
       .then((results) => {
         res.json(results); //Results are at "/results/:search" in a json
