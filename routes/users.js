@@ -5,7 +5,7 @@
 const express = require('express');
 const router  = express.Router();
 
-
+//THIS FUNCTION REMOVES SPACES FROM SEARCH ARRAYS to allow better database searches
 function removeA(arr) {
     var what, a = arguments, L = a.length, ax;
     while (L > 1 && arr.length) {
@@ -38,20 +38,11 @@ module.exports =  (knex) => {
     });
   });
 
-  router.get("/results", (req, res) => {
-  knex
-    .select("*")
-    .from("migrations")
-    .then((results) => {
-    res.json(results);
-    });
-  });
+  router.get("/results/:search", (req, res) => {
 
-router.post("/results", (req, res) => {
-  let search = req.body.search.slice(5)
-  let searchArray = search.split("%20")
-  let finalArray = removeA(searchArray, '');
-  console.log("FINAL ARray" , finalArray)
+    let search = req.params.search.slice(5) //Takes what was actually searched
+    let searchArray = search.split(" ") //Puts individual words searched into an array
+    let finalArray = removeA(searchArray, ''); //Removes spaces for Database Search
 
     knex
       .select("*")
@@ -69,23 +60,46 @@ router.post("/results", (req, res) => {
       .orWhere("name", "ilike", `${finalArray[5]}%`)
       // .orWhere("title", "ilike", `%${finalArray[5]}%`)
       .then((results) => {
-        // res.json(results);
-        console.log("results Are: " , results)
-        console.log("response is: ", res.body)
-        res.send("thank you")
-        console.log("response is: ", res.body)
+        res.json(results); //Results are at "/results/:search" in a json
     });
   });
+
+
+ //OLD WAY TO RECEIVE POST for search CAN USE skeleton CODE FOR create FORMS
+// router.post("/results", (req, res) => {
+
+
+//   let search = req.body.search.slice(5)
+//   let searchArray = search.split("%20")
+//   let finalArray = removeA(searchArray, '');
+//   console.log("FINAL ARray" , finalArray)
+
+//     knex
+//       .select("*")
+//       .from("users")
+//       .where("name", "ilike", `${finalArray[0]}%`)
+//       // .orWhere("title", "ilike", `%${finalArray[0]}%`)
+//       .orWhere("name", "ilike", `${finalArray[1]}%`)
+//       // .orWhere("title", "ilike", `%${finalArray[1]}%`)
+//       .orWhere("name", "ilike", `${finalArray[2]}%`)
+//       // .orWhere("title", "ilike", `%${finalArray[2]}%`)
+//       .orWhere("name", "ilike", `${finalArray[3]}%`)
+//       // .orWhere("title", "ilike", `%${finalArray[3]}%`)
+//       .orWhere("name", "ilike", `${finalArray[4]}%`)
+//       // .orWhere("title", "ilike", `%${finalArray[4]}%`)
+//       .orWhere("name", "ilike", `${finalArray[5]}%`)
+//       // .orWhere("title", "ilike", `%${finalArray[5]}%`)
+//       .then((results) => {
+//         // res.json(results);
+//         console.log("results Are: " , results)
+//         console.log("response is: ", res.body)
+//         res.send("thank you")
+//         console.log("response is: ", res.body)
+//     });
+//   });
 
   return router;
 }
 
 //THIS FILE THE '/'' Represents whatever is mounted in server.js in app.use
 
-
-//FOR SEARCH BAR FUNCTIONALITY OF SPLITTING FORM DATA INTO WORDS
-  // let testArray = req.body.text.split(" ")
-  //   console.log('Word 1: ' , testArray[0])
-  //   console.log('Word 2: ' , testArray[1])
-  //   console.log('Word 3: ' , testArray[2])
-  //   console.log('Word 4: ' , testArray[3])

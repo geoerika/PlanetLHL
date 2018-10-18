@@ -45,13 +45,10 @@ function searchResources() {
       console.log(safeHTML)
 
       $.ajax({
-        method: "POST",
-        url: "/planetLHL/results",
-        data: {
-          search: safeHTML
-        },
+        method: "GET",
+        url: `/planetLHL/results/${safeHTML}`,
         success: function(result) {
-                  console.log(result)
+                  console.log("send successfully")
                  }
       })
     })
