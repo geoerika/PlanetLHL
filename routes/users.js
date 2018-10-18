@@ -65,8 +65,42 @@ module.exports =  (knex) => {
   });
 
   router.post("/create", (req, res) => {
-    console.log(req.body)
-    res.send('Thanks')
+    let url = req.body.url
+    let title = req.body.title
+    let tags = req.body.tags.split(' ')
+    let desc = req.body.description
+
+    let resource = {
+      title: title,
+      resource_url: url,
+      description: desc,
+      created_at: 1000,
+      likes: 0,
+      rating: 0,
+      users_id: 1
+    }
+    function createTag (tag) {
+      let tagObj = {
+        tag: tag
+      }
+      return tagObj
+    }
+
+    for (let i = 0; i < tags.length; i++) {
+      let tag = createTag(tags[i])
+      console.log(tag)
+    }
+
+    console.log("Resource Object is ", resource)
+
+    knex('resources')
+      .insert(resource)
+      .returning('id')
+      .then((results) => {
+        console.log("NEW RESOURCE CREATED: ", results[0])
+        res.json(results)
+      })
+
   })
 
 
@@ -75,38 +109,6 @@ module.exports =  (knex) => {
     res.redirect('/')
   })
 
- //OLD WAY TO RECEIVE POST for search CAN USE skeleton CODE FOR create FORMS
-// router.post("/results", (req, res) => {
-
-
-//   let search = req.body.search.slice(5)
-//   let searchArray = search.split("%20")
-//   let finalArray = removeA(searchArray, '');
-//   console.log("FINAL ARray" , finalArray)
-
-//     knex
-//       .select("*")
-//       .from("users")
-//       .where("name", "ilike", `${finalArray[0]}%`)
-//       // .orWhere("title", "ilike", `%${finalArray[0]}%`)
-//       .orWhere("name", "ilike", `${finalArray[1]}%`)
-//       // .orWhere("title", "ilike", `%${finalArray[1]}%`)
-//       .orWhere("name", "ilike", `${finalArray[2]}%`)
-//       // .orWhere("title", "ilike", `%${finalArray[2]}%`)
-//       .orWhere("name", "ilike", `${finalArray[3]}%`)
-//       // .orWhere("title", "ilike", `%${finalArray[3]}%`)
-//       .orWhere("name", "ilike", `${finalArray[4]}%`)
-//       // .orWhere("title", "ilike", `%${finalArray[4]}%`)
-//       .orWhere("name", "ilike", `${finalArray[5]}%`)
-//       // .orWhere("title", "ilike", `%${finalArray[5]}%`)
-//       .then((results) => {
-//         // res.json(results);
-//         console.log("results Are: " , results)
-//         console.log("response is: ", res.body)
-//         res.send("thank you")
-//         console.log("response is: ", res.body)
-//     });
-//   });
 
   return router;
 }
