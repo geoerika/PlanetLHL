@@ -1,4 +1,10 @@
 
+ $(document).ready(function() {
+
+  searchResources();
+});
+
+
 
 // THIS IS A GET TO THE HOMEPAGE
 $(() => {
@@ -25,20 +31,40 @@ $(() => {
 });
 
 //SEARCH REQUEST ENDPOINT
-// function searchResources () {
 
-  $(() => {
-    $.ajax({
-      method: "GET",
-      url: "/planetLHL/results"
-    }).done((users) => {
-      for(user of users) {
-        $("<div>").text(user.name).prependTo($("body"));
-      }
-    });
-  });
-// }
 
+function searchResources() {
+  var $form = $('#searchForm');
+    $form.on('submit', function (event) {
+      console.log("IVE BEEN CLICKED")
+      event.preventDefault();
+      let search = $(this).children('.tweeterText').val()
+      const safeSearch = escape(search); //Creates safe html from form input
+      $(this).children('.tweeterText').val(safeSearch);
+      let safeHTML = $(this).serialize();
+      console.log(safeHTML)
+
+      $.ajax({
+        method: "POST",
+        url: "/planetLHL/results",
+        data: {
+          search: safeHTML
+        },
+        success: function(result) {
+                  console.log(result)
+                 }
+      })
+    })
+}
+
+
+
+//Cleans text to avoid Cross-Site Scripting in entered Tweets
+function escape(str) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
 
 //THESE WILL BE USED LATER
 // function loadResources () {
