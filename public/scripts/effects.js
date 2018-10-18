@@ -1,27 +1,40 @@
 $(document).ready(function() {
 
   $(".Register").click(function(){
-
-    $(".new-tweet").slideToggle(50.5);
-
+    $(".loginForm").hide();
+    $(".createForm").hide();
+    $(".searchForm").hide();
+    $(".registerForm").slideToggle(1000);
   });
 
   $(".Login").click(function(){
+    $(".registerForm").hide();
+    $(".createForm").hide();
+    $(".searchForm").hide();
+    $(".loginForm").slideToggle(1000);
+  });
 
-  $(".new-tweet").slideToggle(50.5);
-
-});
-
-    $(".Create").click(function(){
-
-  $(".createForm").slideToggle(50.5);
-
-});
+  $(".Create").click(function(){
+    $(".registerForm").hide();
+    $(".loginForm").hide();
+    $(".createForm").hide();
+    $(".searchForm").hide();
+    $(".createForm").slideToggle(1000);
+  });
 
     $(".Search").click(function(){
+      $(".registerForm").hide();
+      $(".loginForm").hide();
+      $(".createForm").hide();
+      $(".searchForm").slideToggle(1000);
+    });
 
-$(".searchForm").slideToggle(50.5);
+$(".registerForm").hide();
 
-});
+$(".loginForm").hide();
+
+$(".createForm").hide();
+
+$(".searchForm").hide();
 
 });

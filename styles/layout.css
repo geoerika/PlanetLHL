@@ -1,0 +1,28 @@
+body {
+  background-color: #EEE;
+  font-family: "Crimson Text", serif;
+}
+body h1 {
+  color: #244751;
+}
+body nav {
+  background-color: #fff;
+}
+
+html {
+  height: 100%;
+  /* The image used */
+  background-image: url("https://ishraqfataftah.files.wordpress.com/2016/04/earth.jpg");
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  color: #244751;
+}
+
+/*# sourceMappingURL=layout.css.map */
