@@ -2,6 +2,7 @@
  $(document).ready(function() {
 
   searchResources();
+  createNewResource();
 });
 
 
@@ -30,15 +31,72 @@ $(() => {
   });
 });
 
+// function cleanTextbox(textbox, id) { //Creates safe html from form input
+//       const safeText = escape(textbox);
+//       $('#newCreateForm').children(`#${id}`).val(safeText);
+//       let saferText = $('#newCreateForm').children(`#${id}`).val(safeText).serialize();
+//       return saferText
+
+// }
+
+
+function createNewResource() {
+  var $form = $('#newCreateForm');
+    $form.on('submit', function (event) {
+      event.preventDefault();
+
+      //Create Safe Url
+      let url = $(this).children('#Resource-url').val()
+      let cleanUrl = escape(url) //escapes and serializes
+      let finalUrl = cleanUrl.slice(13) //cuts off name
+
+
+
+      // Create Safe Title
+      let title = $(this).children('#Resource-title').val()
+      let cleanTitle = escape(title)
+
+
+
+      //Create Safe Description
+      let description = $(this).children('#Resource-description').val()
+      let cleanDescription = escape(description)
+
+
+      //Create Safe Tags
+      let tags = $(this).children('#Resource-tags').val()
+      let cleanTags= escape(tags)
+
+
+      $.ajax({
+        method: "POST",
+        url: "/planetLHL/create",
+        data: {
+          url: cleanUrl,
+          title: cleanTitle,
+          description: cleanDescription,
+          tags: cleanTags
+        },
+        success: function(result) {
+                  console.log("This is where renderResources will be called")
+                  $.getJSON("/planetLHL/create").then(data => {
+                    renderResources(data);
+                  })
+                 }
+      });
+      $(this).trigger('reset')
+    })
+}
+
 //SEARCH REQUEST ENDPOINT
 
 function searchResources() {
-  var $form = $('#searchForm');
+  var $form = $('#newSearchForm');
     $form.on('submit', function (event) {
       event.preventDefault();
-      let search = $(this).children('.tweeterText').val()
+      let search = $(this).children('#searchFormText').val()
       const safeSearch = escape(search); //Creates safe html from form input
-      $(this).children('.tweeterText').val(safeSearch);
+      $(this).children('#searchFormText').val(safeSearch);
       let safeHTML = $(this).serialize();
 
       $.ajax({
@@ -51,7 +109,9 @@ function searchResources() {
     })
 }
 
-
+function renderResources(data) {
+  console.log("DATA IS: ", data)
+}
 
 //Cleans text to avoid Cross-Site Scripting in entered Tweets
 function escape(str) {

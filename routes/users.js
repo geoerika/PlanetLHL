@@ -64,6 +64,16 @@ module.exports =  (knex) => {
     });
   });
 
+  router.post("/create", (req, res) => {
+    console.log(req.body)
+    res.send('Thanks')
+  })
+
+
+  router.get("/create", (req, res) => {
+    /// THIS WILL BE A REDIRECT TO HOMEPAGE WITH NEW CREATED RESOURCE NOW AVAILABLE
+    res.redirect('/')
+  })
 
  //OLD WAY TO RECEIVE POST for search CAN USE skeleton CODE FOR create FORMS
 // router.post("/results", (req, res) => {
