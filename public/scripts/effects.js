@@ -53,6 +53,7 @@ $(document).ready(function() {
       $(".searchFormAlerts1").hide();
       $(".searchFormAlerts2").hide();
       $(".searchFormAlerts3").show();
+
     });
 
   $(".pageLinkCreated").click(function(){
@@ -62,6 +63,7 @@ $(document).ready(function() {
     $(".searchFormAlerts1").hide();
     $(".searchFormAlerts2").show();
     $(".searchFormAlerts3").hide();
+
   });
 
   $(".registerForm").hide();
