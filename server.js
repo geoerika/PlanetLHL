@@ -36,10 +36,16 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/api/users", usersRoutes(knex));
+app.use("/planetLHL", usersRoutes(knex));
+
 
 // Home page
 app.get("/", (req, res) => {
+  res.render("index");
+});
+
+//User page
+app.get("/users", (req, res) => {
   res.render("index");
 });
 
