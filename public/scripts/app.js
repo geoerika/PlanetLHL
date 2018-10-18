@@ -31,13 +31,13 @@ $(() => {
   });
 });
 
-function cleanTextbox(textbox, id) { //Creates safe html from form input
-      const safeText = escape(textbox);
-      $('#newCreateForm').children(`#${id}`).val(safeText);
-      let saferText = $('#newCreateForm').children(`#${id}`).val(safeText).serialize();
-      return saferText
+// function cleanTextbox(textbox, id) { //Creates safe html from form input
+//       const safeText = escape(textbox);
+//       $('#newCreateForm').children(`#${id}`).val(safeText);
+//       let saferText = $('#newCreateForm').children(`#${id}`).val(safeText).serialize();
+//       return saferText
 
-}
+// }
 
 
 function createNewResource() {
@@ -47,34 +47,35 @@ function createNewResource() {
 
       //Create Safe Url
       let url = $(this).children('#Resource-url').val()
-      let cleanUrl = cleanTextbox(url, "Resource-url") //escapes and serializes
+      let cleanUrl = escape(url) //escapes and serializes
       let finalUrl = cleanUrl.slice(13) //cuts off name
+
 
 
       // Create Safe Title
       let title = $(this).children('#Resource-title').val()
-      let cleanTitle = cleanTextbox(title, "Resource-title")
-      let finalTitle = cleanTitle.slice(15)
+      let cleanTitle = escape(title)
+
 
 
       //Create Safe Description
       let description = $(this).children('#Resource-description').val()
-      let cleanDescription = cleanTextbox(description, "Resource-description")
-      let finalDescription = cleanDescription.slice(21)
+      let cleanDescription = escape(description)
+
 
       //Create Safe Tags
       let tags = $(this).children('#Resource-tags').val()
-      let cleanTags = cleanTextbox(tags, "Resource-tags")
-      let finalTags = cleanTags.slice(14)
+      let cleanTags= escape(tags)
+
 
       $.ajax({
         method: "POST",
         url: "/planetLHL/create",
         data: {
-          url: `${finalUrl}`,
-          title: `${finalTitle}`,
-          description: `${finalDescription}`,
-          tags: `${finalTags}`
+          url: cleanUrl,
+          title: cleanTitle,
+          description: cleanDescription,
+          tags: cleanTags
         },
         success: function(result) {
                   console.log("This is where renderResources will be called")
