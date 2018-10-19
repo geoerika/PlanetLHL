@@ -1,0 +1,63 @@
+body nav {
+  font-family: 'Crimson Text', serif;
+  text-align: center;
+  color: white;
+  font-size: 90%;
+  position: fixed;
+  height: 260px;
+  width: 110px;
+  top: 32%;
+  bottom: 30%;
+}
+
+.Register {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
+.Login {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
+.Create {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
+.Search {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
+.Register:hover {
+
+  font-size: 200%;
+  transition-duration: 1s;
+}
+
+.Login:hover {
+
+  font-size: 200%;
+  transition-duration: 1s;
+}
+
+.Create:hover {
+
+  font-size: 200%;
+  transition-duration: 1s;
+}
+
+.Search:hover {
+
+  font-size: 200%;
+  transition-duration: 1s;
+}
