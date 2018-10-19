@@ -4,6 +4,7 @@
 // RESPONSE AT THAT URL
 const express = require('express');
 const router  = express.Router();
+const uuid= require('uuid/v4');
 
 //THIS FUNCTION REMOVES SPACES FROM SEARCH ARRAYS to allow better database searches
 function removeA(arr) {
@@ -136,6 +137,26 @@ module.exports =  (knex) => {
 router.get("/create", (req, res) => {
   res.redirect("/")
 });
+
+router.post("/login", (req, res) => {
+  console.log("REQUEST IS: ", req)
+  res.redirect("/")
+});
+
+router.post("/register", (req, res) => {
+  let username = req.body.username
+  console.log(username)
+
+  const user = {
+    username: username,
+    password: "password",
+    token: uuid()
+  }
+
+  console.log(user)
+  res.redirect("/")
+});
+
   return router;
 };
 

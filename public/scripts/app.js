@@ -3,6 +3,8 @@
 
   searchResources();
   createNewResource();
+  login();
+  register();
 });
 
 
@@ -32,15 +34,7 @@ $(() => {
   });
 });
 
-// function cleanTextbox(textbox, id) { //Creates safe html from form input
-//       const safeText = escape(textbox);
-//       $('#newCreateForm').children(`#${id}`).val(safeText);
-//       let saferText = $('#newCreateForm').children(`#${id}`).val(safeText).serialize();
-//       return saferText
-
-// }
-
-
+// This Function creates a new resource
 function createNewResource() {
   var $form = $('#newCreateForm');
     $form.on('submit', function (event) {
@@ -79,13 +73,61 @@ function createNewResource() {
           tags: cleanTags
         },
         success: function(result) {
-                  console.log("This is where renderResources will be called")
                   $.getJSON("/planetLHL/create").then(data => {
                     renderResources(data);
                   })
                  }
       });
       $(this).trigger('reset')
+    })
+}
+
+function register() {
+  var $form = $('#newRegisterForm');
+    $form.on('submit', function (event) {
+      event.preventDefault();
+
+      //Create Safe Url
+      let username = $(this).children('#UserName').val()
+      console.log(username)
+      let cleanUsername = escape(username) //escapes
+      console.log(cleanUsername)
+      // let finalUrl = cleanUrl.slice(13) //cuts off name
+
+      $.ajax({
+        method: "POST",
+        url: "/planetLHL/register",
+        data: {
+          username: cleanUsername
+        },
+        success: function(result) {
+                  console.log("Register successful")
+                 }
+      });
+      // $(this).trigger('reset')
+    })
+}
+
+function login() {
+  var $form = $('#newLoginForm');
+    $form.on('submit', function (event) {
+      event.preventDefault();
+
+      //Create Safe Url
+      let username = $(this).children('#UserNameLogin').val()
+      // let finalUrl = cleanUrl.slice(13) //cuts off name
+
+      $.ajax({
+        method: "POST",
+        url: "/planetLHL/login",
+        data: {
+          username: username
+        },
+        success: function(result) {
+                  console.log("log in success")
+                 }
+      });
+      // $(this).trigger('reset')
     })
 }
 
