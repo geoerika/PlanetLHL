@@ -28,9 +28,9 @@ $(() => {
     method: "GET",
     url: "/planetLHL/users"
   }).done((migrations) => {
-    for(migration of migrations) {
-      $("<div>").text(migration.name).appendTo($("body"));
-    }
+    // for(migration of migrations) {
+    //   $("<div>").text(migration.name).appendTo($("body"));
+    // }
   });
 });
 
@@ -89,9 +89,7 @@ function register() {
 
       //Create Safe Url
       let username = $(this).children('#UserName').val()
-      console.log(username)
       let cleanUsername = escape(username) //escapes
-      console.log(cleanUsername)
       let password = $(this).children('#UserPassword').val()
 
       $.ajax({
@@ -105,7 +103,7 @@ function register() {
                   console.log("Register successful")
                  }
       });
-      // $(this).trigger('reset')
+      $(this).trigger('reset')
     })
 }
 
@@ -117,7 +115,6 @@ function login() {
       //Create Safe Url
       let username = $(this).children('#UserNameLogin').val()
       let password = $(this).children('#UserPasswordLogin').val()
-      console.log(password)
       // let finalUrl = cleanUrl.slice(13) //cuts off name
 
       $.ajax({
@@ -131,7 +128,7 @@ function login() {
                   console.log("log in success")
                  }
       });
-      // $(this).trigger('reset')
+      $(this).trigger('reset')
     })
 }
 
@@ -168,29 +165,6 @@ function escape(str) {
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 }
-
-//THESE WILL BE USED LATER
-// function loadResources () {
-//     $.getJSON('/planetLHL/resources').done(renderResources);
-//   }
-
-// function renderResources (data) {    // PLACE HOLDER FUNCTIONS
-//   $('#resource-container').empty();
-//   for (var resource of data) {
-//     var $resource = createNewResource(resource);
-//     $('#resource-container').prepend($resource);
-//   }
-// }
-
-
-// $(() => {
-//   $.ajax({
-//     method: "POST",
-//     url: "/planetLHL/resource/:id"
-//   }).done((resource) => {
-//       newResource.appendTo($("body")); //newResource is placeholder html variable thats not yet created
-//   });;
-// });
 
 
 function renderResources(resources) {

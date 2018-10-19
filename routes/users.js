@@ -26,6 +26,10 @@ function removeA(arr) {
 
 module.exports =  (knex) => {
 
+  let currentUser = {
+
+  }
+
   router.get("/", (req, res) => {
     knex
       .select("*")
@@ -82,10 +86,10 @@ module.exports =  (knex) => {
       title: title,
       resource_url: url,
       description: desc,
-      created_at: 1000,
+      created_at: Date.now(),
       likes: 0,
       rating: 0,
-      users_id: 1
+      users_id: currentUser.id///OF Logged in user
     };
 
 //This function creates an Object containing the Tag
@@ -140,42 +144,82 @@ module.exports =  (knex) => {
         });
   });
 
-router.get("/create", (req, res) => {
-  res.redirect("/")
-});
+  router.get("/create", (req, res) => {
+    res.redirect("/")
+  });
 
-router.post("/login", (req, res) => {
-  let username = req.body.username
-  let password = req.body.password
-  console.log("Password is : ", password)
-  console.log("REQUEST IS : " , req.body)
-  res.redirect("/")
-});
+  router.post("/login", (req, res) => {
+    let username = req.body.username
+    let password = req.body.password
 
-router.post("/register", (req, res) => {
-  let username = req.body.username;
-  let password = req.body.password;
+    knex("users")
+      .select("*")
+      .where("name", "=", username)
+      .then((user) => {
+        if (user.length <  1) { //Checks to see if user is in database
+          console.log("username doesnt exist")
+        } else {
+          if (user[0].password === password) { //If user exists and password is right set current user
+            currentUser = user[0]
+            req.session.token = user[0].token;
+            console.log("Cookie should be: ", req.session.token)
+            console.log("Logged in as " , currentUser)
+          } else {
+            console.log("Invalid password")
+          }
+        }
+      })
+      .catch(e => {
+        console.log("Something went wrong" , e)
+      })
 
-  const user = {
-    name: username,
-    password: "asdasdasdasdasdasd"
-    // token: uuid()   //Will be used to set cookie after user created
-  }
+    res.redirect("/")
+  });
 
-  knex("users")
-    .insert(user)
-    .returning("*")
-    .then((newUser) => {
-      console.log("This is the new password" , newUser[0].password);
-      req.session.token = newUser[0].password;
-        res.redirect("/")
-    })
-    .catch(e => {
-      console.log("username already exists")
+  router.post("/register", (req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+
+    const newUser = {
+      name: username,
+      password: password,
+      token: uuid()   //Will be used to set cookie after user created
+    }
+    console.log("THE USER CREATED SHOULD BE THIS : ", newUser)
+
+    if (!username || !password) { //Checks to see if password or username is empty
+      console.log("Username or Password is empty")
       res.redirect("/")
-    })
+    } else { //
+     knex("users")
+      .select("*")
+      .where("name", "=", username)
+      .then((user) => {
+        if (user.length < 1) { //If user doesnt exist yet then insert user
+          knex("users")
+            .insert(newUser)
+            .returning("*")
+            .then((createdUser) => {
+              req.session.token = createdUser[0].token;
+              currentUser = createdUser[0];
+              console.log("This is the currentUser:", currentUser)
+              console.log("Current USERNAME IS: ", currentUser.name)
+              console.log("This should be the cookie" , req.session.token)
+              res.redirect("/")
+             })
+        } else {
+         console.log("Username Already Exists")
+         res.redirect("/")
+        }
+      })
+      .catch(e => {
+        console.log("Oops something went wrong", e)
+        res.redirect("/")
+      })
+    }
+  })
 
-});
+
 
   return router;
 };
