@@ -148,6 +148,7 @@ module.exports =  (knex) => {
     res.redirect("/")
   });
 
+// THIS IS THE LOGIN POST
   router.post("/login", (req, res) => {
     let username = req.body.username
     let password = req.body.password
@@ -164,17 +165,21 @@ module.exports =  (knex) => {
             req.session.token = user[0].token;
             console.log("Cookie should be: ", req.session.token)
             console.log("Logged in as " , currentUser)
+            res.redirect("/")
           } else {
             console.log("Invalid password")
+            res.redirect("/")
           }
         }
       })
       .catch(e => {
         console.log("Something went wrong" , e)
+        res.redirect("/")
       })
 
-    res.redirect("/")
   });
+
+  //THIS IS THE REGISTER POST
 
   router.post("/register", (req, res) => {
     let username = req.body.username;
