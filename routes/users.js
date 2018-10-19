@@ -103,7 +103,7 @@ module.exports =  (knex) => {
               .where('name', '=', tag.name)
               .returning('id')
               .then((success) => {
-                if (success) {
+                if (success.length > 0) {
                 console.log('WE ARE IN THE TRY PART', success)
                 console.log("THIS IS THE VALUE OF SUCCESS: ", success[0].id)
                 console.log("THIS IS THE VALUE OF RESOURCERESULT: ", resourceResults[0])
@@ -127,7 +127,7 @@ module.exports =  (knex) => {
                   tags_id: tagResults[0]
                 })
                 .then((finalResults) =>{
-                  res.json(results)
+                  res.json(finalResults)
                 })
               })
             }
