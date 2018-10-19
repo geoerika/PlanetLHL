@@ -40,8 +40,8 @@ module.exports =  (knex) => {
 
   router.get("/results/:search", (req, res) => {
 
-    let search = req.params.search.slice(5) //Takes what was actually searched
-    let searchArray = search.split(" ") //Puts individual words searched into an array
+    let search = req.params.search.slice(5); //Takes what was actually searched
+    let searchArray = search.split(" "); //Puts individual words searched into an array
     let finalArray = removeA(searchArray, ''); //Removes spaces for Database Search
 
     knex
@@ -65,12 +65,12 @@ module.exports =  (knex) => {
   });
 
   router.post("/create", (req, res) => {
-    let url = req.body.url
-    let title = req.body.title
-    let tags = req.body.tags.toLowerCase().split(' ')
-    console.log("THE TAGS ARE : ", tags)
-    let desc = req.body.description
+    let url = req.body.url;
+    let title = req.body.title;
+    let tags = req.body.tags.toLowerCase().split(' ');  //creates an array of tags
+    let desc = req.body.description;
 
+// Builds Resource Object to be inserted ** will make created at Date.now() and user_id i
     let resource = {
       title: title,
       resource_url: url,
@@ -79,73 +79,65 @@ module.exports =  (knex) => {
       likes: 0,
       rating: 0,
       users_id: 1
-    }
+    };
 
+//This function creates an Object containing the Tag
     function createTag (tag) {
       let tagObj = {
         name: tag
-      }
-      return tagObj
+      };
+      return tagObj;
     }
 
-
-    console.log("Resource Object is ", resource)
-
+//This creates the new resource in the database
     knex('resources')
       .insert(resource)
       .returning('id')
-      .then((resourceResults) => {
+      .then((resourceResults) => {     ///For each tag, searches the database to see if it exists
           for (let i = 0; i < tags.length; i++) {
-            let tag = createTag(tags[i])
-            console.log("Tag inside beginning of loop ", tag)
+            let tag = createTag(tags[i]);
             knex('tags')
               .select('id')
               .where('name', '=', tag.name)
               .returning('id')
               .then((success) => {
-                if (success.length > 0) {
-                console.log('WE ARE IN THE TRY PART', success)
-                console.log("THIS IS THE VALUE OF SUCCESS: ", success[0].id)
-                console.log("THIS IS THE VALUE OF RESOURCERESULT: ", resourceResults[0])
+                if (success.length > 0) { //If the tag already exists then insert the tag id and resource id into resource_tags table
                 knex('resource_tags')
                   .insert({
                   resources_id: resourceResults[0],
                   tags_id: success[0].id
                   })
                   .then((end) =>{
-                    console.log("Successfully got an id")
-                  })
-              } else {
-              knex('tags')
-              .insert(tag)
-              .returning('id')
-              .then((tagResults) => {
-                console.log('WE ARE IN THE CATCH PART')
-                knex('resource_tags')
-                .insert({
-                  resources_id: resourceResults[0],
-                  tags_id: tagResults[0]
-                })
-                .then((finalResults) =>{
-                  res.json(finalResults)
-                })
-              })
-            }
-            })
-        }
+                    console.log("Successfully got an id");
+                  });
+              } else {  //If the tag doesn't exist then insert the tag
+                knex('tags')
+                  .insert(tag)
+                  .returning('id')
+                  .then((tagResults) => {
+                    knex('resource_tags') //Inserts the newly created tag id and resource id into resource_tags table in database
+                    .insert({
+                      resources_id: resourceResults[0],
+                      tags_id: tagResults[0]
+                    })
+                    .then((finalResults) =>{
+                      console.log("added new resource tag");
+                    });
+                  });
+              }
+            });
+          }
       })
+        .then((results) => {
+          res.redirect("/");
+        });
+  });
 
-  })
-
-
-  router.get("/create", (req, res) => {
-    /// THIS WILL BE A REDIRECT TO HOMEPAGE WITH NEW CREATED RESOURCE NOW AVAILABLE
-    res.redirect('/')
-  })
-
-
+router.get("/create", (req, res) => {
+  res.redirect("/")
+});
   return router;
-}
+};
 
 //THIS FILE THE '/'' Represents whatever is mounted in server.js in app.use
 
