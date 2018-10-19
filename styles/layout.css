@@ -1,3 +1,5 @@
+/* This File is not Active - not in use - the layout.css file in the other styles folder is the one being used.*/
+
 body {
   background-color: #EEE;
   font-family: 'Crimson Text', serif;
@@ -53,21 +55,3 @@ main {
 }
 
 /*---Site title and Descr.---------------*/
-
-.siteTitle{
-  font-family: 'vineytimes', serif;
-  display: flex;
-  display: inline;
-  position: absolute;
-  bottom: 315px;
-  right: 1500px
-}
-
-.siteDescr{
-  font-family: 'Crimson Text', serif;
-  display: flex;
-  display: inline;
-  position: absolute;
-  bottom: 218px;
-  right: 1426px;
-}
