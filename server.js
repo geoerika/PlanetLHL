@@ -46,7 +46,7 @@ app.get("/", (req, res) => {
 
 //User page
 app.get("/users", (req, res) => {
-  res.render("index");
+  res.render("user.ejs");
 });
 
 app.listen(PORT, () => {
