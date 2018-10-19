@@ -1,0 +1,188 @@
+body {
+  background-color: #EEE;
+  font-family: 'Crimson Text', serif;
+}
+
+body, html {
+    height: 100%;
+    /* The image used */
+    background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/VfUBHhbKlijwvbos9/videoblocks-planet-earth-from-orbit-d_shz6ht527m_thumbnail-full01.png");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body h1 {
+  color: #244751;
+}
+
+/*-----Link to User page-------------*/
+
+.pageLink {
+
+  color: white;
+
+}
+/*------------------*/
+
+/*----Main--------------*/
+
+.myResources {
+  position: absolute;
+  top: 10em;
+  left: 25em;
+  height: 50px
+  width: 750px;
+  display: none;
+}
+
+.myResources p {
+  color: black;
+  text-align: center;
+  font-weight: bold
+}
+
+.myLikes {
+  position: absolute;
+  top: 10em;
+  left: 25em;
+  height: 50px
+  width: 750px;
+  display: none;
+}
+
+.myLikes p {
+  color: black;
+  text-align: center;
+  font-weight: bold;
+}
+
+.pageLink {
+
+  color: white;
+  display: block
+
+}
+
+.pageLinkLiked {
+
+  color: white;
+  display: block
+
+}
+
+.pageLinkCreated {
+
+  color: white;
+  display: block
+
+}
+
+/*------------------*/
+
+/*----Resource Container Windows--------------*/
+
+/*------------------*/
+
+.pageLinkCreated {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
+.pageLinkLiked {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
+.pageLinkCreated:hover {
+
+  font-size: 200%;
+  transition-duration: 1s;
+}
+
+.pageLinkLiked:hover {
+
+  font-size: 200%;
+  transition-duration: 1s;
+}
+
+body nav {
+  font-family: 'Crimson Text', serif;
+  text-align: center;
+  color: white;
+  font-size: 90%;
+  position: fixed;
+  height: 260px;
+  width: 110px;
+  top: 32%;
+  bottom: 30%;
+}
+
+.Create {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
+.Search {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
+.searchFormAlerts1 {
+  color: black;
+  font-weight: bold;
+  position: absolute;
+  text-align: left;
+  display: flex;
+  font-size: 90%;
+  width: 400px;
+  bottom: 18px;
+  left: 81px;
+  display: none;
+}
+
+.searchFormAlerts2 {
+  color: black;
+  font-weight: bold;
+  position: absolute;
+  text-align: left;
+  display: flex;
+  width: 300px;
+  bottom: 18px;
+  left: 81px;
+  display: none;
+}
+
+.searchFormAlerts3 {
+  color: black;
+  font-weight: bold;
+  position: absolute;
+  text-align: left;
+  display: flex;
+  width: 300px;
+  bottom: 18px;
+  left: 81px;
+  display: none;
+}
+
+/*----Scroll bar disappear--------------*/
+
+::-webkit-scrollbar
+{
+    width:0px;
+}
+
+/*------------------*/
