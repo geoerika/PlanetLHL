@@ -67,7 +67,8 @@ module.exports =  (knex) => {
   router.post("/create", (req, res) => {
     let url = req.body.url
     let title = req.body.title
-    let tags = req.body.tags.split(' ')
+    let tags = req.body.tags.toLowerCase().split(' ')
+    console.log("THE TAGS ARE : ", tags)
     let desc = req.body.description
 
     let resource = {
@@ -79,26 +80,59 @@ module.exports =  (knex) => {
       rating: 0,
       users_id: 1
     }
+
     function createTag (tag) {
       let tagObj = {
-        tag: tag
+        name: tag
       }
       return tagObj
     }
 
-    for (let i = 0; i < tags.length; i++) {
-      let tag = createTag(tags[i])
-      console.log(tag)
-    }
 
     console.log("Resource Object is ", resource)
 
     knex('resources')
       .insert(resource)
       .returning('id')
-      .then((results) => {
-        console.log("NEW RESOURCE CREATED: ", results[0])
-        res.json(results)
+      .then((resourceResults) => {
+          for (let i = 0; i < tags.length; i++) {
+            let tag = createTag(tags[i])
+            console.log("Tag inside beginning of loop ", tag)
+            knex('tags')
+              .select('id')
+              .where('name', '=', tag.name)
+              .returning('id')
+              .then((success) => {
+                if (success) {
+                console.log('WE ARE IN THE TRY PART', success)
+                console.log("THIS IS THE VALUE OF SUCCESS: ", success[0].id)
+                console.log("THIS IS THE VALUE OF RESOURCERESULT: ", resourceResults[0])
+                knex('resource_tags')
+                  .insert({
+                  resources_id: resourceResults[0],
+                  tags_id: success[0].id
+                  })
+                  .then((end) =>{
+                    console.log("Successfully got an id")
+                  })
+              } else {
+              knex('tags')
+              .insert(tag)
+              .returning('id')
+              .then((tagResults) => {
+                console.log('WE ARE IN THE CATCH PART')
+                knex('resource_tags')
+                .insert({
+                  resources_id: resourceResults[0],
+                  tags_id: tagResults[0]
+                })
+                .then((finalResults) =>{
+                  res.json(results)
+                })
+              })
+            }
+            })
+        }
       })
 
   })
