@@ -1,10 +1,16 @@
 "use strict";
-
-// THIS FILE IS WHAT ACTUALLY PULLS INFORMATION FROM THE DATABASE AND PUTS A JSON
-// RESPONSE AT THAT URL
 const express = require('express');
+const app = express();
 const router  = express.Router();
 const uuid= require('uuid/v4');
+const cookieSession = require('cookie-session');
+
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["my-super-secret-password"]
+  })
+);
 
 //THIS FUNCTION REMOVES SPACES FROM SEARCH ARRAYS to allow better database searches
 function removeA(arr) {
@@ -139,22 +145,36 @@ router.get("/create", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  console.log("REQUEST IS: ", req)
+  let username = req.body.username
+  let password = req.body.password
+  console.log("Password is : ", password)
+  console.log("REQUEST IS : " , req.body)
   res.redirect("/")
 });
 
 router.post("/register", (req, res) => {
-  let username = req.body.username
-  console.log(username)
+  let username = req.body.username;
+  let password = req.body.password;
 
   const user = {
-    username: username,
-    password: "password",
-    token: uuid()
+    name: username,
+    password: "asdasdasdasdasdasd"
+    // token: uuid()   //Will be used to set cookie after user created
   }
 
-  console.log(user)
-  res.redirect("/")
+  knex("users")
+    .insert(user)
+    .returning("*")
+    .then((newUser) => {
+      console.log("This is the new password" , newUser[0].password);
+      req.session.token = newUser[0].password;
+        res.redirect("/")
+    })
+    .catch(e => {
+      console.log("username already exists")
+      res.redirect("/")
+    })
+
 });
 
   return router;

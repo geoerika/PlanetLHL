@@ -92,13 +92,14 @@ function register() {
       console.log(username)
       let cleanUsername = escape(username) //escapes
       console.log(cleanUsername)
-      // let finalUrl = cleanUrl.slice(13) //cuts off name
+      let password = $(this).children('#UserPassword').val()
 
       $.ajax({
         method: "POST",
         url: "/planetLHL/register",
         data: {
-          username: cleanUsername
+          username: cleanUsername,
+          password: password
         },
         success: function(result) {
                   console.log("Register successful")
@@ -115,13 +116,16 @@ function login() {
 
       //Create Safe Url
       let username = $(this).children('#UserNameLogin').val()
+      let password = $(this).children('#UserPasswordLogin').val()
+      console.log(password)
       // let finalUrl = cleanUrl.slice(13) //cuts off name
 
       $.ajax({
         method: "POST",
         url: "/planetLHL/login",
         data: {
-          username: username
+          username: username,
+          password: password
         },
         success: function(result) {
                   console.log("log in success")
