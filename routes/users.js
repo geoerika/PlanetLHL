@@ -4,6 +4,8 @@ const app = express();
 const router  = express.Router();
 const uuid= require('uuid/v4');
 const cookieSession = require('cookie-session');
+const bcrypt = require('bcrypt');
+
 
 app.use(
   cookieSession({
@@ -160,7 +162,7 @@ module.exports =  (knex) => {
         if (user.length <  1) { //Checks to see if user is in database
           console.log("username doesnt exist")
         } else {
-          if (user[0].password === password) { //If user exists and password is right set current user
+          if (bcrypt.compareSync(password, user[0].password)) { //If user exists and password is right set current user
             currentUser = user[0]
             req.session.token = user[0].token;
             console.log("Cookie should be: ", req.session.token)
@@ -185,9 +187,13 @@ module.exports =  (knex) => {
     let username = req.body.username;
     let password = req.body.password;
 
+    const hashedPassword = bcrypt.hashSync(password, 10);
+    console.log("HASH IS : ", hashedPassword)
+
+
     const newUser = {
       name: username,
-      password: password,
+      password: hashedPassword,
       token: uuid()   //Will be used to set cookie after user created
     }
     console.log("THE USER CREATED SHOULD BE THIS : ", newUser)
