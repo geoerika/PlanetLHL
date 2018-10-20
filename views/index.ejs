@@ -27,7 +27,7 @@
 
   <body>
 
-    <p class="siteTitle"> p l a n e t L H L</p>
+    <p class="siteTitle"> p l a n e t &nbsp; L H L</p>
     <p class="siteDescr"> Do you love the planet as much as we do? <br> Share your love with us!</p>
     <p class="userName"> Welcome, Anonymous!</p>
    <% if (typeof id !== 'undefined' && id !== -1) { %>
@@ -56,7 +56,6 @@
       <section class="createForm">
         <form id="newCreateForm" action="/tweets" method="POST">
           <textarea id="Resource-url" name="Resource-url" placeholder="Add your URL here!"></textarea>
-          <textarea id="Resource-title" name="Resource-title" placeholder="Give your URL a title!"></textarea>
           <textarea id="Resource-description" name="Resource-description" placeholder="Tell us about this!"></textarea>
           <textarea id="Resource-tags" name="Resource-tags" placeholder="Give this some tags!"></textarea>
           <input id="postCreateForm" type="submit" value="Create!">
