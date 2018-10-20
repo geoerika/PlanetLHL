@@ -28,7 +28,7 @@ function showCreated () {
     $button.on('click', function (event) {
        $.ajax({
           method: "GET",
-          url: "/planetLHL/users"
+          url: "/planetLHL/users/:id"
         }).done((results) => {
           renderResources(results)
           console.log("Results are ", results)
