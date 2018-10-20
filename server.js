@@ -57,6 +57,11 @@ app.get("/users", (req, res) => {
   res.render("user.ejs");
 });
 
+//comments page
+app.get("/comments", (req, res) => {
+  res.render("comments.ejs");
+});
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });

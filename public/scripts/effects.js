@@ -4,6 +4,7 @@ $(document).ready(function() {
     $(".loginForm").hide();
     $(".createForm").hide();
     $(".searchForm").hide();
+    $(".updateForm").hide();
     $(".registerForm").slideToggle(1000);
   });
 
@@ -11,6 +12,7 @@ $(document).ready(function() {
     $(".registerForm").hide();
     $(".createForm").hide();
     $(".searchForm").hide();
+    $(".updateForm").hide();
     $(".loginForm").slideToggle(1000);
   });
 
@@ -18,6 +20,7 @@ $(document).ready(function() {
     $(".registerForm").hide();
     $(".loginForm").hide();
     $(".searchForm").hide();
+    $(".updateForm").hide();
     $(".createForm").slideToggle(1000);
   });
 
@@ -25,6 +28,7 @@ $(document).ready(function() {
       $(".registerForm").hide();
       $(".loginForm").hide();
       $(".createForm").hide();
+      $(".updateForm").hide();
       $(".searchForm").slideToggle(1000);
 
     let myResVis = $(".myResources").is(":visible");
@@ -72,6 +76,10 @@ $(document).ready(function() {
     $(".searchForm").hide();
     $(".createForm").hide();
     $(".updateForm").slideToggle(1000);
+  });
+
+    $(".buttonRate").click(function() {
+    $( ".UserRate" ).select();
   });
 
   $(".registerForm").hide();

@@ -222,5 +222,54 @@ main {
   padding-bottom: 10px;
 }
 
+.textMuted {
+  color: black;
+  margin-left: 39px;
+}
+
+.d-flex {
+    width: 180px;
+    margin-left: 20px;
+}
+
+
+/*------------------*/
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 5px 5px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/*------------------*/
+
+.UserRate {
+  width: 66px;
+  height: 26px;
+}
+
+.postRating {
+  width: 66px;
+}
+
+.buttonLike {
+  background-color: #ddd;
+}
+
+
+
 }
 
