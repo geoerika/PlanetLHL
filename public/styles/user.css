@@ -273,6 +273,7 @@ body nav {
   text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
 }
 
+
 }
 
 /*-----This is for laptop monitors---------*/
@@ -315,10 +316,13 @@ body h1 {
 
 .myResources {
   position: absolute;
+  width: auto;
+  left: 400px;
   top: 10em;
-  left: 25em;
-  height: 50px
-  width: 750px;
+  overflow: scroll;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  height: 480px !important;
   display: none;
 }
 
@@ -330,10 +334,13 @@ body h1 {
 
 .myLikes {
   position: absolute;
+  width: auto;
+  left: 400px;
   top: 10em;
-  left: 25em;
-  height: 50px
-  width: 750px;
+  overflow: scroll;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  height: 480px !important;
   display: none;
 }
 
@@ -460,43 +467,6 @@ body nav {
   bottom: 30%;
 }
 
-.searchFormAlerts1 {
-  color: white;
-  font-weight: bold;
-  position: absolute;
-  text-align: left;
-  display: flex;
-  font-size: 90%;
-  width: 400px;
-  bottom: 18px;
-  left: 81px;
-  display: none;
-}
-
-.searchFormAlerts2 {
-  color: white;
-  font-weight: bold;
-  position: absolute;
-  text-align: left;
-  display: flex;
-  width: 300px;
-  bottom: 18px;
-  left: 81px;
-  display: none;
-}
-
-.searchFormAlerts3 {
-  color: white;
-  font-weight: bold;
-  position: absolute;
-  text-align: left;
-  display: flex;
-  width: 300px;
-  bottom: 18px;
-  left: 81px;
-  display: none;
-}
-
 /*----Scroll bar disappear--------------*/
 
 ::-webkit-scrollbar
@@ -513,10 +483,10 @@ body nav {
   display: flex;
   display: inline;
   position: absolute;
-  top: 70px;
-  left: 73px;
+  top: 5%;
+  left: 5%;
   color: #fff;
-  font-size: 200%;
+  font-size: 160%;
   text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
 }
 
@@ -527,11 +497,11 @@ body nav {
   position: absolute;
   text-align: center;
   bottom: 218px;
-  top: 138px;
-  left: 37px;
+  top: 10%;
+  left: 2%;
   height: 70px;
   color: #fff;
-  font-size: 150%;
+  font-size: 120%;
   text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
   }
 
@@ -541,13 +511,66 @@ body nav {
   display: inline;
   position: absolute;
   text-align: center;
-  bottom: 218px;
-  top: 235px;
-  left: 119px;
+  top: 21%;
+  left: 8%;
   height: 70px;
   color: #fff;
-  font-size: 150%;
+  font-size: 100%;
   text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
 }
+
+.col-xl-4 {
+  padding-bottom: 10px;
+}
+
+.textMuted {
+  color: black;
+  margin-left: 39px;
+}
+
+.d-flex {
+    width: 180px;
+    margin-left: 20px;
+}
+
+
+/*------------------*/
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 5px 5px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/*------------------*/
+
+.UserRate {
+  width: 66px;
+  height: 26px;
+}
+
+.postRating {
+  width: 66px;
+}
+
+.buttonLike {
+  background-color: #ddd;
+}
+
+
+/*------------------*/
 
 }

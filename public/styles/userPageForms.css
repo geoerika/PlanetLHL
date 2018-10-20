@@ -211,6 +211,43 @@
 
 /*------------------*/
 
+.searchFormAlerts1 {
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  text-align: left;
+  display: flex;
+  font-size: 90%;
+  width: 400px;
+  bottom: 18px;
+  left: 81px;
+  display: none;
+}
+
+.searchFormAlerts2 {
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  text-align: left;
+  display: flex;
+  width: 300px;
+  bottom: 18px;
+  left: 81px;
+  display: none;
+}
+
+.searchFormAlerts3 {
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  text-align: left;
+  display: flex;
+  width: 300px;
+  bottom: 18px;
+  left: 81px;
+  display: none;
+}
+
 }
 
 /*-----This is for laptop monitors---------*/
@@ -266,14 +303,13 @@
   border-radius: 0.5em;
   position: relative;
   top: 1.5em;
-  left: 15%;
+  left: 30%;
   right: 35%;
   display: none;
   background: rgb(237, 239, 242) 0.4)
   border: rgb(237, 239, 242) 0.4);
   z-index: 10;
   height: 6.5em;
-  left: 20em;
   width: 70%;
 }
 
@@ -416,6 +452,43 @@
 }
 
 /*------------------*/
+
+.searchFormAlerts1 {
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  text-align: left;
+  display: flex;
+  font-size: 72%;
+  width: 400px;
+  bottom: 18px;
+  left: 81px;
+  display: none;
+}
+
+.searchFormAlerts2 {
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  text-align: left;
+  display: flex;
+  width: 300px;
+  bottom: 18px;
+  left: 81px;
+  display: none;
+}
+
+.searchFormAlerts3 {
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  text-align: left;
+  display: flex;
+  width: 300px;
+  bottom: 18px;
+  left: 81px;
+  display: none;
+}
 
 
 /*----Main--------------*/
