@@ -1,1 +1,290 @@
-comments.css
+
+/*-----This is for large monitors---------*/
+
+@media only screen and (min-width: 1500px) {
+
+body {
+  background-color: #EEE;
+  font-family: 'Crimson Text', serif;
+}
+
+body, html {
+    height: 100%;
+    /* The image used */
+    background-image: url("/images/commentsBackRound.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body h1 {
+  color: #244751;
+}
+
+/*-----Link to User page-------------*/
+
+.pageLink {
+  font-family: 'Krub', sans-serif;
+  color: white;
+  font-size: 150%;
+  position: absolute;
+  right: 10%;
+  top: 15%;
+}
+/*------------------*/
+
+main {
+  padding-right: 20px;
+}
+
+/*----Main--Gallery------------*/
+
+.resourceContainer {
+  position: absolute;
+  left: 40em;
+  top: 10em;
+  overflow: scroll;
+  overflow-y:scroll;
+  overflow-x:hidden;
+}
+
+/*------------------*/
+
+::-webkit-scrollbar
+{
+    width:0px;
+}
+
+/*---Site title and Descr.---------------*/
+
+.siteTitle {
+  font-family: 'Krub', sans-serif;
+  display: flex;
+  display: inline;
+  position: absolute;
+  left: 45%;
+  top: 5%;
+  right: 33%;
+  color: #fff;
+  font-size: 300%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
+}
+
+.siteDescr {
+  font-family: 'Krub', sans-serif;
+  display: flex;
+  display: inline;
+  position: absolute;
+  text-align: center;
+  top: 70%;
+  left: 80px;
+  bottom: 10%;
+  height: 70px;
+  color: #fff;
+  font-size: 180%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
+  }
+
+.userName {
+  font-family: 'Krub', sans-serif;
+  display: flex;
+  display: inline;
+  position: absolute;
+  text-align: center;
+  top: 10%;
+  left: 75%;
+  right: 5%;
+  height: 70px;
+  color: #fff;
+  font-size: 150%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
+}
+
+.col-xl-6 {
+  padding-bottom: 10px;
+}
+
+}
+
+/*-----This is for laptop monitors---------*/
+
+@media only screen and (max-width: 1499px) {
+
+  body {
+  background-color: #EEE;
+  font-family: 'Crimson Text', serif;
+}
+
+body, html {
+    height: 100%;
+    /* The image used */
+    background-image: url("/images/commentsBackRound.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body h1 {
+  color: #244751;
+}
+
+/*-----Link to User page-------------*/
+
+.pageLink {
+  font-family: 'Krub', sans-serif;
+  color: white;
+  font-size: 150%;
+  position: absolute;
+  right: 10%;
+  top: 16%;
+}
+/*------------------*/
+
+/*-----Link to User page-------------*/
+
+.pageLinkHome {
+  font-family: 'Krub', sans-serif;
+  color: white;
+  font-size: 150%;
+  position: absolute;
+  right: 7%;
+  top: 20%;
+}
+/*------------------*/
+
+main {
+  padding-right: 20px;
+}
+
+/*----Main--Gallery------------*/
+
+.resourceContainer {
+  position: absolute;
+  width: auto;
+  left: 400px;
+  top: 10em;
+  overflow: scroll;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  height: 480px !important;
+  width: 1200px;
+  left: 30px;
+}
+
+/*------------------*/
+
+::-webkit-scrollbar
+{
+    width:0px;
+}
+
+/*---Site title and Descr.---------------*/
+
+.siteTitle {
+  font-family: 'Krub', sans-serif;
+  display: flex;
+  display: inline;
+  position: absolute;
+  left: 41%;
+  top: 10%;
+  right: 33%;
+  color: #fff;
+  font-size: 280%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
+}
+
+.siteDescr {
+  font-family: 'Krub', sans-serif;
+  display: flex;
+  display: inline;
+  position: absolute;
+  text-align: center;
+  top: 80%;
+  left: 2%;
+  bottom: 10%;
+  height: 70px;
+  color: #fff;
+  font-size: 120%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
+  }
+
+.userName {
+  font-family: 'Krub', sans-serif;
+  display: flex;
+  display: inline;
+  position: absolute;
+  text-align: center;
+  top: 11%;
+  left: 75%;
+  right: 5%;
+  height: 70px;
+  color: #fff;
+  font-size: 150%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
+}
+
+.col-xl-6 {
+  padding-bottom: 10px;
+}
+
+.textMuted {
+  color: black;
+  margin-left: 22px;
+}
+
+.d-flex {
+    width: 180px;
+    margin-left: 130px;
+    margin-bottom: 10px;
+}
+
+
+/*------------------*/
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 5px 5px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/*------------------*/
+
+.UserRate {
+  width: 66px;
+  height: 26px;
+}
+
+.postRating {
+  width: 66px;
+}
+
+.buttonLike {
+  background-color: #ddd;
+}
+
+
+}
+
