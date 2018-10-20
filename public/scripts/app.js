@@ -6,6 +6,7 @@
   login();
   register();
   showCreated();
+  logout();
 });
 
 // FIRST TWO FUNCTIONS ARE GETTING CALLED ALL THE TIME RIGHT NOW ON ANY WEBPAGE CLICK
@@ -25,7 +26,6 @@ $(() => {
 function showCreated () {
   let $button = $('#createdResources')
     $button.on('click', function (event) {
-      console.log("BUTTON CLICKED")
        $.ajax({
           method: "GET",
           url: "/planetLHL/users"
@@ -35,6 +35,18 @@ function showCreated () {
         });
     })
 }
+
+function logout() {
+  let $button = $('.Logout')
+    $button.on('click', function (event) {
+      $.ajax({
+          method: "POST",
+          url: "/planetLHL/logout"
+        }).done((results) => {
+          console.log("logout was successful")
+        });
+    })
+  }
 
 // This Function creates a new resource
 function createNewResource() {

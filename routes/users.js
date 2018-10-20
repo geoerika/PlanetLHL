@@ -31,6 +31,11 @@ function removeA(arr) {
     name: 'anonymous'
   }
 
+let anonUser = {
+  id: -1,
+  name: 'anonymous'
+}
+
 module.exports =  (knex) => {
 
 
@@ -228,6 +233,14 @@ module.exports =  (knex) => {
         res.redirect("/")
       })
     }
+  })
+
+  router.post("/logout", (req, res) => {
+    req.session.token = null
+    currentUser = anonUser
+    module.exports.currentUser = currentUser
+    console.log("Logged out current user is now : ", currentUser)
+    res.redirect("/")
   })
 
 
