@@ -1,3 +1,7 @@
+/*-----This is for large monitors---------*/
+
+@media only screen and (min-width: 1500px) {
+
 body {
   background-color: #EEE;
   font-family: 'Crimson Text', serif;
@@ -6,7 +10,7 @@ body {
 body, html {
     height: 100%;
     /* The image used */
-    background-image: url("/images/backround.jpeg");
+    background-image: url("/images/backround_planet_LHL.jpg");
 
     /* Full height */
     height: 100%;
@@ -24,9 +28,12 @@ body h1 {
 /*-----Link to User page-------------*/
 
 .pageLink {
-
+  font-family: 'Krub', sans-serif;
   color: white;
-
+  font-size: 150%;
+  position: absolute;
+  right: 10%;
+  top: 15%;
 }
 /*------------------*/
 
@@ -54,20 +61,166 @@ main {
 
 /*---Site title and Descr.---------------*/
 
-.siteTitle{
-  font-family: 'vineytimes', serif;
+.siteTitle {
+  font-family: 'Krub', sans-serif;
   display: flex;
   display: inline;
   position: absolute;
-  bottom: 315px;
-  right: 1500px
+  left: 45%;
+  top: 5%;
+  right: 33%;
+  color: #fff;
+  font-size: 300%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
 }
 
-.siteDescr{
-  font-family: 'Crimson Text', serif;
+.siteDescr {
+  font-family: 'Krub', sans-serif;
   display: flex;
   display: inline;
   position: absolute;
-  bottom: 218px;
-  right: 1426px;
+  text-align: center;
+  top: 70%;
+  left: 80px;
+  bottom: 10%;
+  height: 70px;
+  color: #fff;
+  font-size: 180%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
+  }
+
+.userName {
+  font-family: 'Krub', sans-serif;
+  display: flex;
+  display: inline;
+  position: absolute;
+  text-align: center;
+  top: 10%;
+  left: 75%;
+  right: 5%;
+  height: 70px;
+  color: #fff;
+  font-size: 150%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
 }
+
+.col-xl-4 {
+  padding-bottom: 10px;
+}
+
+}
+
+/*-----This is for laptop monitors---------*/
+
+@media only screen and (max-width: 1499px) {
+
+  body {
+  background-color: #EEE;
+  font-family: 'Crimson Text', serif;
+}
+
+body, html {
+    height: 100%;
+    /* The image used */
+    background-image: url("/images/backround_planet_LHL.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body h1 {
+  color: #244751;
+}
+
+/*-----Link to User page-------------*/
+
+.pageLink {
+  font-family: 'Krub', sans-serif;
+  color: white;
+  font-size: 150%;
+  position: absolute;
+  right: 10%;
+  top: 18%;
+}
+/*------------------*/
+
+main {
+  padding-right: 20px;
+}
+
+/*----Main--Gallery------------*/
+
+.resourceContainer {
+  position: absolute;
+  width: auto;
+  left: 400px;
+  top: 10em;
+  overflow: scroll;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  height: 480px !important;
+}
+
+/*------------------*/
+
+::-webkit-scrollbar
+{
+    width:0px;
+}
+
+/*---Site title and Descr.---------------*/
+
+.siteTitle {
+  font-family: 'Krub', sans-serif;
+  display: flex;
+  display: inline;
+  position: absolute;
+  left: 41%;
+  top: 10%;
+  right: 33%;
+  color: #fff;
+  font-size: 280%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
+}
+
+.siteDescr {
+  font-family: 'Krub', sans-serif;
+  display: flex;
+  display: inline;
+  position: absolute;
+  text-align: center;
+  top: 80%;
+  left: 2%;
+  bottom: 10%;
+  height: 70px;
+  color: #fff;
+  font-size: 120%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
+  }
+
+.userName {
+  font-family: 'Krub', sans-serif;
+  display: flex;
+  display: inline;
+  position: absolute;
+  text-align: center;
+  top: 13%;
+  left: 75%;
+  right: 5%;
+  height: 70px;
+  color: #fff;
+  font-size: 150%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
+}
+
+.col-xl-4 {
+  padding-bottom: 10px;
+}
+
+}
+

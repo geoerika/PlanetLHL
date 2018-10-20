@@ -1,3 +1,7 @@
+/*-----This is for large monitors---------*/
+
+@media only screen and (min-width: 1500px) {
+
 body nav {
   font-family: 'Crimson Text', serif;
   text-align: center;
@@ -38,6 +42,13 @@ body nav {
   font-size: 150%;
 }
 
+.Logout {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
 .Register:hover {
 
   font-size: 200%;
@@ -61,3 +72,95 @@ body nav {
   font-size: 200%;
   transition-duration: 1s;
 }
+
+.Logout:hover {
+
+  font-size: 200%;
+  transition-duration: 1s;
+}
+
+}
+
+/*-----This is for laptop monitors---------*/
+
+@media only screen and (max-width: 1499px) {
+
+  body nav {
+  font-family: 'Crimson Text', serif;
+  text-align: center;
+  color: white;
+  font-size: 90%;
+  position: fixed;
+  height: 260px;
+  width: 110px;
+  top: 32%;
+  bottom: 30%;
+}
+
+.Register {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 100%;
+}
+
+.Login {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 100%;
+}
+
+.Create {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 100%;
+}
+
+.Search {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 100%;
+}
+
+.Logout {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 100%;
+}
+
+.Register:hover {
+
+  font-size: 120%;
+  transition-duration: 1s;
+}
+
+.Login:hover {
+
+  font-size: 120%;
+  transition-duration: 1s;
+}
+
+.Create:hover {
+
+  font-size: 120%;
+  transition-duration: 1s;
+}
+
+.Search:hover {
+
+  font-size: 120%;
+  transition-duration: 1s;
+}
+
+.Logout:hover {
+
+  font-size: 120%;
+  transition-duration: 1s;
+}
+
+}
+

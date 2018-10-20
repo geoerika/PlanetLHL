@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/styles/user.css" type="text/css" />
     <link rel="stylesheet" href="/styles/userPageForms.css" type="text/css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
 
 
     <!-- External JS -->
@@ -21,10 +23,18 @@
 
   <body>
 
+    <p class="siteTitle"> Planet Lighthouse Labs</p>
+    <p class="siteDescr"> Do you love the planet as much as we do? <br> Share your love with us!</p>
+    <p class="userName"> Welcome, Anonymous!</p>
+
     <nav id="nav-bar">
       <a href="http://localhost:8080/" class="pageLink" >The Main Page</a>
+
       <input id="likedResources" class="pageLinkLiked" type="submit" value="My Liked Resources">
       <input id="createdResources" class="pageLinkCreated" type="submit" value="My Created Resources">
+      <input class="Logout" type="submit" value="Logout">
+      <input class="UpdateProfile" type="submit" value="Update Profile">
+
       <input class="Create" type="submit" value="Create">
       <input class="Search" type="submit" value="Search">
     </nav>
@@ -37,7 +47,6 @@
           <span class="searchFormAlerts1"> Err? Open your Created or Liked Resources to Search!</span>
           <span class="searchFormAlerts2">Search Created Resources!</span>
           <span class="searchFormAlerts3">Search Liked Resources!</span>
-          <span class="counter">140</span>
         </form>
     </div>
 
@@ -49,7 +58,6 @@
           <textarea id="Resource-description" name="Resource-description" placeholder="Tell everyone something about this!"></textarea>
           <textarea id="Resource-tags" name="Resource-tags" placeholder="Give your awesome share some tags!"></textarea>
           <input id="postCreateForm" type="submit" value="Create!">
-          <span class="counter">140</span>
         </form>
     </div>
 
@@ -59,7 +67,6 @@
           <textarea id="UserName" name="UserName" placeholder="Enter your desired username"></textarea>
           <textarea id="UserPassword" name="UserPassword" placeholder="Enter your desired password"></textarea>
           <input id="postRegister" type="submit" value="Register!">
-          <span class="counter">140</span>
         </form>
     </div>
 
@@ -69,7 +76,15 @@
           <textarea id="UserNameLogin" name="UserNameLogin" placeholder="Enter your username!"></textarea>
           <textarea id="UserPasswordLogin" name="UserPasswordLogin" placeholder="Enter your password!"></textarea>
           <input id="postLogin" type="submit" value="Login!">
-          <span class="counter">140</span>
+        </form>
+    </div>
+
+    <div>
+      <section class="updateForm">
+        <form id="newupdateForm" action="/tweets" method="POST">
+          <textarea id="confirmOldPass" name="confirmOldPass" placeholder="Enter old password!"></textarea>
+          <textarea id="confirmNewPass" name="confirmNewPass" placeholder="Enter new password!"></textarea>
+          <input id="postUpdate" type="submit" value="Update!">
         </form>
     </div>
 

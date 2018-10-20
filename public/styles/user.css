@@ -1,3 +1,7 @@
+/*-----This is for large monitors---------*/
+
+@media only screen and (min-width: 1500px) {
+
 body {
   background-color: #EEE;
   font-family: 'Crimson Text', serif;
@@ -6,7 +10,7 @@ body {
 body, html {
     height: 100%;
     /* The image used */
-    background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/VfUBHhbKlijwvbos9/videoblocks-planet-earth-from-orbit-d_shz6ht527m_thumbnail-full01.png");
+    background-image: url("/images/earth_for_mypage.jpg");
 
     /* Full height */
     height: 100%;
@@ -42,7 +46,7 @@ body h1 {
 }
 
 .myResources p {
-  color: black;
+  color: white;
   text-align: center;
   font-weight: bold
 }
@@ -57,7 +61,7 @@ body h1 {
 }
 
 .myLikes p {
-  color: black;
+  color: white;
   text-align: center;
   font-weight: bold;
 }
@@ -89,6 +93,20 @@ body h1 {
 
 /*------------------*/
 
+.Create {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
+.Search {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
 .pageLinkCreated {
   margin: 10%;
   color: white;
@@ -103,6 +121,26 @@ body h1 {
   font-size: 150%;
 }
 
+.Logout {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
+.UpdateProfile {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
+.Logout:hover {
+
+  font-size: 200%;
+  transition-duration: 1s;
+}
+
 .pageLinkCreated:hover {
 
   font-size: 200%;
@@ -110,6 +148,24 @@ body h1 {
 }
 
 .pageLinkLiked:hover {
+
+  font-size: 200%;
+  transition-duration: 1s;
+}
+
+.Create:hover {
+
+  font-size: 200%;
+  transition-duration: 1s;
+}
+
+.Search:hover {
+
+  font-size: 200%;
+  transition-duration: 1s;
+}
+
+.UpdateProfile:hover {
 
   font-size: 200%;
   transition-duration: 1s;
@@ -127,22 +183,8 @@ body nav {
   bottom: 30%;
 }
 
-.Create {
-  margin: 10%;
-  color: white;
-  background-color: #060607;
-  font-size: 150%;
-}
-
-.Search {
-  margin: 10%;
-  color: white;
-  background-color: #060607;
-  font-size: 150%;
-}
-
 .searchFormAlerts1 {
-  color: black;
+  color: white;
   font-weight: bold;
   position: absolute;
   text-align: left;
@@ -155,7 +197,7 @@ body nav {
 }
 
 .searchFormAlerts2 {
-  color: black;
+  color: white;
   font-weight: bold;
   position: absolute;
   text-align: left;
@@ -167,7 +209,7 @@ body nav {
 }
 
 .searchFormAlerts3 {
-  color: black;
+  color: white;
   font-weight: bold;
   position: absolute;
   text-align: left;
@@ -186,3 +228,326 @@ body nav {
 }
 
 /*------------------*/
+
+/*---Site title and Descr.---------------*/
+
+.siteTitle {
+  font-family: 'Elsie', cursive;
+  display: flex;
+  display: inline;
+  position: absolute;
+  top: 70px;
+  left: 73px;
+  color: #fff;
+  font-size: 200%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
+}
+
+.siteDescr {
+  font-family: 'Elsie', cursive;
+  display: flex;
+  display: inline;
+  position: absolute;
+  text-align: center;
+  bottom: 218px;
+  top: 138px;
+  left: 37px;
+  height: 70px;
+  color: #fff;
+  font-size: 150%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
+  }
+
+.userName {
+  font-family: 'Elsie', cursive;
+  display: flex;
+  display: inline;
+  position: absolute;
+  text-align: center;
+  bottom: 218px;
+  top: 235px;
+  left: 119px;
+  height: 70px;
+  color: #fff;
+  font-size: 150%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
+}
+
+}
+
+/*-----This is for laptop monitors---------*/
+
+@media only screen and (max-width: 1499px) {
+
+  body {
+  background-color: #EEE;
+  font-family: 'Crimson Text', serif;
+}
+
+body, html {
+    height: 100%;
+    /* The image used */
+    background-image: url("/images/earth_for_mypage.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body h1 {
+  color: #244751;
+}
+
+/*-----Link to User page-------------*/
+
+.pageLink {
+
+  color: white;
+
+}
+/*------------------*/
+
+/*----Main--------------*/
+
+.myResources {
+  position: absolute;
+  top: 10em;
+  left: 25em;
+  height: 50px
+  width: 750px;
+  display: none;
+}
+
+.myResources p {
+  color: white;
+  text-align: center;
+  font-weight: bold
+}
+
+.myLikes {
+  position: absolute;
+  top: 10em;
+  left: 25em;
+  height: 50px
+  width: 750px;
+  display: none;
+}
+
+.myLikes p {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.pageLink {
+
+  color: white;
+  display: block
+
+}
+
+.pageLinkLiked {
+
+  color: white;
+  display: block
+
+}
+
+.pageLinkCreated {
+
+  color: white;
+  display: block
+
+}
+
+/*------------------*/
+
+/*----Resource Container Windows--------------*/
+
+/*------------------*/
+
+.Create {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 100%;
+}
+
+.Search {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 100%;
+}
+
+.pageLinkCreated {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 100%;
+}
+
+.pageLinkLiked {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 100%;
+}
+
+.Logout {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 100%;
+}
+
+.UpdateProfile {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 100%;
+}
+
+.Logout:hover {
+
+  font-size: 120%;
+  transition-duration: 1s;
+}
+
+.pageLinkCreated:hover {
+
+  font-size: 120%;
+  transition-duration: 1s;
+}
+
+.pageLinkLiked:hover {
+
+  font-size: 120%;
+  transition-duration: 1s;
+}
+
+.Create:hover {
+
+  font-size: 120%;
+  transition-duration: 1s;
+}
+
+.Search:hover {
+
+  font-size: 120%;
+  transition-duration: 1s;
+}
+
+.UpdateProfile:hover {
+
+  font-size: 120%;
+  transition-duration: 1s;
+}
+
+body nav {
+  font-family: 'Crimson Text', serif;
+  text-align: center;
+  color: white;
+  font-size: 90%;
+  position: fixed;
+  height: 260px;
+  width: 110px;
+  top: 32%;
+  bottom: 30%;
+}
+
+.searchFormAlerts1 {
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  text-align: left;
+  display: flex;
+  font-size: 90%;
+  width: 400px;
+  bottom: 18px;
+  left: 81px;
+  display: none;
+}
+
+.searchFormAlerts2 {
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  text-align: left;
+  display: flex;
+  width: 300px;
+  bottom: 18px;
+  left: 81px;
+  display: none;
+}
+
+.searchFormAlerts3 {
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  text-align: left;
+  display: flex;
+  width: 300px;
+  bottom: 18px;
+  left: 81px;
+  display: none;
+}
+
+/*----Scroll bar disappear--------------*/
+
+::-webkit-scrollbar
+{
+    width:0px;
+}
+
+/*------------------*/
+
+/*---Site title and Descr.---------------*/
+
+.siteTitle {
+  font-family: 'Elsie', cursive;
+  display: flex;
+  display: inline;
+  position: absolute;
+  top: 70px;
+  left: 73px;
+  color: #fff;
+  font-size: 200%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
+}
+
+.siteDescr {
+  font-family: 'Elsie', cursive;
+  display: flex;
+  display: inline;
+  position: absolute;
+  text-align: center;
+  bottom: 218px;
+  top: 138px;
+  left: 37px;
+  height: 70px;
+  color: #fff;
+  font-size: 150%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
+  }
+
+.userName {
+  font-family: 'Elsie', cursive;
+  display: flex;
+  display: inline;
+  position: absolute;
+  text-align: center;
+  bottom: 218px;
+  top: 235px;
+  left: 119px;
+  height: 70px;
+  color: #fff;
+  font-size: 150%;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0 black, 0 -1px black;
+}
+
+}
