@@ -5,6 +5,7 @@
   createNewResource();
   login();
   register();
+  showCreated();
 });
 
 // FIRST TWO FUNCTIONS ARE GETTING CALLED ALL THE TIME RIGHT NOW ON ANY WEBPAGE CLICK
@@ -14,27 +15,30 @@ $(() => {
     method: "GET",
     url: "/planetLHL"
   }).done((users) => {
-    // for(user of users) {
-    //   $("<div>").text(user.name).appendTo($("body"));
-    // }
+    console.log("ALL POSTS ARE" , users)
     renderResources(users);
   });
 });
 
 //THIS IS GET TO THE USER PAGE   ** WILL USE /user/:id when user ids are available
-$(() => {
-  $.ajax({
-    method: "GET",
-    url: "/planetLHL/users"
-  }).done((results) => {
-    renderResources(results)
-    console.log("Results are ", results)
-  });
-});
+
+function showCreated () {
+  let $button = $('#createdResources')
+    $button.on('click', function (event) {
+      console.log("BUTTON CLICKED")
+       $.ajax({
+          method: "GET",
+          url: "/planetLHL/users"
+        }).done((results) => {
+          renderResources(results)
+          console.log("Results are ", results)
+        });
+    })
+}
 
 // This Function creates a new resource
 function createNewResource() {
-  var $form = $('#newCreateForm');
+  let $form = $('#newCreateForm');
     $form.on('submit', function (event) {
       event.preventDefault();
 
@@ -100,7 +104,7 @@ function register() {
 }
 
 function login() {
-  var $form = $('#newLoginForm');
+  let $form = $('#newLoginForm');
     $form.on('submit', function (event) {
       event.preventDefault();
 
@@ -127,7 +131,7 @@ function login() {
 //SEARCH REQUEST ENDPOINT
 
 function searchResources() {
-  var $form = $('#newSearchForm');
+  let $form = $('#newSearchForm');
     $form.on('submit', function (event) {
       event.preventDefault();
       let search = $(this).children('#searchFormText').val()

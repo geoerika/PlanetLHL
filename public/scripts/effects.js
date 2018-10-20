@@ -47,7 +47,7 @@ $(document).ready(function() {
     });
 
     $(".pageLinkLiked").click(function(){
-      $(".myResources").hide();
+      // $(".myResources").hide();
       $(".myLikes").slideToggle(1000);
 
       $(".searchFormAlerts1").hide();
@@ -57,7 +57,7 @@ $(document).ready(function() {
     });
 
   $(".pageLinkCreated").click(function(){
-    $(".myLikes").hide();
+    // $(".myLikes").hide();
     $(".myResources").slideToggle(1000);
 
     $(".searchFormAlerts1").hide();
