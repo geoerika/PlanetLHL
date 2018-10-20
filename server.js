@@ -49,11 +49,11 @@ app.use("/planetLHL", usersRoutes(knex));
 // Home page
 app.get("/", (req, res) => {
   console.log("This is current user : ", usersRoutes.currentUser)
-  res.render("index");
+  res.render("index", usersRoutes.currentUser);
 });
 
 //User page
-app.get("/users", (req, res) => {
+app.get("/users/:id", (req, res) => {
   res.render("user.ejs");
 });
 

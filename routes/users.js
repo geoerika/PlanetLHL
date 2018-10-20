@@ -39,6 +39,11 @@ function removeA(arr) {
     name: 'anonymous'
   }
 
+let anonUser = {
+  id: -1,
+  name: 'anonymous'
+}
+
 module.exports =  (knex) => {
 
 
@@ -52,7 +57,7 @@ module.exports =  (knex) => {
     });
   });
 
-  router.get("/users", (req, res) => {
+  router.get("/users/:id", (req, res) => {
     knex
       .select("*")
       .from("resources")
@@ -191,7 +196,7 @@ module.exports =  (knex) => {
             currentUser = user[0]
             req.session.token = user[0].token;
             module.exports.currentUser = currentUser
-            res.redirect("/")
+             res.redirect("/")
           } else {
             console.log("Invalid password")
             res.redirect("/")
@@ -251,6 +256,13 @@ module.exports =  (knex) => {
     }
   })
 
+  router.post("/logout", (req, res) => {
+    req.session.token = null
+    currentUser = anonUser
+    module.exports.currentUser = currentUser
+    console.log("Logged out current user is now : ", currentUser)
+    res.redirect("/")
+  })
 
   return router;
 };

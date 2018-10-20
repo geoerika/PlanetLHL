@@ -30,13 +30,16 @@
     <p class="siteTitle"> p l a n e t L H L</p>
     <p class="siteDescr"> Do you love the planet as much as we do? <br> Share your love with us!</p>
     <p class="userName"> Welcome, Anonymous!</p>
-    <a href="http://localhost:8080/users" class="pageLink" >My Page</a>
+   <% if (typeof id !== 'undefined' && id !== -1) { %>
+    <a href="http://localhost:8080/users/<%= id%>" class="pageLink" >My Page</a>
+
+    <% } %>
 
 
     <nav id="nav-bar">
       <input class="Register" type="submit" value="Register">
       <input class="Logout" type="submit" value="Logout">
-      <input class="Login" type="submit" value="Login">
+      <input class="Login" type="submit" value="Login" >
       <input class="Create" type="submit" value="Create">
       <input class="Search" type="submit" value="Search">
     </nav>
@@ -71,7 +74,7 @@
 
     <div>
       <section class="loginForm">
-        <form id="newLoginForm" >
+        <form id="newLoginForm">
           <textarea id="UserNameLogin" name="UserNameLogin" placeholder="Enter your username!"></textarea>
           <textarea id="UserPasswordLogin" name="UserPasswordLogin" placeholder="Enter your password!"></textarea>
           <input id="postLogin" type="submit" value="Login!">

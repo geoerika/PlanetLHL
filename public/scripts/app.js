@@ -3,6 +3,10 @@
 
   searchResources();
   createNewResource();
+  login();
+  register();
+  showCreated();
+  logout();
 });
 
 
@@ -13,36 +17,41 @@ $(() => {
     method: "GET",
     url: "/planetLHL"
   }).done((users) => {
-    // for(user of users) {
-    //   $("<div>").text(user.name).appendTo($("body"));
-    // }
+    console.log("ALL POSTS ARE" , users)
     renderResources(users);
   });
 });
 
 //THIS IS GET TO THE USER PAGE   ** WILL USE /user/:id when user ids are available
-// $(() => {
-//   $.ajax({
-//     method: "GET",
-//     url: "/planetLHL/users"
-//   }).done((migrations) => {
-//     for(migration of migrations) {
-//       $("<div>").text(migration.name).appendTo($("body"));
-//     }
-//   });
-// });
 
-// function cleanTextbox(textbox, id) { //Creates safe html from form input
-//       const safeText = escape(textbox);
-//       $('#newCreateForm').children(`#${id}`).val(safeText);
-//       let saferText = $('#newCreateForm').children(`#${id}`).val(safeText).serialize();
-//       return saferText
+function showCreated () {
+  let $button = $('#createdResources')
+    $button.on('click', function (event) {
+       $.ajax({
+          method: "GET",
+          url: "/planetLHL/users/:id"
+        }).done((results) => {
+          renderResources(results)
+          console.log("Results are ", results)
+        });
+    })
+}
 
-// }
+function logout() {
+  let $button = $('.Logout')
+    $button.on('click', function (event) {
+      $.ajax({
+          method: "POST",
+          url: "/planetLHL/logout"
+        }).done((results) => {
+          console.log("logout was successful")
+        });
+    })
+  }
 
 
 function createNewResource() {
-  var $form = $('#newCreateForm');
+  let $form = $('#newCreateForm');
     $form.on('submit', function (event) {
       event.preventDefault();
 
@@ -82,7 +91,56 @@ function createNewResource() {
                   console.log("This is where renderResources will be called")
                   $.getJSON("/planetLHL/create").then(data => {
                     renderResources(data);
-                  })
+                   })
+                 }
+      });
+      $(this).trigger('reset')
+    })
+}
+
+function register() {
+  var $form = $('#newRegisterForm');
+    $form.on('submit', function (event) {
+      event.preventDefault();
+
+      //Create Safe Url
+      let username = $(this).children('#UserName').val()
+      let cleanUsername = escape(username) //escapes
+      let password = $(this).children('#UserPassword').val()
+
+      $.ajax({
+        method: "POST",
+        url: "/planetLHL/register",
+        data: {
+          username: cleanUsername,
+          password: password
+        },
+        success: function(result) {
+                  console.log("Register successful")
+                 }
+      });
+      $(this).trigger('reset')
+    })
+}
+
+function login() {
+  let $form = $('#newLoginForm');
+    $form.on('submit', function (event) {
+      event.preventDefault();
+
+      //Create Safe Url
+      let username = $(this).children('#UserNameLogin').val()
+      let password = $(this).children('#UserPasswordLogin').val()
+
+      $.ajax({
+        method: "POST",
+        url: "/planetLHL/login",
+        data: {
+          username: username,
+          password: password
+        },
+        success: function(result) {
+                  console.log("log in success")
                  }
       });
       $(this).trigger('reset')
@@ -92,7 +150,7 @@ function createNewResource() {
 //SEARCH REQUEST ENDPOINT
 
 function searchResources() {
-  var $form = $('#newSearchForm');
+  let $form = $('#newSearchForm');
     $form.on('submit', function (event) {
       event.preventDefault();
       let search = $(this).children('#searchFormText').val()
