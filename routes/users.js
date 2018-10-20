@@ -14,7 +14,6 @@ const metascraper = require('metascraper')([
 
 const got = require('got')
 
-
 app.use(
   cookieSession({
     name: "session",
@@ -51,7 +50,6 @@ module.exports =  (knex) => {
     knex
       .select("*")
       .from("resources")
-      //.where("id", "=", 2)
       .then((results) => {
         res.json(results);
     });
@@ -63,7 +61,6 @@ module.exports =  (knex) => {
       .from("resources")
       .where("users_id", currentUser.id)
       .then((results) => {
-        console.log(results)
         res.json(results);
     });
   });
@@ -167,13 +164,7 @@ module.exports =  (knex) => {
         .then((results) => {
           res.redirect("/");
         });
-
-
     })()
-
-//This function creates an Object containing the Tag
-
-
   });
 
   router.get("/create", (req, res) => {
@@ -207,7 +198,6 @@ module.exports =  (knex) => {
         console.log("Something went wrong" , e)
         res.redirect("/")
       })
-
   });
 
   //THIS IS THE REGISTER POST
@@ -218,7 +208,6 @@ module.exports =  (knex) => {
 
     const hashedPassword = bcrypt.hashSync(password, 10);
     console.log("HASH IS : ", hashedPassword)
-
 
     const newUser = {
       name: username,
@@ -254,6 +243,48 @@ module.exports =  (knex) => {
         res.redirect("/")
       })
     }
+  })
+
+//THIS INSERTS A LIKE TO THE DATABASE AND UPDATES THE LIKES VALUE IN RESOURCE TABLE
+  router.post("/resources/:id/likes", (req, res) => {
+    let resourceId = req.body.resourceId
+
+    let like = {
+      users_id: currentUser.id,
+      resources_id: resourceId
+    }
+
+    knex("likes")
+      .select("*")
+      .where("users_id", currentUser.id)
+      .andWhere("resources_id", resourceId)
+      .then((foundLike) => {
+        console.log("Found like is : ", foundLike)
+        if (foundLike.length < 1) {
+          knex("likes")
+            .insert(like)
+            .then((result) => {
+              console.log("Inserted a new like")
+            })
+            .then((results) => {
+              knex('likes')
+                .count("*")
+                .where("resources_id", resourceId)
+                .then((count) => {
+                  knex("resources")
+                    .update({likes:count[0].count})
+                    .where("id", resourceId)
+                    .then((end) => {
+                      console.log("likes have been updated")
+                      res.redirect("/")
+                    })
+                })
+            })
+        } else {
+          console.log("Like already exists")
+          res.redirect("/")
+        }
+      })
   })
 
   router.post("/logout", (req, res) => {

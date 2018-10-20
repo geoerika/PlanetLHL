@@ -9,15 +9,12 @@
   logout();
 });
 
-
-
 // THIS IS A GET TO THE HOMEPAGE
 $(() => {
   $.ajax({
     method: "GET",
     url: "/planetLHL"
   }).done((users) => {
-    console.log("ALL POSTS ARE" , users)
     renderResources(users);
   });
 });
@@ -32,7 +29,6 @@ function showCreated () {
           url: "/planetLHL/users/:id"
         }).done((results) => {
           renderResources(results)
-          console.log("Results are ", results)
         });
     })
 }
@@ -60,23 +56,17 @@ function createNewResource() {
       let cleanUrl = escape(url) //escapes and serializes
       let finalUrl = cleanUrl.slice(13) //cuts off name
 
-
-
       // Create Safe Title
       let title = $(this).children('#Resource-title').val()
       let cleanTitle = escape(title)
-
-
 
       //Create Safe Description
       let description = $(this).children('#Resource-description').val()
       let cleanDescription = escape(description)
 
-
       //Create Safe Tags
       let tags = $(this).children('#Resource-tags').val()
       let cleanTags= escape(tags)
-
 
       $.ajax({
         method: "POST",
@@ -170,10 +160,6 @@ function searchResources() {
     })
 }
 
-// function renderResources(data) {
-//   console.log("DATA IS: ", data)
-// }
-
 //Cleans text to avoid Cross-Site Scripting in entered Tweets
 function escape(str) {
   var div = document.createElement('div');
@@ -181,36 +167,13 @@ function escape(str) {
   return div.innerHTML;
 }
 
-//THESE WILL BE USED LATER
-// function loadResources () {
-//     $.getJSON('/planetLHL/resources').done(renderResources);
-//   }
-
-// function renderResources (data) {    // PLACE HOLDER FUNCTIONS
-//   $('#resource-container').empty();
-//   for (var resource of data) {
-//     var $resource = createNewResource(resource);
-//     $('#resource-container').prepend($resource);
-//   }
-// }
-
-
-// $(() => {
-//   $.ajax({
-//     method: "POST",
-//     url: "/planetLHL/resource/:id"
-//   }).done((resource) => {
-//       newResource.appendTo($("body")); //newResource is placeholder html variable thats not yet created
-//   });;
-// });
-
-
 function renderResources(resources) {
    $('.row').empty();
    resources.forEach(function(resource){
       let $resource = createResourceElement(resource);
       $('.row').prepend($resource);
    });
+    attachLikes();
 }
 
 // Function to add the attributes for each tweet to create a dynamic HTML page.
@@ -223,9 +186,10 @@ function createResourceElement(resource) {
                   <p class="card-text">${resource.title}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
+                    <span class="status" name="notLiked"></span>
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                       <button type="button" class="btn btn-sm btn-outline-secondary"><a target="_blank" rel="noopener noreferrer" href="${resource.resource_url}">Visit</a></button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary buttonLike">Like</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary buttonLike" name="${resource.id}">Like</button>
                       <div class="dropdown">
                       <button type="button" class="btn btn-sm btn-outline-secondary buttonRate">Rate</button>
                         <div class="dropdown-content">
@@ -237,14 +201,36 @@ function createResourceElement(resource) {
                       </div>
                     </div>
                   </div>
-                  <small class="textMuted"> Likes: 9 </small>
-                  <small class="textMuted"> Avg Rating: 10 </small>
+                  <small class="textMuted likes-count"> Likes: ${resource.likes} </small>
+                  <small class="textMuted"> Avg Rating: ${resource.rating} </small>
                 </div>
               </div>
             </div>`
 
   return newScript;
 
+}
+
+// Function attaches Event Listeners to the like button and sends Ajax Put request
+function attachLikes() {
+  $(".buttonLike").on('click', function(){
+    let resourceId = $(this).attr("name")
+    event.preventDefault();
+    $(this).css('color', 'red') //Changes heart to red
+      //Sends Ajax Request
+        $.ajax({
+                  url: `planetLHL/resources/${resourceId}/likes`,
+                  type: `POST`,
+                  data:{
+                        resourceId: `${resourceId}`,
+                      },
+                  success: function(result) {
+                  $.getJSON("/planetLHL").then((result) => {
+                    renderResources(result)
+                  })
+                 }
+        });
+  });
 }
 
 
