@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+    <head>
     <!-- Meta Information -->
     <title>Home Page</title>
 
     <!-- External CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
 
     <!-- App CSS -->
-    <link rel="stylesheet" href="/fonts/vineytimes.ttf" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
@@ -27,16 +27,18 @@
 
   <body>
 
-    <p class="siteTitle"> Planet Lighthouse Labs</p>
+    <p class="siteTitle"> p l a n e t L H L</p>
     <p class="siteDescr"> Do you love the planet as much as we do? <br> Share your love with us!</p>
+    <p class="userName"> Welcome, Anonymous!</p>
+    <a href="http://localhost:8080/users" class="pageLink" >My Page</a>
 
 
     <nav id="nav-bar">
       <input class="Register" type="submit" value="Register">
+      <input class="Logout" type="submit" value="Logout">
       <input class="Login" type="submit" value="Login">
       <input class="Create" type="submit" value="Create">
       <input class="Search" type="submit" value="Search">
-      <a href="http://localhost:8080/users" class="pageLink" >My Profile</a>
     </nav>
 
     <div>
@@ -44,7 +46,6 @@
         <form id="newSearchForm" action="/tweets" method="POST">
           <textarea id="searchFormText" name="text" placeholder="Search for cool stuff from our beautiful planet!"></textarea>
           <input id="postSearchForm" type="submit" value="Search!">
-          <span class="counter">140</span>
         </form>
     </div>
 
@@ -53,10 +54,9 @@
         <form id="newCreateForm" action="/tweets" method="POST">
           <textarea id="Resource-url" name="Resource-url" placeholder="Add your URL here!"></textarea>
           <textarea id="Resource-title" name="Resource-title" placeholder="Give your URL a title!"></textarea>
-          <textarea id="Resource-description" name="Resource-description" placeholder="Tell everyone something about this!"></textarea>
-          <textarea id="Resource-tags" name="Resource-tags" placeholder="Give your awesome share some tags!"></textarea>
+          <textarea id="Resource-description" name="Resource-description" placeholder="Tell us about this!"></textarea>
+          <textarea id="Resource-tags" name="Resource-tags" placeholder="Give this some tags!"></textarea>
           <input id="postCreateForm" type="submit" value="Create!">
-          <span class="counter">140</span>
         </form>
     </div>
 
@@ -66,7 +66,6 @@
           <textarea id="UserName" name="UserName" placeholder="Enter your desired username"></textarea>
           <textarea id="UserPassword" name="UserPassword" placeholder="Enter your desired password"></textarea>
           <input id="postRegister" type="submit" value="Register!">
-          <span class="counter">140</span>
         </form>
     </div>
 
@@ -76,7 +75,6 @@
           <textarea id="UserNameLogin" name="UserNameLogin" placeholder="Enter your username!"></textarea>
           <textarea id="UserPasswordLogin" name="UserPasswordLogin" placeholder="Enter your password!"></textarea>
           <input id="postLogin" type="submit" value="Login!">
-          <span class="counter">140</span>
         </form>
     </div>
 
@@ -87,11 +85,11 @@
         <div class="container">
 
           <div class="row">
-         <!--   <div class="col-md-4">
-             <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="https://i.ytimg.com/vi/9NtRJW2dpvo/maxresdefault.jpg" data-holder-rendered="true">
+            <div class="col-xl-4">
+             <div class="card sm-2 shadow-sm">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 50%; width: 100%; display: block;" src="https://i.ytimg.com/vi/9NtRJW2dpvo/maxresdefault.jpg" data-holder-rendered="true">
                 <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">This is a wider.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
@@ -102,11 +100,57 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="https://i.ytimg.com/vi/9NtRJW2dpvo/maxresdefault.jpg" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+            <div class="col-xl-4">
+              <div class="card sm-2 shadow-sm">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="https://i.ytimg.com/vi/9NtRJW2dpvo/maxresdefault.jpg" data-holder-rendered="true" style="height: 50%; width: 100%; display: block;">
                 <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">This is a wider.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Visit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4">
+              <div class="card sm-2 shadow-sm">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="https://i.ytimg.com/vi/9NtRJW2dpvo/maxresdefault.jpg" data-holder-rendered="true" style="height: 50%; width: 100%; display: block;">
+                <div class="card-body">
+                  <p class="card-text">This is a wider.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Visit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-4">
+              <div class="card sm-2 shadow-sm">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="https://i.ytimg.com/vi/9NtRJW2dpvo/maxresdefault.jpg" data-holder-rendered="true" style="height: 50%; width: 100%; display: block;">
+                <div class="card-body">
+                  <p class="card-text">This is a wider.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Visit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+             <div class="col-xl-4">
+              <div class="card sm-2 shadow-sm">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="https://i.ytimg.com/vi/9NtRJW2dpvo/maxresdefault.jpg" data-holder-rendered="true" style="height: 50%; width: 100%; display: block;">
+                <div class="card-body">
+                  <p class="card-text">This is a wider.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
@@ -178,56 +222,9 @@
                 </div>
               </div>
             </div>
-
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="https://i.ytimg.com/vi/9NtRJW2dpvo/maxresdefault.jpg" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Visit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="https://i.ytimg.com/vi/9NtRJW2dpvo/maxresdefault.jpg" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Visit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="https://i.ytimg.com/vi/9NtRJW2dpvo/maxresdefault.jpg" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Visit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div
-            </div>>-->
           </div>
         </div>
       </div>
-
     </main>
     </section>
 

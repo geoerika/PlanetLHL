@@ -66,6 +66,14 @@ $(document).ready(function() {
 
   });
 
+  $(".UpdateProfile").click(function(){
+    $(".registerForm").hide();
+    $(".loginForm").hide();
+    $(".searchForm").hide();
+    $(".createForm").hide();
+    $(".updateForm").slideToggle(1000);
+  });
+
   $(".registerForm").hide();
 
   $(".loginForm").hide();

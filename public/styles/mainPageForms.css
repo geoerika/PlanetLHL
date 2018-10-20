@@ -1,6 +1,11 @@
+/*-----This is for large monitors---------*/
+
+@media only screen and (min-width: 1500px) {
+
 /*-----Search Form Css-------------*/
 
 .searchForm {
+  font-family: 'Krub', sans-serif;
   width: 30%;
   border: 0.1em solid;
   box-sizing: border-box;
@@ -9,7 +14,7 @@
   border-radius: 0.5em;
   position: relative;
   top: 1.5em;
-  left: 35%;
+  left: 1%;
   right: 35%;
   display: none;
   background: rgb(237, 239, 242) 0.4)
@@ -18,40 +23,32 @@
 }
 
 .searchForm textarea {
+  font-family: 'Krub', sans-serif;
   height: 3em;
   width: 100%;
   border: 0.1em solid;
 }
 
 #postSearchForm {
-  height: 1.5em;
+  font-family: 'Krub', sans-serif;
+  height: 1.8em;
   width: 4.5em;
   margin-top: 0.3em;
   border: 0.1em solid grey;
   background-color: #f2f4f7;
   border-radius: 0.2em;
+  font-weight: bold;
+
 
 }
 
-.counter {
-  text-align: right;
-  font-style: italic;
-  position: absolute;
-  right: 1em;
-  bottom: 1em;
-  color: white;
-}
-
-.overfillCounter {
-  color: red;
-}
 
 /*------------------*/
 
 /*---Create Form CSS---------------*/
 
 .createForm {
-  width: 30%;
+  font-family: 'Krub', sans-serif;
   border: 0.1em solid;
   box-sizing: border-box;
   height: 18em;
@@ -59,47 +56,38 @@
   border-radius: 0.5em;
   position: relative;
   top: 1.5em;
-  left: 15%;
+  left: 1%;
   right: 35%;
   display: none;
   background: rgb(237, 239, 242) 0.4)
   border: rgb(237, 239, 242) 0.4);
   z-index: 10;
-  height: 6.5em;
-  left: 35em;
-  width: 70%;
+  height: 16em;
+  width: 500px;
 }
 
 .createForm textarea {
+  font-family: 'Krub', sans-serif;
   height: 3em;
-  width: 24%;
+  width: 100%;
   border: 0.1em solid;
   display: flex;
-  display: inline-block;
+  display: block;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
 }
 
 #postCreateForm {
-  height: 1.5em;
+  font-family: 'Krub', sans-serif;
+  height: 1.8em;
   width: 4.5em;
   margin-top: 0.3em;
   border: 0.1em solid grey;
   background-color: #f2f4f7;
   border-radius: 0.2em;
   display: block;
+  font-weight: bold;
 
-}
-
-.counter {
-  text-align: right;
-  font-style: italic;
-  position: absolute;
-  right: 1em;
-  bottom: 1em;
-  color: white;
-}
-
-.overfillCounter {
-  color: red;
 }
 
 /*------------------*/
@@ -107,6 +95,7 @@
 /*---Login Form CSS---------------*/
 
 .loginForm {
+  font-family: 'Krub', sans-serif;
   width: 30%;
   border: 0.1em solid;
   box-sizing: border-box;
@@ -115,7 +104,7 @@
   border-radius: 0.5em;
   position: relative;
   top: 1.5em;
-  left: 35%;
+  left: 1%;
   right: 35%;
   display: none;
   background: rgb(237, 239, 242) 0.4)
@@ -124,6 +113,7 @@
 }
 
 .loginForm textarea {
+  font-family: 'Krub', sans-serif;
   width: 48%;
   border: 0.1em solid;
   height: 3em;
@@ -132,26 +122,15 @@
 }
 
 #postLogin {
-  height: 1.5em;
+  font-family: 'Krub', sans-serif;
+  height: 1.8em;
   width: 4.5em;
   margin-top: 0.3em;
   border: 0.1em solid grey;
   background-color: #f2f4f7;
   border-radius: 0.2em;
+  font-weight: bold;
 
-}
-
-.counter {
-  text-align: right;
-  font-style: italic;
-  position: absolute;
-  right: 1em;
-  bottom: 1em;
-  color: white;
-}
-
-.overfillCounter {
-  color: red;
 }
 
 /*------------------*/
@@ -159,6 +138,7 @@
 /*----Register Form CSS--------------*/
 
 .registerForm {
+  font-family: 'Krub', sans-serif;
   width: 30%;
   border: 0.1em solid;
   box-sizing: border-box;
@@ -167,7 +147,7 @@
   border-radius: 0.5em;
   position: relative;
   top: 1.5em;
-  left: 35%;
+  left: 1%;
   right: 35%;
   display: none;
   background: rgb(237, 239, 242) 0.4)
@@ -176,6 +156,7 @@
 }
 
 .registerForm textarea {
+  font-family: 'Krub', sans-serif;
   width: 48%;
   border: 0.1em solid;
   height: 3em;
@@ -184,6 +165,7 @@
 }
 
 #postRegister {
+  font-family: 'Krub', sans-serif;
   height: 1.8em;
   width: 5em;
   margin-top: 0.3em;
@@ -191,18 +173,186 @@
   background-color: #f2f4f7;
   border-radius: 0.2em;
   display: block;
+  font-weight: bold;
+}
 
 }
 
-.counter {
-  text-align: right;
-  font-style: italic;
-  position: absolute;
-  right: 1em;
-  bottom: 1em;
-  color: white;
+/*-----This is for laptop monitors---------*/
+
+@media only screen and (max-width: 1499px) {
+
+  /*-----Search Form Css-------------*/
+
+.searchForm {
+  font-family: 'Krub', sans-serif;
+  width: 30%;
+  border: 0.1em solid;
+  box-sizing: border-box;
+  height: 7em;
+  padding: 0.5em 0.5em;
+  border-radius: 0.5em;
+  position: relative;
+  top: 1.5em;
+  left: 1%;
+  right: 35%;
+  display: none;
+  background: rgb(237, 239, 242) 0.4)
+  border: rgb(237, 239, 242) 0.4);
+  z-index: 5;
 }
 
-.overfillCounter {
-  color: red;
+.searchForm textarea {
+  font-family: 'Krub', sans-serif;
+  height: 3em;
+  width: 100%;
+  border: 0.1em solid;
+}
+
+#postSearchForm {
+  font-family: 'Krub', sans-serif;
+  height: 1.8em;
+  width: 4.5em;
+  margin-top: 0.3em;
+  border: 0.1em solid grey;
+  background-color: #f2f4f7;
+  border-radius: 0.2em;
+  font-weight: bold;
+
+
+}
+
+
+/*------------------*/
+
+/*---Create Form CSS---------------*/
+
+.createForm {
+  font-family: 'Krub', sans-serif;
+  border: 0.1em solid;
+  box-sizing: border-box;
+  padding: 0.5em 0.5em;
+  border-radius: 0.5em;
+  position: relative;
+  top: 1em;
+  left: 1%;
+  right: 35%;
+  display: none;
+  background: rgb(237, 239, 242) 0.4)
+  border: rgb(237, 239, 242) 0.4);
+  z-index: 10;
+  height: 2%;
+  width: 20%;
+}
+
+.createForm textarea {
+  font-family: 'Krub', sans-serif;
+  height: 2em;
+  width: 100%;
+  border: 0.1em solid;
+  display: flex;
+  display: block;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+}
+
+#postCreateForm {
+  font-family: 'Krub', sans-serif;
+  height: 1.8em;
+  width: 4.5em;
+  margin-top: 0.3em;
+  border: 0.1em solid grey;
+  background-color: #f2f4f7;
+  border-radius: 0.2em;
+  display: block;
+  font-weight: bold;
+
+}
+
+/*------------------*/
+
+/*---Login Form CSS---------------*/
+
+.loginForm {
+  font-family: 'Krub', sans-serif;
+  width: 30%;
+  border: 0.1em solid;
+  box-sizing: border-box;
+  height: 7em;
+  padding: 0.5em 0.5em;
+  border-radius: 0.5em;
+  position: relative;
+  top: 1.5em;
+  left: 1%;
+  right: 35%;
+  display: none;
+  background: rgb(237, 239, 242) 0.4)
+  border: rgb(237, 239, 242) 0.4);
+  z-index: 5;
+}
+
+.loginForm textarea {
+  font-family: 'Krub', sans-serif;
+  width: 48%;
+  border: 0.1em solid;
+  height: 3em;
+  display: flex;
+  display: inline-block;
+}
+
+#postLogin {
+  font-family: 'Krub', sans-serif;
+  height: 1.8em;
+  width: 4.5em;
+  margin-top: 0.3em;
+  border: 0.1em solid grey;
+  background-color: #f2f4f7;
+  border-radius: 0.2em;
+  font-weight: bold;
+
+}
+
+/*------------------*/
+
+/*----Register Form CSS--------------*/
+
+.registerForm {
+  font-family: 'Krub', sans-serif;
+  width: 30%;
+  border: 0.1em solid;
+  box-sizing: border-box;
+  height: 6.5em;
+  padding: 0.5em 0.5em;
+  border-radius: 0.5em;
+  position: relative;
+  top: 1.5em;
+  left: 1%;
+  right: 35%;
+  display: none;
+  background: rgb(237, 239, 242) 0.4)
+  border: rgb(237, 239, 242) 0.4);
+  z-index: 5;
+}
+
+.registerForm textarea {
+  font-family: 'Krub', sans-serif;
+  width: 48%;
+  border: 0.1em solid;
+  height: 3em;
+  display: flex;
+  display: inline-block;
+}
+
+#postRegister {
+  font-family: 'Krub', sans-serif;
+  height: 1.8em;
+  width: 5em;
+  margin-top: 0.3em;
+  border: 0.1em solid grey;
+  background-color: #f2f4f7;
+  border-radius: 0.2em;
+  display: block;
+  font-weight: bold;
+}
+
 }
