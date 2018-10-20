@@ -31,6 +31,8 @@
       <a href="http://localhost:8080/" class="pageLink" >The Main Page</a>
       <input class="pageLinkLiked" type="submit" value="My Liked Resources">
       <input class="pageLinkCreated" type="submit" value="My Created Resources">
+      <input class="Logout" type="submit" value="Logout">
+      <input class="UpdateProfile" type="submit" value="Update Profile">
       <input class="Create" type="submit" value="Create">
       <input class="Search" type="submit" value="Search">
     </nav>
@@ -72,6 +74,15 @@
           <textarea id="UserNameLogin" name="UserNameLogin" placeholder="Enter your username!"></textarea>
           <textarea id="UserPasswordLogin" name="UserPasswordLogin" placeholder="Enter your password!"></textarea>
           <input id="postLogin" type="submit" value="Login!">
+        </form>
+    </div>
+
+    <div>
+      <section class="updateForm">
+        <form id="newupdateForm" action="/tweets" method="POST">
+          <textarea id="confirmOldPass" name="confirmOldPass" placeholder="Enter old password!"></textarea>
+          <textarea id="confirmNewPass" name="confirmNewPass" placeholder="Enter new password!"></textarea>
+          <input id="postUpdate" type="submit" value="Update!">
         </form>
     </div>
 

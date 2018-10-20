@@ -42,6 +42,13 @@ body nav {
   font-size: 150%;
 }
 
+.Logout {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
 .Register:hover {
 
   font-size: 200%;
@@ -61,6 +68,12 @@ body nav {
 }
 
 .Search:hover {
+
+  font-size: 200%;
+  transition-duration: 1s;
+}
+
+.Logout:hover {
 
   font-size: 200%;
   transition-duration: 1s;
@@ -88,51 +101,64 @@ body nav {
   margin: 10%;
   color: white;
   background-color: #060607;
-  font-size: 150%;
+  font-size: 100%;
 }
 
 .Login {
   margin: 10%;
   color: white;
   background-color: #060607;
-  font-size: 150%;
+  font-size: 100%;
 }
 
 .Create {
   margin: 10%;
   color: white;
   background-color: #060607;
-  font-size: 150%;
+  font-size: 100%;
 }
 
 .Search {
   margin: 10%;
   color: white;
   background-color: #060607;
-  font-size: 150%;
+  font-size: 100%;
+}
+
+.Logout {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 100%;
 }
 
 .Register:hover {
 
-  font-size: 200%;
+  font-size: 120%;
   transition-duration: 1s;
 }
 
 .Login:hover {
 
-  font-size: 200%;
+  font-size: 120%;
   transition-duration: 1s;
 }
 
 .Create:hover {
 
-  font-size: 200%;
+  font-size: 120%;
   transition-duration: 1s;
 }
 
 .Search:hover {
 
-  font-size: 200%;
+  font-size: 120%;
+  transition-duration: 1s;
+}
+
+.Logout:hover {
+
+  font-size: 120%;
   transition-duration: 1s;
 }
 

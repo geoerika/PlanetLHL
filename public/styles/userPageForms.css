@@ -159,6 +159,45 @@
 
 }
 
+/*----Update Form CSS--------------*/
+
+.updateForm {
+  width: 30%;
+  border: 0.1em solid;
+  box-sizing: border-box;
+  height: 7em;
+  padding: 0.5em 0.5em;
+  border-radius: 0.5em;
+  position: relative;
+  top: 1.5em;
+  left: 35%;
+  right: 35%;
+  display: none;
+  background: rgb(237, 239, 242) 0.4)
+  border: rgb(237, 239, 242) 0.4);
+  z-index: 5;
+}
+
+.updateForm textarea {
+  width: 48%;
+  border: 0.1em solid;
+  height: 3em;
+  display: flex;
+  display: inline-block;
+}
+
+#postUpdate {
+  height: 1.5em;
+  width: 4.5em;
+  margin-top: 0.3em;
+  border: 0.1em solid grey;
+  background-color: #f2f4f7;
+  border-radius: 0.2em;
+
+}
+
+/*------------------*/
+
 /*----Main--------------*/
 
 .resourceContainer {
@@ -336,6 +375,47 @@
   display: block;
 
 }
+
+/*------------------*/
+
+/*----Update Form CSS--------------*/
+
+.updateForm {
+  width: 30%;
+  border: 0.1em solid;
+  box-sizing: border-box;
+  height: 7em;
+  padding: 0.5em 0.5em;
+  border-radius: 0.5em;
+  position: relative;
+  top: 1.5em;
+  left: 35%;
+  right: 35%;
+  display: none;
+  background: rgb(237, 239, 242) 0.4)
+  border: rgb(237, 239, 242) 0.4);
+  z-index: 5;
+}
+
+.updateForm textarea {
+  width: 48%;
+  border: 0.1em solid;
+  height: 3em;
+  display: flex;
+  display: inline-block;
+}
+
+#postUpdate {
+  height: 1.5em;
+  width: 4.5em;
+  margin-top: 0.3em;
+  border: 0.1em solid grey;
+  background-color: #f2f4f7;
+  border-radius: 0.2em;
+
+}
+
+/*------------------*/
 
 
 /*----Main--------------*/

@@ -93,6 +93,20 @@ body h1 {
 
 /*------------------*/
 
+.Create {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
+.Search {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
 .pageLinkCreated {
   margin: 10%;
   color: white;
@@ -107,6 +121,26 @@ body h1 {
   font-size: 150%;
 }
 
+.Logout {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
+.UpdateProfile {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 150%;
+}
+
+.Logout:hover {
+
+  font-size: 200%;
+  transition-duration: 1s;
+}
+
 .pageLinkCreated:hover {
 
   font-size: 200%;
@@ -114,6 +148,24 @@ body h1 {
 }
 
 .pageLinkLiked:hover {
+
+  font-size: 200%;
+  transition-duration: 1s;
+}
+
+.Create:hover {
+
+  font-size: 200%;
+  transition-duration: 1s;
+}
+
+.Search:hover {
+
+  font-size: 200%;
+  transition-duration: 1s;
+}
+
+.UpdateProfile:hover {
 
   font-size: 200%;
   transition-duration: 1s;
@@ -129,20 +181,6 @@ body nav {
   width: 110px;
   top: 32%;
   bottom: 30%;
-}
-
-.Create {
-  margin: 10%;
-  color: white;
-  background-color: #060607;
-  font-size: 150%;
-}
-
-.Search {
-  margin: 10%;
-  color: white;
-  background-color: #060607;
-  font-size: 150%;
 }
 
 .searchFormAlerts1 {
@@ -332,29 +370,81 @@ body h1 {
 
 /*------------------*/
 
+.Create {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 100%;
+}
+
+.Search {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 100%;
+}
+
 .pageLinkCreated {
   margin: 10%;
   color: white;
   background-color: #060607;
-  font-size: 150%;
+  font-size: 100%;
 }
 
 .pageLinkLiked {
   margin: 10%;
   color: white;
   background-color: #060607;
-  font-size: 150%;
+  font-size: 100%;
+}
+
+.Logout {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 100%;
+}
+
+.UpdateProfile {
+  margin: 10%;
+  color: white;
+  background-color: #060607;
+  font-size: 100%;
+}
+
+.Logout:hover {
+
+  font-size: 120%;
+  transition-duration: 1s;
 }
 
 .pageLinkCreated:hover {
 
-  font-size: 200%;
+  font-size: 120%;
   transition-duration: 1s;
 }
 
 .pageLinkLiked:hover {
 
-  font-size: 200%;
+  font-size: 120%;
+  transition-duration: 1s;
+}
+
+.Create:hover {
+
+  font-size: 120%;
+  transition-duration: 1s;
+}
+
+.Search:hover {
+
+  font-size: 120%;
+  transition-duration: 1s;
+}
+
+.UpdateProfile:hover {
+
+  font-size: 120%;
   transition-duration: 1s;
 }
 
@@ -368,20 +458,6 @@ body nav {
   width: 110px;
   top: 32%;
   bottom: 30%;
-}
-
-.Create {
-  margin: 10%;
-  color: white;
-  background-color: #060607;
-  font-size: 150%;
-}
-
-.Search {
-  margin: 10%;
-  color: white;
-  background-color: #060607;
-  font-size: 150%;
 }
 
 .searchFormAlerts1 {
