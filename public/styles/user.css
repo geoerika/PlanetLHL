@@ -327,7 +327,6 @@ body h1 {
 }
 
 .myResources p {
-  color: white;
   text-align: center;
   font-weight: bold
 }
@@ -345,7 +344,6 @@ body h1 {
 }
 
 .myLikes p {
-  color: white;
   text-align: center;
   font-weight: bold;
 }
@@ -525,12 +523,12 @@ body nav {
 
 .textMuted {
   color: black;
-  margin-left: 39px;
+  margin-left: 27px;
 }
 
 .d-flex {
     width: 180px;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 
@@ -572,5 +570,10 @@ body nav {
 
 
 /*------------------*/
+
+.card-text {
+  text-align: center;
+  color: black;
+}
 
 }

@@ -239,13 +239,17 @@ main {
 
 .textMuted {
   color: black;
-  margin-left: 22px;
+  font-size: 120%;
 }
 
 .d-flex {
-    width: 180px;
-    margin-left: 130px;
     margin-bottom: 10px;
+    margin-left: 100px;
+    width: 300px;
+}
+
+.viewportButtons {
+  margin-left: 130px;
 }
 
 
@@ -283,6 +287,10 @@ main {
 
 .buttonLike {
   background-color: #ddd;
+}
+
+.card-title {
+  text-align: center;
 }
 
 
