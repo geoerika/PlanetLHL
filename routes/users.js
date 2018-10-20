@@ -5,6 +5,14 @@ const router  = express.Router();
 const uuid= require('uuid/v4');
 const cookieSession = require('cookie-session');
 const bcrypt = require('bcrypt');
+const metascraper = require('metascraper')([
+
+  require('metascraper-image')(),
+  require('metascraper-title')()
+
+])
+
+const got = require('got')
 
 
 app.use(
@@ -81,32 +89,38 @@ module.exports =  (knex) => {
     });
   });
 
+  function createTag (tag) {
+    let tagObj = {
+      name: tag
+    };
+    return tagObj;
+  }
+
   router.post("/create", (req, res) => {
     let url = req.body.url;
     let title = req.body.title;
     let tags = req.body.tags.toLowerCase().split(' ');  //creates an array of tags
     let desc = req.body.description;
 
-// Builds Resource Object to be inserted ** will make created at Date.now() and user_id i
+    const targetUrl = url;
+
+    (async () => {
+      const { body: html, url } = await got(targetUrl)
+      const metadata = await metascraper({ html, url })
+      console.log(metadata)
+
+      // Builds Resource Object to be inserted ** will make created at Date.now() and user_id i
     let resource = {
-      title: title,
+      title: metadata.title,
       resource_url: url,
       description: desc,
       created_at: Date.now(),
       likes: 0,
       rating: 0,
-      users_id: currentUser.id///OF Logged in user
+      users_id: currentUser.id,///OF Logged in user
+      image_url: metadata.image
     };
-
-//This function creates an Object containing the Tag
-    function createTag (tag) {
-      let tagObj = {
-        name: tag
-      };
-      return tagObj;
-    }
-
-//This creates the new resource in the database
+    //This creates the new resource in the database
     knex('resources')
       .insert(resource)
       .returning('id')
@@ -148,6 +162,13 @@ module.exports =  (knex) => {
         .then((results) => {
           res.redirect("/");
         });
+
+
+    })()
+
+//This function creates an Object containing the Tag
+
+
   });
 
   router.get("/create", (req, res) => {
