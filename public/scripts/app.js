@@ -7,8 +7,7 @@
   register();
 });
 
-
-
+// FIRST TWO FUNCTIONS ARE GETTING CALLED ALL THE TIME RIGHT NOW ON ANY WEBPAGE CLICK
 // THIS IS A GET TO THE HOMEPAGE
 $(() => {
   $.ajax({
@@ -27,10 +26,9 @@ $(() => {
   $.ajax({
     method: "GET",
     url: "/planetLHL/users"
-  }).done((migrations) => {
-    // for(migration of migrations) {
-    //   $("<div>").text(migration.name).appendTo($("body"));
-    // }
+  }).done((results) => {
+    renderResources(results)
+    console.log("Results are ", results)
   });
 });
 
@@ -45,23 +43,17 @@ function createNewResource() {
       let cleanUrl = escape(url) //escapes and serializes
       let finalUrl = cleanUrl.slice(13) //cuts off name
 
-
-
       // Create Safe Title
       let title = $(this).children('#Resource-title').val()
       let cleanTitle = escape(title)
-
-
 
       //Create Safe Description
       let description = $(this).children('#Resource-description').val()
       let cleanDescription = escape(description)
 
-
       //Create Safe Tags
       let tags = $(this).children('#Resource-tags').val()
       let cleanTags= escape(tags)
-
 
       $.ajax({
         method: "POST",
@@ -73,9 +65,9 @@ function createNewResource() {
           tags: cleanTags
         },
         success: function(result) {
-                  $.getJSON("/planetLHL/create").then(data => {
+                   $.getJSON("/planetLHL").then(data =>{
                     renderResources(data);
-                  })
+                   })
                  }
       });
       $(this).trigger('reset')
@@ -155,27 +147,23 @@ function searchResources() {
     })
 }
 
-// function renderResources(data) {
-//   console.log("DATA IS: ", data)
-// }
-
-//Cleans text to avoid Cross-Site Scripting in entered Tweets
+//Cleans text to avoid Cross-Site Scripting in entered textboxes
 function escape(str) {
   var div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 }
 
-
 function renderResources(resources) {
    $('.col-md-4').empty();
+   console.log(resources)
    resources.forEach(function(resource){
       let $resource = createResourceElement(resource);
       $('.col-md-4').prepend($resource);
    });
 }
 
-// Function to add the attributes for each tweet to create a dynamic HTML page.
+// Function to add the attributes for each resource to create a dynamic HTML page.
 function createResourceElement(resource) {
    let newScript = `
            <div class="card mb-4 shadow-sm">

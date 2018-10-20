@@ -46,38 +46,9 @@ app.use(
 // Mount all resource routes
 app.use("/planetLHL", usersRoutes(knex));
 
-//MiddleWare to handle if user is logged in
-// app.use((req, res, next) => {
-//   const token = req.session.token;
-//   const anonUser = {
-//     id: -1,
-//     username: "Anonymous"
-//   };
-
-//   if (token) {
-//     return users
-//       .findByToken(token)
-//       .then(([user]) => {
-//         if (user) {
-//           req.currentUser = user;
-//         } else {
-//           req.currentUser = anonUser;
-//         }
-//       })
-//       .catch(() => {
-//         req.currentUser = anonUser;
-//       })
-//       .then(next, next);
-//   }
-
-//   req.currentUser = anonUser;
-//   next();
-// });
-
-
-
 // Home page
 app.get("/", (req, res) => {
+  console.log("This is current user : ", usersRoutes.currentUser)
   res.render("index");
 });
 

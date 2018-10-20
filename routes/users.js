@@ -26,11 +26,13 @@ function removeA(arr) {
     return arr;
 }
 
+ let currentUser = {
+    id: -1,
+    name: 'anonymous'
+  }
+
 module.exports =  (knex) => {
 
-  let currentUser = {
-
-  }
 
   router.get("/", (req, res) => {
     knex
@@ -45,8 +47,10 @@ module.exports =  (knex) => {
   router.get("/users", (req, res) => {
     knex
       .select("*")
-      .from("migrations")
+      .from("resources")
+      .where("users_id", currentUser.id)
       .then((results) => {
+        console.log(results)
         res.json(results);
     });
   });
@@ -165,8 +169,7 @@ module.exports =  (knex) => {
           if (bcrypt.compareSync(password, user[0].password)) { //If user exists and password is right set current user
             currentUser = user[0]
             req.session.token = user[0].token;
-            console.log("Cookie should be: ", req.session.token)
-            console.log("Logged in as " , currentUser)
+            module.exports.currentUser = currentUser
             res.redirect("/")
           } else {
             console.log("Invalid password")
@@ -196,7 +199,6 @@ module.exports =  (knex) => {
       password: hashedPassword,
       token: uuid()   //Will be used to set cookie after user created
     }
-    console.log("THE USER CREATED SHOULD BE THIS : ", newUser)
 
     if (!username || !password) { //Checks to see if password or username is empty
       console.log("Username or Password is empty")
@@ -213,9 +215,7 @@ module.exports =  (knex) => {
             .then((createdUser) => {
               req.session.token = createdUser[0].token;
               currentUser = createdUser[0];
-              console.log("This is the currentUser:", currentUser)
-              console.log("Current USERNAME IS: ", currentUser.name)
-              console.log("This should be the cookie" , req.session.token)
+              module.exports.currentUser = currentUser
               res.redirect("/")
              })
         } else {
@@ -229,7 +229,6 @@ module.exports =  (knex) => {
       })
     }
   })
-
 
 
   return router;
