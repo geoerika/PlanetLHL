@@ -47,9 +47,14 @@ app.use(
 app.use("/planetLHL", usersRoutes(knex));
 
 // Home page
-app.get("/", (req, res) => {
+app.get("/resources", (req, res) => {
   console.log("This is current user : ", usersRoutes.currentUser)
   res.render("index", usersRoutes.currentUser);
+});
+
+app.get("/", (req, res) => {
+ // console.log("This is current user : ", usersRoutes.currentUser)
+  res.redirect("/resources");
 });
 
 //User page
@@ -58,7 +63,8 @@ app.get("/users/:id", (req, res) => {
 });
 
 //comments page
-app.get("/comments", (req, res) => {
+app.get("/resources/:id", (req, res) => {
+  console.log("Server :",req.params)
   res.render("comments.ejs");
 });
 

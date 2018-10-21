@@ -45,8 +45,33 @@ let anonUser = {
 
 module.exports =  (knex) => {
 
+  router.get("/resources/:id", (req, res) => {
+      console.log("REQPARAM", req.params.id)
 
-  router.get("/", (req, res) => {
+    knex('resources')
+      .join('comments','resources.id','=','comments.resources_id')
+      .select("*")
+      .where("comments.resources_id",req.params.id)
+      .then((results) => {
+        if (results.length < 1){
+          knex
+          .select('*')
+          .from('resources')
+          .where('id',req.params.id)
+          .then((result) => {
+            console.log("RESULTS ARE : ", result)
+            res.json(result)
+          })
+        } else {
+       console.log(results)
+       res.json(results);
+     }
+    });
+  });
+
+
+
+  router.get("/resources", (req, res) => {
     knex
       .select("*")
       .from("resources")
@@ -303,6 +328,25 @@ module.exports =  (knex) => {
     module.exports.currentUser = currentUser
     console.log("Logged out current user is now : ", currentUser)
     res.redirect("/")
+  })
+
+  router.post("/resources/:id/comments", (req, res) => {
+
+    let resourceId = req.body.resourceId;
+    let comment = req.body.comment;
+    let commentObj = {
+      comment: comment,
+      resources_id: resourceId,
+      users_id: currentUser.id
+    };
+
+    knex("comments")
+      .select("*")
+      .insert(commentObj)
+      .then((result) => {
+        console.log("Inserted a new comment")
+        res.redirect(`/resources/${resouceId}`)
+        })
   })
 
   return router;
