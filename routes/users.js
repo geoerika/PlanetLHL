@@ -401,7 +401,7 @@ module.exports =  (knex) => {
       .insert(commentObj)
       .then((result) => {
         console.log("Inserted a new comment")
-        res.redirect(`/resources/${resouceId}`)
+        res.redirect(`/resources/${resourceId}`)
         })
   })
 
