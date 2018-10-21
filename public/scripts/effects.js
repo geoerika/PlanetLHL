@@ -52,7 +52,7 @@ $(document).ready(function() {
 
     $(".pageLinkLiked").click(function(){
       $(".myResources").hide();
-      $(".myLikes").slideToggle(1000);
+      $(".myLikes").fadeToggle(1000);
 
       $(".searchFormAlerts1").hide();
       $(".searchFormAlerts2").hide();
@@ -62,7 +62,7 @@ $(document).ready(function() {
 
   $(".pageLinkCreated").click(function(){
     $(".myLikes").hide();
-    $(".myResources").slideToggle(1000);
+    $(".myResources").fadeToggle(1000);
 
     $(".searchFormAlerts1").hide();
     $(".searchFormAlerts2").show();
