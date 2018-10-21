@@ -112,7 +112,7 @@
   z-index: 5;
 }
 
-.loginForm textarea {
+#UserPasswordLogin {
   font-family: 'Krub', sans-serif;
   width: 48%;
   border: 0.1em solid;
@@ -300,6 +300,16 @@
   display: inline-block;
 }
 
+#UserPasswordLogin {
+  font-family: 'Krub', sans-serif;
+  width: 48%;
+  border: 0.1em solid;
+  height: 3em;
+  display: flex;
+  display: inline-block;
+  position: absolute;
+}
+
 #postLogin {
   font-family: 'Krub', sans-serif;
   height: 1.8em;
@@ -309,7 +319,9 @@
   background-color: #f2f4f7;
   border-radius: 0.2em;
   font-weight: bold;
-
+  position: absolute;
+  top: 62px;
+  left: 10px;
 }
 
 /*------------------*/

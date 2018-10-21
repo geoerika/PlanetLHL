@@ -1,0 +1,61 @@
+
+body {
+  background-color: #EEE;
+  font-family: 'Crimson Text', serif;
+}
+
+body, html {
+    height: 100%;
+    /* The image used */
+    background-image: url("/images/backround.jpeg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body h1 {
+  color: #244751;
+}
+
+/*-----Link to User page-------------*/
+
+.pageLink {
+
+  color: white;
+
+}
+/*------------------*/
+
+main {
+  padding-right: 20px;
+}
+
+/*----Main--Gallery------------*/
+
+.resourceContainer {
+  position: absolute;
+  left: 40em;
+  top: 10em;
+  overflow: scroll;
+  overflow-y:scroll;
+  overflow-x:hidden;
+}
+
+/*------------------*/
+
+::-webkit-scrollbar
+{
+    width:0px;
+}
+
+/*---Site title and Descr.---------------*/
+
+/*---is this being converted? converted? c converted? converted?onverted? converted? converted? converted?-----*/
+/*---is this being converted? converted? c converted? converted?onverted? converted? converted? converted?-----*/
+/*---is this being converted? converted? c converted? converted?onverted? converted? converted? converted?-----*/
+/*---is this being converted? converted? c converted? converted?onverted? converted? converted? converted?-----*/
