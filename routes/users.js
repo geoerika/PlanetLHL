@@ -21,6 +21,16 @@ app.use(
   })
 );
 
+ let currentUser = {
+    id: -1,
+    name: 'anonymous'
+  }
+
+let anonUser = {
+  id: -1,
+  name: 'anonymous'
+}
+
 //THIS FUNCTION REMOVES SPACES FROM SEARCH ARRAYS to allow better database searches
 function removeA(arr) {
     var what, a = arguments, L = a.length, ax;
@@ -33,18 +43,7 @@ function removeA(arr) {
     return arr;
 }
 
- let currentUser = {
-    id: -1,
-    name: 'anonymous'
-  }
-
-let anonUser = {
-  id: -1,
-  name: 'anonymous'
-}
-
 module.exports =  (knex) => {
-
 
   router.get("/", (req, res) => {
     knex
@@ -207,7 +206,6 @@ module.exports =  (knex) => {
     let password = req.body.password;
 
     const hashedPassword = bcrypt.hashSync(password, 10);
-    console.log("HASH IS : ", hashedPassword)
 
     const newUser = {
       name: username,
@@ -282,6 +280,50 @@ module.exports =  (knex) => {
             })
         } else {
           console.log("Like already exists")
+          res.redirect("/")
+        }
+      })
+  })
+
+//HANDLES THE RATING INSERT AND UPDATES RESOURCE TABLE WITH NEW AVG
+  router.post("/resources/:id/rating", (req, res) => {
+
+    let resourceId = req.body.resourceId;
+    let rating = req.body.rating;
+    let ratingObj = {
+      rating: rating,
+      resources_id: resourceId,
+      users_id: currentUser.id
+    };
+
+    knex("ratings")
+      .select("*")
+      .where("users_id", currentUser.id)
+      .andWhere("resources_id", resourceId)
+      .then((foundRating) => {
+        if (foundRating.length < 1) {
+          knex("ratings")
+            .insert(ratingObj)
+            .then((result) => {
+              console.log("Inserted a new Rating")
+            })
+            .then((results) => {
+              knex('ratings')
+                .avg("rating")
+                .where("resources_id", resourceId)
+                .then((updateRating) => {
+                  console.log("Updated Rating is : ", updateRating[0].avg)
+                  knex("resources")
+                    .update({rating:updateRating[0].avg})
+                    .where("id", resourceId)
+                    .then((end) => {
+                      console.log("ratings have been updated")
+                      res.redirect("/")
+                    })
+                })
+            })
+        } else {
+          console.log("Rating already exists")
           res.redirect("/")
         }
       })

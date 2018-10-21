@@ -174,6 +174,7 @@ function renderResources(resources) {
       $('.row').prepend($resource);
    });
     attachLikes();
+    attachRating();
 }
 
 // Function to add the attributes for each tweet to create a dynamic HTML page.
@@ -193,9 +194,9 @@ function createResourceElement(resource) {
                       <div class="dropdown">
                       <button type="button" class="btn btn-sm btn-outline-secondary buttonRate">Rate</button>
                         <div class="dropdown-content">
-                          <form class="newRatingForm" >
-                            <textarea class="UserRate" name="UserRate"></textarea>
-                            <input class="postRating" type="submit" value="Rate!">
+                          <form class="newRatingForm" name="${resource.id}">
+                            <textarea class="UserRating" name="UserRate"></textarea>
+                            <input class="postRating"  type="submit" value="Rate!">
                           </form>
                         </div>
                       </div>
@@ -230,6 +231,33 @@ function attachLikes() {
                   })
                  }
         });
+  });
+}
+
+function attachRating() {
+  $(".newRatingForm").on('submit', function(){
+    let resourceId = $(this).attr("name")
+    let userRating = parseInt($(this).children(".UserRating").val(), 10)
+    console.log("user rating is: ", userRating)
+    event.preventDefault();
+      //Sends Ajax Request
+      if (userRating >= 1 && userRating <= 5) {
+        $.ajax({
+                  url: `planetLHL/resources/${resourceId}/rating`,
+                  type: `POST`,
+                  data:{
+                        resourceId: `${resourceId}`,
+                        rating: `${userRating}`
+                      },
+                  success: function(result) {
+                  $.getJSON("/planetLHL").then((result) => {
+                    renderResources(result)
+                  })
+                 }
+        });
+      } else {
+        console.log("Rating has to be between 1 and 5")
+      }
   });
 }
 
