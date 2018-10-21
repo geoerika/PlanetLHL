@@ -55,11 +55,21 @@ module.exports =  (knex) => {
     });
   });
 
-  router.get("/users/:id", (req, res) => {
+  router.get("/users/:id/created", (req, res) => {
     knex
       .select("*")
       .from("resources")
       .where("users_id", currentUser.id)
+      .then((results) => {
+        res.json(results);
+    });
+  });
+
+  router.get("/users/:id/liked", (req, res) => {
+    knex('resources')
+      .join('likes','resources.id','=','likes.resources_id')
+      .select("*")
+      .where("likes.users_id", "=", currentUser.id)
       .then((results) => {
         res.json(results);
     });
