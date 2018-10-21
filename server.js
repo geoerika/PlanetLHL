@@ -58,7 +58,8 @@ app.get("/users/:id", (req, res) => {
 });
 
 //comments page
-app.get("/comments", (req, res) => {
+app.get("/resources/:id", (req, res) => {
+  console.log("REQ PARAMS SERVER: " , req.params.id)
   res.render("comments.ejs");
 });
 

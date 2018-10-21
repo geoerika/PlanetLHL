@@ -74,8 +74,14 @@ module.exports =  (knex) => {
     });
   });
 
+  router.get("/resources/:id", (req, res)=> {
+    console.log("REQ PARAMS ID ARE ", req.params)
+    res.redirect("/")
+  })
+
 //Get all the resources liked by that user
   router.get("/users/:id/liked", (req, res) => {
+    console.log("REQ PARAMS ARE : " , req.params.id)
     knex('resources')
       .join('likes','resources.id','=','likes.resources_id')
       .select("*")
@@ -86,6 +92,8 @@ module.exports =  (knex) => {
   });
 
   router.get("/results/:search", (req, res) => {
+    console.log("REQ . PARAM ARE ", req.params)
+     console.log("REQ . PARAM ARE for Search ", req.params.search)
 
     let search = req.params.search.slice(5); //Takes what was actually searched
     let searchArray = search.split(" "); //Puts individual words searched into an array
@@ -353,6 +361,25 @@ module.exports =  (knex) => {
         }
       })
   })
+
+   router.post("/resources/:id/comments", (req, res) => {
+
+    let resourceId = req.body.resourceId;
+    let comment = req.body.comment;
+    let commentObj = {
+      comment: comment,
+      resources_id: resourceId,
+      users_id: currentUser.id
+    };
+
+    knex("comments")
+      .select("*")
+      .insert(commentObj)
+      .then((result) => {
+        console.log("Inserted a new comment")
+        })
+  })
+
 
   router.post("/logout", (req, res) => {
     req.session.token = null

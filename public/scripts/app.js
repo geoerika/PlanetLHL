@@ -8,18 +8,25 @@
   showCreated();
   showLiked();
   logout();
+  loadResources();
+  attachComment();
 });
 
 // THIS IS A GET TO THE HOMEPAGE
-$(() => {
+function showMain () {
   $.ajax({
     method: "GET",
     url: "/planetLHL"
   }).done((users) => {
     renderResources(users);
   });
-});
+}
 
+function loadResources () {
+  $.getJSON('/resources').then((resources) => {
+    renderResources(resources);
+  })
+}
 //THIS IS GET TO THE USER PAGE   ** WILL USE /user/:id/create when user ids are available
 
 function showCreated () {
@@ -207,7 +214,7 @@ function createResourceElement(resource) {
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                     <span class="status" name="notLiked"></span>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary"><a href="http://localhost:8080/resources/${resource.id}">View</a></button>
                       <button type="button" class="btn btn-sm btn-outline-secondary"><a target="_blank" rel="noopener noreferrer" href="${resource.resource_url}">Visit</a></button>
                       <button type="button" class="btn btn-sm btn-outline-secondary buttonLike" name="${resource.id}">Like</button>
                       <div class="dropdown">
@@ -236,7 +243,6 @@ function attachLikes() {
   $(".buttonLike").on('click', function(){
     let resourceId = $(this).attr("name")
     event.preventDefault();
-    $(this).css('color', 'red') //Changes heart to red
       //Sends Ajax Request
         $.ajax({
                   url: `planetLHL/resources/${resourceId}/likes`,
@@ -276,6 +282,45 @@ function attachRating() {
       } else {
         console.log("Rating has to be between 1 and 5")
       }
+  });
+}
+
+// function createComment(comment) {
+// // comment.users_id will hopefully be comments.username
+//   let newComment = `
+//   <p class="card-text"> ${comment.users_id}: ${comment.comment}</p>
+//   `
+// }
+
+// function renderComments (data) {
+//   $('#comment-container').empty();
+//   for (var comment of data) {
+//     var $comment = createComment(comment);
+//     $('#comment-container').prepend($comment);
+//   }
+// }
+
+function attachComment() {
+  $(".newCommentForm").on('submit', function(){
+
+    let resourceId = $(this).attr("name") // Need this to be attached on the single rendered resource
+    console.log(resourceId)
+    let userComment = $(this).children(".UserRating").val()
+    event.preventDefault();
+      //Sends Ajax Request
+        $.ajax({
+                  url: `planetLHL/resources/${resourceId}/comments`,
+                  type: `POST`,
+                  data:{
+                        resourceId: `${resourceId}`,
+                        comment: `${userComment}`
+                      },
+                  success: function(result) {
+                  $.getJSON(`/resources/${resourceId}/rating`).then((result) => {
+                    renderComments(result)
+                  })
+                 }
+        });
   });
 }
 
