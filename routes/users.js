@@ -43,8 +43,17 @@ function removeA(arr) {
     return arr;
 }
 
+//This function creates a tag to be inserted to database
+function createTag (tag) {
+    let tagObj = {
+      name: tag
+    };
+    return tagObj;
+  }
+
 module.exports =  (knex) => {
 
+//Get all the resources
   router.get("/", (req, res) => {
     knex
       .select("*")
@@ -54,6 +63,7 @@ module.exports =  (knex) => {
     });
   });
 
+//Get all the resources created by that user
   router.get("/users/:id/created", (req, res) => {
     knex
       .select("*")
@@ -64,6 +74,7 @@ module.exports =  (knex) => {
     });
   });
 
+//Get all the resources liked by that user
   router.get("/users/:id/liked", (req, res) => {
     knex('resources')
       .join('likes','resources.id','=','likes.resources_id')
@@ -80,32 +91,36 @@ module.exports =  (knex) => {
     let searchArray = search.split(" "); //Puts individual words searched into an array
     let finalArray = removeA(searchArray, ''); //Removes spaces for Database Search
 
-    knex
+// If the search is blank return everything, else return just the searched for resources
+  if (finalArray.length < 1) {
+     knex
       .select("*")
       .from("resources")
+      .then((results) => {
+        res.json(results);
+    });
+  } else {
+    knex('resources')
+      .join('resource_tags', 'resources.id','=','resource_tags.resources_id')
+      .join('tags', 'tags.id', '=', 'resource_tags.tags_id')
+      .select("*")
       .where("title", "ilike", `%${finalArray[0]}%`)
-      // .orWhere("title", "ilike", `%${finalArray[0]}%`)
+      .orWhere("name", "ilike", `%${finalArray[0]}%`)
       .orWhere("title", "ilike", `%${finalArray[1]}%`)
-      // .orWhere("title", "ilike", `%${finalArray[1]}%`)
+      .orWhere("name", "ilike", `%${finalArray[1]}%`)
       .orWhere("title", "ilike", `%${finalArray[2]}%`)
-      // .orWhere("title", "ilike", `%${finalArray[2]}%`)
+      .orWhere("name", "ilike", `%${finalArray[2]}%`)
       .orWhere("title", "ilike", `%${finalArray[3]}%`)
-      // .orWhere("title", "ilike", `%${finalArray[3]}%`)
+      .orWhere("name", "ilike", `%${finalArray[3]}%`)
       .orWhere("title", "ilike", `%${finalArray[4]}%`)
-      // .orWhere("title", "ilike", `%${finalArray[4]}%`)
+      .orWhere("name", "ilike", `%${finalArray[4]}%`)
       .orWhere("title", "ilike", `%${finalArray[5]}%`)
-      // .orWhere("title", "ilike", `%${finalArray[5]}%`)
+      .orWhere("name", "ilike", `%${finalArray[5]}%`)
       .then((results) => {
         res.json(results); //Results are at "/results/:search" in a json
     });
-  });
-
-  function createTag (tag) {
-    let tagObj = {
-      name: tag
-    };
-    return tagObj;
   }
+  });
 
   router.post("/create", (req, res) => {
     let url = req.body.url;
