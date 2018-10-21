@@ -192,7 +192,7 @@
   height: 7em;
   padding: 0.5em 0.5em;
   border-radius: 0.5em;
-  position: relative;
+  position: absolute;
   top: 1.5em;
   left: 1%;
   right: 35%;
@@ -233,7 +233,7 @@
   box-sizing: border-box;
   padding: 0.5em 0.5em;
   border-radius: 0.5em;
-  position: relative;
+  position: absolute;
   top: 1em;
   left: 1%;
   right: 35%;
@@ -241,7 +241,7 @@
   background: rgb(237, 239, 242) 0.4)
   border: rgb(237, 239, 242) 0.4);
   z-index: 10;
-  height: 2%;
+  height: 26%;
   width: 20%;
 }
 
@@ -281,7 +281,7 @@
   height: 7em;
   padding: 0.5em 0.5em;
   border-radius: 0.5em;
-  position: relative;
+  position: absolute;
   top: 1.5em;
   left: 1%;
   right: 35%;
@@ -336,7 +336,7 @@
   height: 6.5em;
   padding: 0.5em 0.5em;
   border-radius: 0.5em;
-  position: relative;
+  position: absolute;
   top: 1.5em;
   left: 1%;
   right: 35%;
