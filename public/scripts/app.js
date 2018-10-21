@@ -115,6 +115,7 @@ function register() {
           password: password
         },
         success: function(result) {
+                  window.location.reload(true)
                   console.log("Register successful")
                  }
       });
@@ -139,7 +140,8 @@ function login() {
           password: password
         },
         success: function(result) {
-                  console.log("log in success")
+                  window.location.reload(true)
+                  console.log("login successful")
                  }
       });
       $(this).trigger('reset')
