@@ -48,20 +48,12 @@ function showLiked () {
     })
 }
 
-
-
-function logout() {
-  let $button = $('.Logout')
-    $button.on('click', function (event) {
-      $.ajax({
-          method: "POST",
-          url: "/planetLHL/logout"
-        }).done((results) => {
-          console.log("logout was successful")
-        });
-    })
-  }
-
+//Cleans text to avoid Cross-Site Scripting in entered Resource
+function escape(str) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
 
 function createNewResource() {
   let $form = $('#newCreateForm');
@@ -154,6 +146,18 @@ function login() {
     })
 }
 
+function logout() {
+  let $button = $('.Logout')
+    $button.on('click', function (event) {
+      $.ajax({
+          method: "POST",
+          url: "/planetLHL/logout"
+        }).done((results) => {
+          console.log("logout was successful")
+        });
+    })
+  }
+
 //SEARCH REQUEST ENDPOINT
 
 function searchResources() {
@@ -175,13 +179,6 @@ function searchResources() {
                  }
       })
     })
-}
-
-//Cleans text to avoid Cross-Site Scripting in entered Tweets
-function escape(str) {
-  var div = document.createElement('div');
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
 }
 
 function renderResources(resources) {
@@ -258,7 +255,6 @@ function attachRating() {
   $(".newRatingForm").on('submit', function(){
     let resourceId = $(this).attr("name")
     let userRating = parseInt($(this).children(".UserRating").val(), 10)
-    console.log("user rating is: ", userRating)
     event.preventDefault();
       //Sends Ajax Request
       if (userRating >= 1 && userRating <= 5) {
