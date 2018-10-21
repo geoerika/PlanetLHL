@@ -240,11 +240,12 @@ main {
 .textMuted {
   color: black;
   font-size: 120%;
+  margin-left: 17%;
 }
 
 .d-flex {
     margin-bottom: 10px;
-    margin-left: 100px;
+    margin-left: 25%;
     width: 300px;
 }
 
@@ -291,6 +292,14 @@ main {
 
 .card-title {
   text-align: center;
+}
+
+.card-desc {
+  display: block;
+}
+
+.tile-view {
+  height: 340px
 }
 
 

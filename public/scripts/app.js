@@ -11,14 +11,14 @@
 });
 
 // THIS IS A GET TO THE HOMEPAGE
-$(() => {
-  $.ajax({
-    method: "GET",
-    url: "/planetLHL"
-  }).done((users) => {
-    renderResources(users);
-  });
-});
+// $(() => {
+//   $.ajax({
+//     method: "GET",
+//     url: "/planetLHL"
+//   }).done((users) => {
+//     renderResources(users);
+//   });
+// });
 
 //THIS IS GET TO THE USER PAGE   ** WILL USE /user/:id/create when user ids are available
 

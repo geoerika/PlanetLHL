@@ -42,64 +42,55 @@
 
             <div class="col-xl-6">
              <div class="card sm-2 shadow-sm">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" display: block;" src="https://i.ytimg.com/vi/9NtRJW2dpvo/maxresdefault.jpg" data-holder-rendered="true">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x100]" src="https://i.ytimg.com/vi/9NtRJW2dpvo/maxresdefault.jpg" data-holder-rendered="true">
                 <div class="card-body">
+                  <section class="card-title">
+                      <p class="card-text card-desc">This is the resource description. A very nice resource description.</p>
+                    </section>
                   <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <div class="dropdown">
+                        <button type="button" class="btn btn-sm btn-outline-secondary buttonComment">Comment</button>
+                          <div class="dropdown-content">
+                            <form class="newCommentForm" >
+                              <textarea class="UserComment" name="UserComment"></textarea>
+                              <input class="postComment" type="submit" value="Comment!">
+                            </form>
+                          </div>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Visit</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary buttonLike">Like</button>
+                        <div class="dropdown">
+                        <button type="button" class="btn btn-sm btn-outline-secondary buttonRate">Rate</button>
+                          <div class="dropdown-content">
+                            <form class="newRatingForm" >
+                              <textarea class="UserRate" name="UserRate"></textarea>
+                              <input class="postRating" type="submit" value="Rate!">
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
                   <small class="textMuted"> Likes: 9 </small>
                   <small class="textMuted"> Avg Rating: 10 </small>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div class="col-xl-6">
-             <div class="card sm-2 shadow-sm">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center viewportButtons">
-                    <div class="btn-group">
-                      <div class="dropdown">
-                      <button type="button" class="btn btn-sm btn-outline-secondary buttonComment">Comment</button>
-                        <div class="dropdown-content">
-                          <form class="newCommentForm" >
-                            <textarea class="UserComment" name="UserComment"></textarea>
-                            <input class="postComment" type="submit" value="Comment!">
-                          </form>
-                        </div>
-                      </div>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Visit</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary buttonLike">Like</button>
-                      <div class="dropdown">
-                      <button type="button" class="btn btn-sm btn-outline-secondary buttonRate">Rate</button>
-                        <div class="dropdown-content">
-                          <form class="newRatingForm" >
-                            <textarea class="UserRate" name="UserRate"></textarea>
-                            <input class="postRating" type="submit" value="Rate!">
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="card-text card-title">This is the Tile Title, A very LOOONG Title</p>
-                  <p class="card-text"> Username: This is a comment on the tile. this is the first comment.It is a very good comment. You should see the next one!</p>
-                  <p class="card-text"> Username: This is a comment on the tile. this is the first comment.It is a very good comment. You should see the next one!</p>
-                  <p class="card-text"> Username: This is a comment on the tile. this is the first comment.It is a very good comment. You should see the next one!</p>
-                  <p class="card-text"> Username: This is a comment on the tile. this is the first comment.It is a very good comment. You should see the next one!</p>
-                  <p class="card-text"> Username: This is a comment on the tile. this is the first comment.It is a very good comment. You should see the next one!</p>
-                  <p class="card-text"> Username: This is a comment on the tile. this is the first comment.It is a very good comment. You should see the next one!</p>
-                  <p class="card-text"> Username: This is a comment on the tile. this is the first comment.It is a very good comment. You should see the next one!</p>
-                  <p class="card-text"> Username: This is a comment on the tile. this is the first comment.It is a very good comment. You should see the next one!</p>
-                  <p class="card-text"> Username: This is a comment on the tile. this is the first comment.It is a very good comment. You should see the next one!</p>
-                  <p class="card-text"> Username: This is a comment on the tile. this is the first comment.It is a very good comment. You should see the next one!</p>
-                  <p class="card-text"> Username: This is a comment on the tile. this is the first comment.It is a very good comment. You should see the next one!</p>
-                  <p class="card-text"> Username: This is a comment on the tile. this is the first comment.It is a very good comment. You should see the next one!</p>
-                  <p class="card-text"> Username: This is a comment on the tile. this is the first comment.It is a very good comment. You should see the next one!</p>
-                  <p class="card-text"> Username: This is a comment on the tile. this is the first comment.It is a very good comment. You should see the next one!</p>
-                </div>
               </div>
-            </div>
 
-        </div>
-      </div>
+              <div class="col-xl-6">
+               <div class="card sm-2 shadow-sm">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center viewportButtons">
+                </div>
+                <section class="card-title">
+                  <p class="card-text card-title">This is the Tile Title, A very LOOONG Title</p>
+                </section>
+                <section class="comment-container">
+                  <p class="card-text card-comment">Username: This is the comment. It has a bunch of words, and a bunch of phrases. It makes up a full comment, with commentary.</p>
+                </section>
+              </div>
+              </div>
+              </div>
     </main>
     </section>
 
