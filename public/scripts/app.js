@@ -1,6 +1,6 @@
 
  $(document).ready(function() {
-
+  showResources();
   searchResources();
   createNewResource();
   login();
@@ -8,17 +8,22 @@
   showCreated();
   showLiked();
   logout();
+
 });
 
-// THIS IS A GET TO THE HOMEPAGE
-// $(() => {
-//   $.ajax({
-//     method: "GET",
-//     url: "/planetLHL"
-//   }).done((users) => {
-//     renderResources(users);
-//   });
-// });
+
+
+function showResources(){
+  let $button = $('#Show')
+    $button.on('click', function (event) {
+  $.ajax({
+    method: "GET",
+    url: "/planetLHL/resources"
+  }).done((users) => {
+    renderResources(users);
+  });
+});
+}
 
 //THIS IS GET TO THE USER PAGE   ** WILL USE /user/:id/create when user ids are available
 
@@ -194,6 +199,7 @@ function renderResources(resources) {
    });
     attachLikes();
     attachRating();
+    showOneResource();
 }
 
 // Function to add the attributes for each tweet to create a dynamic HTML page.
@@ -207,7 +213,7 @@ function createResourceElement(resource) {
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                     <span class="status" name="notLiked"></span>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary buttonView" name="${resource.id}">View</button>
                       <button type="button" class="btn btn-sm btn-outline-secondary"><a target="_blank" rel="noopener noreferrer" href="${resource.resource_url}">Visit</a></button>
                       <button type="button" class="btn btn-sm btn-outline-secondary buttonLike" name="${resource.id}">Like</button>
                       <div class="dropdown">
@@ -228,8 +234,114 @@ function createResourceElement(resource) {
             </div>`
 
   return newScript;
-
 }
+
+function renderOneResources(resources) {
+   $('.row').empty();
+   console.log("ONE RESOURCE IS ", $('#oneResource'))
+
+      resources.forEach(function(resource){
+      let $resource = createOneUserElement(resource);
+      $('.row').prepend($resource);
+   });
+
+    attachLikes();
+    attachComment();
+}
+
+function createOneUserElement(resource){
+
+  let newScript = `<div class="col-xl-6">
+             <div class="card sm-2 shadow-sm">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" display: block;" src=${resource.image_url} data-holder-rendered="true">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center">
+                  <small class="textMuted"> Likes:${resource.likes} </small>
+                  <small class="textMuted"> Avg Rating: ${resource.rating}</small>
+                </div>
+              </div>
+            </div>
+             <div class="col-xl-6">
+             <div class="card sm-2 shadow-sm">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center viewportButtons">
+                    <div class="btn-group">
+                      <div class="dropdown">
+                      <button type="button" class="btn btn-sm btn-outline-secondary buttonComment">Comment</button>
+                        <div class="dropdown-content">
+                          <form class="newCommentForm" name="${resource.id}" >
+                            <textarea class="UserComment" name="UserComment"></textarea>
+                            <input class="postComment" type="submit" value="Comment!">
+                          </form>
+                        </div>
+                      </div>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Visit</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary buttonLike">Like</button>
+                      <div class="dropdown">
+                      <button type="button" class="btn btn-sm btn-outline-secondary buttonRate">Rate</button>
+                        <div class="dropdown-content">
+                          <form class="newRatingForm" >
+                            <textarea class="UserRate" name="UserRate"></textarea>
+                            <input class="postRating" type="submit" value="Rate!">
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="card-text"> ${resource.comment}</p>
+
+                </div>
+              </div>`
+
+  return newScript
+}
+
+
+
+function showOneResource(){
+
+    $(".buttonView").on('click', function(){
+      console.log('click')
+    let resourceId = $(this).attr("name")
+
+    event.preventDefault();
+  $.ajax({
+           method: "GET",
+           url: `/planetLHL/resources/${resourceId}`
+         }).done((users) => {
+         //console.log('app:',)
+         console.log( 'users',users)
+          // console.log("This is one html element : " , createOneUserElement(users));
+          renderOneResources(users)
+         console.log( 'users',users)
+
+
+  });
+       });
+}
+
+function attachComment() {
+  $(".newCommentForm").on('submit', function(){
+
+    let resourceId = $(this).attr("name") // Need this to be attached on the single rendered resource
+    console.log(resourceId)
+    let userComment = $(this).children(".UserComment").val()
+    event.preventDefault();
+      //Sends Ajax Request
+        $.ajax({
+                  url: `planetLHL/resources/${resourceId}/comments`,
+                  type: `POST`,
+                  data:{
+                        resourceId: `${resourceId}`,
+                        comment: `${userComment}`
+                      },
+                  success: function(result) {
+                    renderOneResources(result)
+                 }
+        });
+  });
+}
+
 
 // Function attaches Event Listeners to the like button and sends Ajax Put request
 function attachLikes() {
