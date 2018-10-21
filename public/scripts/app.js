@@ -79,7 +79,7 @@ function createNewResource() {
         },
         success: function(result) {
                   console.log("This is where renderResources will be called")
-                  $.getJSON("/planetLHL/create").then(data => {
+                  $.getJSON("/planetLHL").then(data => {
                     renderResources(data);
                    })
                  }
@@ -169,6 +169,9 @@ function escape(str) {
 
 function renderResources(resources) {
    $('.row').empty();
+
+   resources.sort((a, b) => a.created_at.localeCompare(b.created_at));
+
    resources.forEach(function(resource){
       let $resource = createResourceElement(resource);
       $('.row').prepend($resource);
