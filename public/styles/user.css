@@ -329,7 +329,6 @@ body h1 {
 .myResources p {
   text-align: center;
   font-weight: bold;
-  color: white;
 }
 
 .myLikes {
@@ -347,7 +346,6 @@ body h1 {
 .myLikes p {
   text-align: center;
   font-weight: bold;
-  color: white;
 }
 
 .pageLink {
@@ -580,13 +578,20 @@ body nav {
 
 .card-text {
   text-align: center;
+  color: black;
 }
 
 .card-img-top{
-
   max-height: 250px;
   min-height: 250px;
+}
 
+.myResourcesTitle {
+  color: white;
+}
+
+.myLikesTitle {
+  color: white;
 }
 
 }

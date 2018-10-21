@@ -68,6 +68,11 @@ app.get("/resources/:id", (req, res) => {
   res.render("comments.ejs");
 });
 
+//test page
+app.get("/test", (req, res) => {
+  res.render("test.ejs");
+});
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
