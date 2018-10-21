@@ -6,6 +6,7 @@
   login();
   register();
   showCreated();
+  showLiked();
   logout();
 });
 
@@ -19,19 +20,35 @@ $(() => {
   });
 });
 
-//THIS IS GET TO THE USER PAGE   ** WILL USE /user/:id when user ids are available
+//THIS IS GET TO THE USER PAGE   ** WILL USE /user/:id/create when user ids are available
 
 function showCreated () {
   let $button = $('#createdResources')
     $button.on('click', function (event) {
        $.ajax({
           method: "GET",
-          url: "/planetLHL/users/:id"
+          url: "/planetLHL/users/:id/created"
         }).done((results) => {
           renderResources(results)
         });
     })
 }
+
+//THIS IS A GET TO THE USER PAGE TO SHOW USER LIKES RESOURCES ** WILL USE /user/:id/likes
+
+function showLiked () {
+  let $button = $('#likedResources')
+    $button.on('click', function (event) {
+       $.ajax({
+          method: "GET",
+          url: "/planetLHL/users/:id/liked"
+        }).done((results) => {
+          renderResources(results)
+        });
+    })
+}
+
+
 
 function logout() {
   let $button = $('.Logout')
