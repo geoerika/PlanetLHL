@@ -12,9 +12,10 @@ router.post("/update", (req, res) => {
       .then((user) => {
           knex("users")
             .update("user.password", hashedPassword);
-        }
+      }
       .catch(e => {
         console.log("Oops something went wrong", e);
       })
     }
-  })
+});
+

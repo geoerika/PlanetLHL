@@ -267,5 +267,31 @@ module.exports =  (knex) => {
   return router;
 };
 
+router.post("/users/:id/update", (req, res) => {
+
+  let oldPassword = req.body.confirmOldPass;
+  let newPassword = req.body.confirmNewPass;
+  const hashedNewPassword = bcrypt.hashSync(newPassword, 10);
+  console.log('newPassword', newPassword);
+
+   if (!newPassword) {       //Checks to see if password is empty
+      console.log("Please insert password!");
+    } else {
+     console.log(newPassword);
+     knex("users")
+      .select("*")
+      .where("token", req.params.id)
+      .then((user) => {
+        console.log("user", user);
+          knex("users")
+            .update("user.password", hashedNewPassword);
+      })
+      .catch(e => {
+        console.log("Oops something went wrong", e);
+      })
+    }
+});
+
+
 //THIS FILE THE '/'' Represents whatever is mounted in server.js in app.use
 
