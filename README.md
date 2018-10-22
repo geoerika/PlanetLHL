@@ -2,10 +2,6 @@
 
 ## Final Product
 
-!["Screenshot of Main page"] (https://raw.githubusercontent.com/geoerika/TinyApp/feature/user-registration/docs/ulrs-page.png)
-
-!["Screenshot of User page"] (https://raw.githubusercontent.com/geoerika/TinyApp/feature/user-registration/docs/urls-new.png)
-
 
 ## Getting Started
 
