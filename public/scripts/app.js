@@ -1,6 +1,6 @@
 
  $(document).ready(function() {
- // showResources();
+  showResources();
   searchResources();
   createNewResource();
   login();
@@ -21,17 +21,17 @@ $(() => {
 });
 
 
-// function showResources(){
-// //  let $button = $('#Show')
-// //    $button.on('click', function (event) {
-//   $.ajax({
-//     method: "GET",
-//     url: "/planetLHL/resources"
-//   }).done((users) => {
-//     renderResources(users);
-//   });
-// //});
-// }
+function showResources(){
+ let $button = $('#Show')
+   $button.on('click', function (event) {
+  $.ajax({
+    method: "GET",
+    url: "/planetLHL/resources"
+  }).done((users) => {
+    renderResources(users);
+  });
+});
+}
 
 //THIS IS GET TO THE USER PAGE   ** WILL USE /user/:id/create when user ids are available
 

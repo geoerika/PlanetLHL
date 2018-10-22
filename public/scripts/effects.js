@@ -82,9 +82,9 @@ $(document).ready(function() {
     $( ".UserRate" ).select();
   });
 
-  $(".showAll").click(function(){
-    $(".resourceContainer").fadeToggle(1000);
-  });
+  // $(".showAll").click(function(){
+  //   $(".resourceContainer").fadeToggle(1000);
+  // });
 
   $(".registerForm").hide();
 

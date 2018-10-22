@@ -53,11 +53,11 @@
 
     <p class="siteDescr"> Do you love the planet as much as we do? <br> Share your love with us!</p>
     <p class="userName"> Welcome
+       <input id="Show" class="showAll" type="submit" value="Show Resources">
       <% if (typeof name !== 'undefined') { %>
                <%= name %>
           <% } %>!</p>
    <% if (typeof id !== 'undefined' && id !== -1) { %>
-   <input id="Show" class="showAll" type="submit" value="Show Resources">
     <a href="http://localhost:8080/users/<%= token%>" class="pageLink" >My Page</a>
 
     <% } %>
