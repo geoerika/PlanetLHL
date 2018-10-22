@@ -25,7 +25,10 @@
 
     <p class="siteTitle"> Planet Lighthouse Labs</p>
     <p class="siteDescr"> Do you love the planet as much as we do? <br> Share your love with us!</p>
-    <p class="userName"> Welcome, Anonymous!</p>
+    <p class="userName"> Welcome
+    <% if (typeof name !== 'undefined') { %>
+               <%= name %>
+          <% } %>!</p>
 
     <nav id="nav-bar">
       <a href="http://localhost:8080/" class="pageLink" >The Main Page</a>
