@@ -254,7 +254,7 @@ module.exports =  (knex) => {
     let username = req.body.username;
     let password = req.body.password;
 
-    const hashedPassword = bcrypt.hashSync(password, 10);
+    let hashedPassword = bcrypt.hashSync(password, 10);
 
     const newUser = {
       name: username,
@@ -404,6 +404,41 @@ module.exports =  (knex) => {
         res.redirect(`/resources/${resouceId}`)
         })
   })
+
+router.post("/users/:id/update", (req, res) => {
+console.log("REQ BODY IS ", req.body)
+  let oldPassword = req.body.password;
+  let newPassword = req.body.newPassword;
+  let token = req.body.token;
+  let hashedPassword = bcrypt.hashSync(newPassword, 10);
+  console.log("oldPassword is ", oldPassword)
+  console.log('newPassword', newPassword);
+  console.log("TOKEN IS ", token)
+
+   if (!newPassword) {       //Checks to see if password is empty
+      console.log("Please insert password!");
+    } else {
+     knex("users")
+      .select("*")
+      .where("token", token)
+      .then((user) => {
+        if (bcrypt.compareSync(oldPassword, user[0].password)) {
+          knex("users")
+            .update("password", hashedPassword)
+            .then((insertedPassword) => {
+              console.log("Password updated Successfully")
+              res.redirect(`/users/${user[0].id}`)
+              })
+        } else {
+          console.log("Old password did not match")
+          res.send("Old password did not match")
+        }
+      })
+      .catch(e => {
+        console.log("Oops something went wrong", e);
+      })
+    }
+});
 
   return router;
 };

@@ -65,7 +65,9 @@
       <section class="registerForm">
         <form id="newRegisterForm" action="/tweets" method="POST">
           <textarea id="UserName" name="UserName" placeholder="Enter your desired username"></textarea>
-          <textarea id="UserPassword" name="UserPassword" placeholder="Enter your desired password"></textarea>
+          <input type="password" id="UserPassword" name="UserPassword"
+               placeholder="Enter your password!" />
+
           <input id="postRegister" type="submit" value="Register!">
         </form>
     </div>
@@ -81,9 +83,16 @@
 
     <div>
       <section class="updateForm">
-        <form id="newupdateForm" >
-          <textarea id="confirmOldPass" name="confirmOldPass" placeholder="Enter old password!"></textarea>
-          <textarea id="confirmNewPass" name="confirmNewPass" placeholder="Enter new password!"></textarea>
+        <form id="newupdateForm"
+<% if (typeof token !== 'undefined') { %>
+        name= <%= token %>
+        <% } %>
+        >
+
+          <input type="password" id="confirmOldPass" name="confirmOldPass"
+               placeholder="Enter your old password!" />
+          <input type="password" id="confirmNewPass" name="confirmNewPass"
+               placeholder="Enter your new password!" />
           <input id="postUpdate" type="submit" value="Update!">
         </form>
     </div>

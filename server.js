@@ -23,6 +23,7 @@ const usersRoutes = require("./routes/users");
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 
+
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
 
@@ -59,7 +60,7 @@ app.get("/", (req, res) => {
 
 //User page
 app.get("/users/:id", (req, res) => {
-  res.render("user.ejs");
+  res.render("user.ejs", usersRoutes.currentUser);
 });
 
 //comments page

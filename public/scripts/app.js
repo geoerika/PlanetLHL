@@ -8,7 +8,7 @@
   showCreated();
   showLiked();
   logout();
-
+  updatePassword()
 });
 
 
@@ -161,6 +161,7 @@ function logout() {
           url: "/planetLHL/logout"
         }).done((results) => {
           console.log("logout was successful")
+          window.location.reload(true)
         });
     })
   }
@@ -212,7 +213,7 @@ function createResourceElement(resource) {
                   <p class="card-text">${resource.title}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                    <span class="status" name="notLiked"></span>
+                    <span class="status"></span>
                       <button type="button" class="btn btn-sm btn-outline-secondary buttonView" name="${resource.id}">View</button>
                       <button type="button" class="btn btn-sm btn-outline-secondary"><a target="_blank" rel="noopener noreferrer" href="${resource.resource_url}">Visit</a></button>
                       <button type="button" class="btn btn-sm btn-outline-secondary buttonLike" name="${resource.id}">Like</button>
@@ -238,7 +239,6 @@ function createResourceElement(resource) {
 
 function renderOneResources(resources) {
    $('.row').empty();
-   console.log("ONE RESOURCE IS ", $('#oneResource'))
 
       resources.forEach(function(resource){
       let $resource = createOneUserElement(resource);
@@ -342,6 +342,28 @@ function attachComment() {
   });
 }
 
+function updatePassword() {
+  $("#newupdateForm").on('submit', function (){
+    event.preventDefault();
+    let password= $(this).children('#confirmOldPass').val()
+    let newPassword= $(this).children('#confirmNewPass').val()
+    let token =$(this).attr("name")
+     $.ajax({
+                  url: `/planetLHL/users/:id/update`,
+                  type: `POST`,
+                  data:{
+                        password: `${password}`,
+                        newPassword: `${newPassword}`,
+                        token: `${token}`
+                      },
+                  success: function(result) {
+                    console.log("Password Updated successful")
+                    // window.location.reload(true)
+                 }
+        });
+    $(this).trigger('reset')
+  })
+}
 
 // Function attaches Event Listeners to the like button and sends Ajax Put request
 function attachLikes() {
@@ -390,6 +412,7 @@ function attachRating() {
       }
   });
 }
+
 
 
 //This File THE URL Points to Server.js actual url
