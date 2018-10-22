@@ -457,8 +457,19 @@ main {
 
 .btnGroupView {
   width: 130px;
-  left: 308px;
+  left: 38%;
+  right: 35%;
   margin-bottom: 30px;
+  bottom: 10%;
+}
+
+.postComment {
+  z-index: 15;
+  background-color: white;
+}
+
+.card{
+  height: 1100px;
 }
 
 /*------------------*/
