@@ -1,4 +1,4 @@
-
+// initial seeding of the database
 exports.seed = async function(knex, Promise) {
 
   await knex('resources').del();
