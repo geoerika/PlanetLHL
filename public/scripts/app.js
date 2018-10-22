@@ -242,7 +242,7 @@ function renderOneResources(resources) {
 
       resources.forEach(function(resource){
       let $resource = createOneUserElement(resource);
-      $('.row').prepend($resource);
+      $('.resourceContainer').prepend($resource);
    });
 
     attachLikes();
@@ -251,52 +251,48 @@ function renderOneResources(resources) {
 
 function createOneUserElement(resource){
 
-  let newScript = `<div class="col-xl-6">
+  let newScript = `
+        <main role="main">
+          <div class="album py-5">
+            <div class="container">
+            <div class="row tileView">
+            <div class="col">
              <div class="card sm-2 shadow-sm">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" display: block;" src=${resource.image_url} data-holder-rendered="true">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                  <small class="textMuted"> Likes:${resource.likes} </small>
-                  <small class="textMuted"> Avg Rating: ${resource.rating}</small>
+                <img class="card-img-top imageView" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x300]" display: block;" src=${resource.image_url} data-holder-rendered="true">
+
+                <div class="card-body cardView">
+                  <p class="card-text cardTitleView"> Title: ${resource.title}</p>
+                  <section class="comment-container">
+                    <p class="card-text cardDescrView"> Description: ${resource.description} </p>
+                  </section>
+                  <section class="comment-container">
+                    <p class="card-text cardCommentView"> Comments: ${resource.comment} </p>
+                  </section>
                 </div>
-              </div>
-            </div>
-             <div class="col-xl-6">
-             <div class="card sm-2 shadow-sm">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center viewportButtons">
-                    <div class="btn-group">
-                      <div class="dropdown">
-                      <button type="button" class="btn btn-sm btn-outline-secondary buttonComment">Comment</button>
-                        <div class="dropdown-content">
-                          <form class="newCommentForm" name="${resource.id}" >
-                            <textarea class="UserComment" name="UserComment"></textarea>
-                            <input class="postComment" type="submit" value="Comment!">
-                          </form>
-                        </div>
-                      </div>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Visit</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary buttonLike">Like</button>
-                      <div class="dropdown">
-                      <button type="button" class="btn btn-sm btn-outline-secondary buttonRate">Rate</button>
-                        <div class="dropdown-content">
-                          <form class="newRatingForm" >
-                            <textarea class="UserRate" name="UserRate"></textarea>
-                            <input class="postRating" type="submit" value="Rate!">
-                          </form>
-                        </div>
-                      </div>
+
+                <div class="btn-group btnGroupView">
+                  <div class="dropdown">
+                  <button type="button" class="btn btn-sm btn-outline-secondary buttonComment">Comment</button>
+                    <div class="dropdown-content">
+                      <form class="newCommentForm" >
+                        <textarea class="UserComment" name="UserComment"></textarea>
+                        <input class="postComment" type="submit" value="Comment!">
+                      </form>
                     </div>
                   </div>
-                  <p class="card-text"> ${resource.comment}</p>
-
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Visit</button>
+                  </div>
                 </div>
-              </div>`
+
+              </div>
+            </div>
+            </div>
+            </div>
+          </div>
+        </main>`
 
   return newScript
 }
-
-
 
 function showOneResource(){
 
