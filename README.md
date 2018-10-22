@@ -16,9 +16,11 @@
 4. Run the seed: `npm run knex seed:run`
 5. Run the server: `npm run local`
 6. Visit `http://localhost:8080/`
+7. Register as a user with username and password to have access to our nature-learning site!
 
 ## Dependencies
 
+- AOS 2.3.4 or above
 - Body-parser 1.15.2 or above
 - Bcrypt 2.0.0 or above
 - Bootstrap 4.1.3 or above
