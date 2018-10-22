@@ -372,7 +372,7 @@ function updatePassword() {
                         token: `${token}`
                       },
                   success: function(result) {
-                    console.log("Password Updated successful")
+                    alert(result)
                     // window.location.reload(true)
                  }
         });

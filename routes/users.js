@@ -416,6 +416,7 @@ console.log("REQ BODY IS ", req.body)
   console.log("oldPassword is ", oldPassword)
   console.log('newPassword', newPassword);
   console.log("TOKEN IS ", token)
+  console.log("hashedPassword is ", hashedPassword)
 
    if (!newPassword) {       //Checks to see if password is empty
       console.log("Please insert password!");
@@ -429,7 +430,7 @@ console.log("REQ BODY IS ", req.body)
             .update("password", hashedPassword)
             .then((insertedPassword) => {
               console.log("Password updated Successfully")
-              res.redirect(`/users/${user[0].id}`)
+              res.send("Password updated Successfully")
               })
         } else {
           console.log("Old password did not match")
