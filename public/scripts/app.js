@@ -8,7 +8,7 @@
   showCreated();
   showLiked();
   logout();
-
+  updatePassword()
 });
 
 $(() => {
@@ -120,19 +120,27 @@ function register() {
       let cleanUsername = escape(username) //escapes
       let password = $(this).children('#UserPassword').val()
 
-      $.ajax({
-        method: "POST",
-        url: "/planetLHL/register",
-        data: {
-          username: cleanUsername,
-          password: password
-        },
-        success: function(result) {
-                  window.location.reload(true)
-                  console.log("Register successful")
-                 }
-      });
-      $(this).trigger('reset')
+      if (!username || !password) {
+        alert("Password or Username are empty")
+      } else {
+        $.ajax({
+          method: "POST",
+          url: "/planetLHL/register",
+          data: {
+            username: cleanUsername,
+            password: password
+          },
+          success: function(result) {
+            if (result === "Username Already Exists") {
+              alert(result)
+            } else {
+                    window.location.reload(true)
+                    console.log("Register successful")
+                   }
+            }
+        });
+      }
+      // $(this).trigger('reset')
     })
 }
 
@@ -144,20 +152,27 @@ function login() {
       //Create Safe Url
       let username = $(this).children('#UserNameLogin').val()
       let password = $(this).children('#UserPasswordLogin').val()
+      if (!username || !password) {
+        alert("Password or Username are empty")
+      } else {
+        $.ajax({
+          method: "POST",
+          url: "/planetLHL/login",
+          data: {
+            username: username,
+            password: password
+          },
+          success: function(result) {
+            if (result === "Username doesn't exist" || result === "Invalid Password") {
+              alert(result)
+            } else {
+                    window.location.reload(true)
+                    console.log("login successful")
+                   }
+            }
+        });
+      }
 
-      $.ajax({
-        method: "POST",
-        url: "/planetLHL/login",
-        data: {
-          username: username,
-          password: password
-        },
-        success: function(result) {
-                  window.location.reload(true)
-                  console.log("login successful")
-                 }
-      });
-      $(this).trigger('reset')
     })
 }
 
@@ -169,6 +184,7 @@ function logout() {
           url: "/planetLHL/logout"
         }).done((results) => {
           console.log("logout was successful")
+          window.location.reload(true)
         });
     })
   }
@@ -220,7 +236,7 @@ function createResourceElement(resource) {
                   <p class="card-text">${resource.title}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                    <span class="status" name="notLiked"></span>
+                    <span class="status"></span>
                       <button type="button" class="btn btn-sm btn-outline-secondary buttonView" name="${resource.id}">View</button>
                       <button type="button" class="btn btn-sm btn-outline-secondary"><a target="_blank" rel="noopener noreferrer" href="${resource.resource_url}">Visit</a></button>
                       <button type="button" class="btn btn-sm btn-outline-secondary buttonLike" name="${resource.id}">Like</button>
@@ -246,7 +262,6 @@ function createResourceElement(resource) {
 
 function renderOneResources(resources) {
    $('.row').empty();
-   console.log("ONE RESOURCE IS ", $('#oneResource'))
 
       resources.forEach(function(resource){
       console.log('comment:',resource.comment)
@@ -353,6 +368,28 @@ function attachComment() {
   });
 }
 
+function updatePassword() {
+  $("#newupdateForm").on('submit', function (){
+    event.preventDefault();
+    let password= $(this).children('#confirmOldPass').val()
+    let newPassword= $(this).children('#confirmNewPass').val()
+    let token =$(this).attr("name")
+     $.ajax({
+                  url: `/planetLHL/users/:id/update`,
+                  type: `POST`,
+                  data:{
+                        password: `${password}`,
+                        newPassword: `${newPassword}`,
+                        token: `${token}`
+                      },
+                  success: function(result) {
+                    alert(result)
+                    // window.location.reload(true)
+                 }
+        });
+    $(this).trigger('reset')
+  })
+}
 
 // Function attaches Event Listeners to the like button and sends Ajax Put request
 function attachLikes() {
@@ -404,6 +441,7 @@ function attachRating() {
       }
   });
 }
+
 
 
 //This File THE URL Points to Server.js actual url

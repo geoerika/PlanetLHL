@@ -28,7 +28,7 @@ app.use(
 
 let anonUser = {
   id: -1,
-  name: 'anonymous'
+  name: 'Visitor'
 }
 
 //THIS FUNCTION REMOVES SPACES FROM SEARCH ARRAYS to allow better database searches
@@ -229,7 +229,8 @@ module.exports =  (knex) => {
       .where("name", "=", username)
       .then((user) => {
         if (user.length <  1) { //Checks to see if user is in database
-          console.log("username doesnt exist")
+          res.send("Username doesn't exist")
+          console.log("Username doesnt exist")
         } else {
           if (bcrypt.compareSync(password, user[0].password)) { //If user exists and password is right set current user
             currentUser = user[0]
@@ -237,8 +238,8 @@ module.exports =  (knex) => {
             module.exports.currentUser = currentUser
              res.redirect("/")
           } else {
-            console.log("Invalid password")
-            res.redirect("/")
+            console.log("Invalid Password")
+            res.send("Invalid Password")
           }
         }
       })
@@ -254,7 +255,7 @@ module.exports =  (knex) => {
     let username = req.body.username;
     let password = req.body.password;
 
-    const hashedPassword = bcrypt.hashSync(password, 10);
+    let hashedPassword = bcrypt.hashSync(password, 10);
 
     const newUser = {
       name: username,
@@ -282,7 +283,7 @@ module.exports =  (knex) => {
              })
         } else {
          console.log("Username Already Exists")
-         res.redirect("/")
+         res.send("Username Already Exists")
         }
       })
       .catch(e => {
@@ -404,6 +405,43 @@ module.exports =  (knex) => {
         res.redirect(`/resources/${resourceId}`)
         })
   })
+
+//This deals with a user updateing their password
+router.post("/users/:id/update", (req, res) => {
+console.log("REQ BODY IS ", req.body)
+  let oldPassword = req.body.password;
+  let newPassword = req.body.newPassword;
+  let token = req.body.token;
+  let hashedPassword = bcrypt.hashSync(newPassword, 10);
+  console.log("oldPassword is ", oldPassword)
+  console.log('newPassword', newPassword);
+  console.log("TOKEN IS ", token)
+  console.log("hashedPassword is ", hashedPassword)
+
+   if (!newPassword) {       //Checks to see if password is empty
+      console.log("Please insert password!");
+    } else {
+     knex("users")
+      .select("*")
+      .where("token", token)
+      .then((user) => {
+        if (bcrypt.compareSync(oldPassword, user[0].password)) {
+          knex("users")
+            .update("password", hashedPassword)
+            .then((insertedPassword) => {
+              console.log("Password updated Successfully")
+              res.send("Password updated Successfully")
+              })
+        } else {
+          console.log("Old password did not match")
+          res.send("Old password did not match")
+        }
+      })
+      .catch(e => {
+        console.log("Oops something went wrong", e);
+      })
+    }
+});
 
   return router;
 };

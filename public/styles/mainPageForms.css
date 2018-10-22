@@ -112,14 +112,14 @@
   z-index: 5;
 }
 
-#UserPasswordLogin {
+/*#UserPasswordLogin {
   font-family: 'Krub', sans-serif;
   width: 48%;
   border: 0.1em solid;
   height: 3em;
   display: flex;
   display: inline-block;
-}
+}*/
 
 #postLogin {
   font-family: 'Krub', sans-serif;
@@ -300,7 +300,7 @@
   display: inline-block;
 }
 
-#UserPasswordLogin {
+/*#UserPasswordLogin {
   font-family: 'Krub', sans-serif;
   width: 48%;
   border: 0.1em solid;
@@ -308,7 +308,7 @@
   display: flex;
   display: inline-block;
   position: absolute;
-}
+}*/
 
 #postLogin {
   font-family: 'Krub', sans-serif;

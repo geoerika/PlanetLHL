@@ -50,10 +50,14 @@
 
     </div>
 
-    <p class="siteDescr"> Do you love the planet as much as we do? <br><br> Share your love with us! </p>
-    <input id="Show" class="showAll" type="submit" value="Show Resources">
-    <p class="userName"> Welcome, Anonymous!</p>
+
+    <p class="siteDescr"> Do you love the planet as much as we do? <br> Share your love with us!</p>
+    <p class="userName"> Welcome
+      <% if (typeof name !== 'undefined') { %>
+               <%= name %>
+          <% } %>!</p>
    <% if (typeof id !== 'undefined' && id !== -1) { %>
+   <input id="Show" class="showAll" type="submit" value="Show Resources">
     <a href="http://localhost:8080/users/<%= token%>" class="pageLink" >My Page</a>
 
     <% } %>
@@ -90,8 +94,9 @@
     <div>
       <section class="registerForm">
         <form id="newRegisterForm" >
-          <textarea id="UserName" name="UserName" placeholder="Enter your desired username"></textarea>
-          <textarea id="UserPassword" name="UserPassword" placeholder="Enter your desired password"></textarea>
+          <input id="UserName" name="UserName" placeholder="Enter your desired username">
+          <input type="password" id="UserPassword" name="UserPassword"
+               placeholder="Enter your password!" />
           <input id="postRegister" type="submit" value="Register!">
         </form>
     </div>
@@ -99,7 +104,7 @@
     <div>
       <section class="loginForm">
         <form id="newLoginForm">
-          <textarea id="UserNameLogin" name="UserNameLogin" placeholder="Enter your username!"></textarea>
+          <input id="UserNameLogin" name="UserNameLogin" placeholder="Enter your username!">
           <input type="password" id="UserPasswordLogin" name="UserPasswordLogin"
                placeholder="Enter your password!" />
           <input id="postLogin" type="submit" value="Login!">
