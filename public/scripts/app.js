@@ -112,19 +112,27 @@ function register() {
       let cleanUsername = escape(username) //escapes
       let password = $(this).children('#UserPassword').val()
 
-      $.ajax({
-        method: "POST",
-        url: "/planetLHL/register",
-        data: {
-          username: cleanUsername,
-          password: password
-        },
-        success: function(result) {
-                  window.location.reload(true)
-                  console.log("Register successful")
-                 }
-      });
-      $(this).trigger('reset')
+      if (!username || !password) {
+        alert("Password or Username are empty")
+      } else {
+        $.ajax({
+          method: "POST",
+          url: "/planetLHL/register",
+          data: {
+            username: cleanUsername,
+            password: password
+          },
+          success: function(result) {
+            if (result === "Username Already Exists") {
+              alert(result)
+            } else {
+                    window.location.reload(true)
+                    console.log("Register successful")
+                   }
+            }
+        });
+      }
+      // $(this).trigger('reset')
     })
 }
 
@@ -136,20 +144,27 @@ function login() {
       //Create Safe Url
       let username = $(this).children('#UserNameLogin').val()
       let password = $(this).children('#UserPasswordLogin').val()
+      if (!username || !password) {
+        alert("Password or Username are empty")
+      } else {
+        $.ajax({
+          method: "POST",
+          url: "/planetLHL/login",
+          data: {
+            username: username,
+            password: password
+          },
+          success: function(result) {
+            if (result === "Username doesn't exist" || result === "Invalid Password") {
+              alert(result)
+            } else {
+                    window.location.reload(true)
+                    console.log("login successful")
+                   }
+            }
+        });
+      }
 
-      $.ajax({
-        method: "POST",
-        url: "/planetLHL/login",
-        data: {
-          username: username,
-          password: password
-        },
-        success: function(result) {
-                  window.location.reload(true)
-                  console.log("login successful")
-                 }
-      });
-      $(this).trigger('reset')
     })
 }
 

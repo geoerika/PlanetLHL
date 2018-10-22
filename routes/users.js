@@ -229,7 +229,8 @@ module.exports =  (knex) => {
       .where("name", "=", username)
       .then((user) => {
         if (user.length <  1) { //Checks to see if user is in database
-          console.log("username doesnt exist")
+          res.send("Username doesn't exist")
+          console.log("Username doesnt exist")
         } else {
           if (bcrypt.compareSync(password, user[0].password)) { //If user exists and password is right set current user
             currentUser = user[0]
@@ -237,8 +238,8 @@ module.exports =  (knex) => {
             module.exports.currentUser = currentUser
              res.redirect("/")
           } else {
-            console.log("Invalid password")
-            res.redirect("/")
+            console.log("Invalid Password")
+            res.send("Invalid Password")
           }
         }
       })
@@ -282,7 +283,7 @@ module.exports =  (knex) => {
              })
         } else {
          console.log("Username Already Exists")
-         res.redirect("/")
+         res.send("Username Already Exists")
         }
       })
       .catch(e => {
@@ -405,6 +406,7 @@ module.exports =  (knex) => {
         })
   })
 
+//This deals with a user updateing their password
 router.post("/users/:id/update", (req, res) => {
 console.log("REQ BODY IS ", req.body)
   let oldPassword = req.body.password;
