@@ -322,6 +322,8 @@ function createOneUserElement(resource){
   return newScript
 }
 
+
+
 function showOneResource(){
 
     $(".buttonView").on('click', function(){
