@@ -393,7 +393,7 @@ module.exports =  (knex) => {
     let commentObj = {
       comment: comment,
       resources_id: resourceId,
-      users_id: currentUser.id
+      users_name: currentUser.name
     };
 
     knex("comments")

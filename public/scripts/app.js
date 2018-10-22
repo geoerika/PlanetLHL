@@ -1,6 +1,6 @@
 
  $(document).ready(function() {
-  showResources();
+ // showResources();
   searchResources();
   createNewResource();
   login();
@@ -11,11 +11,7 @@
 
 });
 
-
-
-function showResources(){
-  let $button = $('#Show')
-    $button.on('click', function (event) {
+$(() => {
   $.ajax({
     method: "GET",
     url: "/planetLHL/resources"
@@ -23,7 +19,19 @@ function showResources(){
     renderResources(users);
   });
 });
-}
+
+
+// function showResources(){
+// //  let $button = $('#Show')
+// //    $button.on('click', function (event) {
+//   $.ajax({
+//     method: "GET",
+//     url: "/planetLHL/resources"
+//   }).done((users) => {
+//     renderResources(users);
+//   });
+// //});
+// }
 
 //THIS IS GET TO THE USER PAGE   ** WILL USE /user/:id/create when user ids are available
 
@@ -93,7 +101,7 @@ function createNewResource() {
         },
         success: function(result) {
                   console.log("This is where renderResources will be called")
-                  $.getJSON("/planetLHL").then(data => {
+                  $.getJSON("/planetLHL/resources").then(data => {
                     renderResources(data);
                    })
                  }
@@ -241,6 +249,12 @@ function renderOneResources(resources) {
    console.log("ONE RESOURCE IS ", $('#oneResource'))
 
       resources.forEach(function(resource){
+      console.log('comment:',resource.comment)
+      if (resource.comment === undefined){
+        resource.comment = 'no comments available';
+        resource.users_name = '';
+        console.log(resource.comment)
+      }
       let $resource = createOneUserElement(resource);
       $('.row').prepend($resource);
    });
@@ -275,7 +289,7 @@ function createOneUserElement(resource){
                           </form>
                         </div>
                       </div>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Visit</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary"><a target="_blank" rel="noopener noreferrer" href="${resource.resource_url}">Visit</a></button>
                       <button type="button" class="btn btn-sm btn-outline-secondary buttonLike">Like</button>
                       <div class="dropdown">
                       <button type="button" class="btn btn-sm btn-outline-secondary buttonRate">Rate</button>
@@ -288,7 +302,7 @@ function createOneUserElement(resource){
                       </div>
                     </div>
                   </div>
-                  <p class="card-text"> ${resource.comment}</p>
+                  <p class="card-text">${resource.users_name}: ${resource.comment}</p>
 
                 </div>
               </div>`
@@ -336,7 +350,9 @@ function attachComment() {
                         comment: `${userComment}`
                       },
                   success: function(result) {
-                    renderOneResources(result)
+                   $.getJSON("/planetLHL/resources/:id/comments").then((result) => {
+                   renderOneResources(result)
+                 })
                  }
         });
   });
@@ -357,8 +373,11 @@ function attachLikes() {
                         resourceId: `${resourceId}`,
                       },
                   success: function(result) {
-                  $.getJSON("/planetLHL").then((result) => {
+                  $.getJSON("/planetLHL/resources").then((result) => {
+
                     renderResources(result)
+
+
                   })
                  }
         });
@@ -380,7 +399,7 @@ function attachRating() {
                         rating: `${userRating}`
                       },
                   success: function(result) {
-                  $.getJSON("/planetLHL").then((result) => {
+                  $.getJSON("/planetLHL/resources").then((result) => {
                     renderResources(result)
                   })
                  }
