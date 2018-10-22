@@ -302,7 +302,7 @@ function createOneUserElement(resource){
                   <div class="dropdown">
                   <button type="button" class="btn btn-sm btn-outline-secondary buttonComment">Comment</button>
                     <div class="dropdown-content">
-                      <form class="newCommentForm" >
+                      <form class="newCommentForm"  name="${resource.id}" >
                         <textarea class="UserComment" name="UserComment"></textarea>
                         <input class="postComment" type="submit" value="Comment!">
                       </form>

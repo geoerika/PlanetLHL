@@ -397,6 +397,8 @@ module.exports =  (knex) => {
       users_name: currentUser.name
     };
 
+    console.log("COMMENT OBJECT IS : ", commentObj)
+
     knex("comments")
       .select("*")
       .insert(commentObj)
