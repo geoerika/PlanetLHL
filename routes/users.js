@@ -28,7 +28,7 @@ app.use(
 
 let anonUser = {
   id: -1,
-  name: 'anonymous'
+  name: 'Visitor'
 }
 
 //THIS FUNCTION REMOVES SPACES FROM SEARCH ARRAYS to allow better database searches
