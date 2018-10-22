@@ -50,7 +50,8 @@
 
     </div>
 
-    <p class="siteDescr"> Do you love the planet as much as we do? <br> Share your love with us!</p>
+    <p class="siteDescr"> Do you love the planet as much as we do? <br><br> Share your love with us! </p>
+    <input id="Show" class="showAll" type="submit" value="Show Resources">
     <p class="userName"> Welcome, Anonymous!</p>
    <% if (typeof id !== 'undefined' && id !== -1) { %>
     <a href="http://localhost:8080/users/<%= token%>" class="pageLink" >My Page</a>
@@ -63,7 +64,6 @@
         <input class="Logout" type="submit" value="Logout">
         <input class="Create" type="submit" value="Create">
       <% } %>
-      <input id="Show" class="showAll" type="submit" value="Show Resources">
       <input class="Login" type="submit" value="Login" >
       <input class="Register" type="submit" value="Register">
       <input class="Search" type="submit" value="Search">

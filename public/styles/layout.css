@@ -198,7 +198,7 @@ main {
   height: 100px;
   width: 300px;
   left: 92px;
-  top: 291px;
+  top: 230px;
   color: #fff;
   font-size: 170%;
   font-weight: bold;
@@ -428,6 +428,39 @@ main {
   100% {
     transform: translateY(0vh) translateX(110vw) scale(0.45);
   }
+}/*------------------*/
+
+/*------View Tile Specific Css------------*/
+
+.col {
+  margin-left: 100px;
 }
+
+.imageView {
+  max-height: 800px !important;
+  min-height: 800px !important;
+}
+
+.cardTitleView{
+  text-align: center;
+}
+.cardDescrView{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.cardCommentView{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.btnGroupView {
+  width: 130px;
+  left: 308px;
+  margin-bottom: 30px;
+}
+
+/*------------------*/
 
 }

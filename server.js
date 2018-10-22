@@ -69,8 +69,8 @@ app.get("/resources/:id", (req, res) => {
 });
 
 //test page
-app.get("/test", (req, res) => {
-  res.render("test.ejs");
+app.get("/comments", (req, res) => {
+  res.render("comments.ejs");
 });
 
 app.listen(PORT, () => {

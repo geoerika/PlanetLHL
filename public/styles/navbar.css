@@ -41,6 +41,12 @@
     background-color: #060607;
     font-size: 150%;
   }
+  .showAll {
+    margin: 10%;
+    color: white;
+    background-color: #060607;
+    font-size: 150%;
+  }
   .Register:hover {
     font-size: 200%;
     transition-duration: 1s;
@@ -61,6 +67,7 @@
     font-size: 200%;
     transition-duration: 1s;
   }
+
 }
 
 /*-----This is for laptop monitors---------*/
@@ -106,6 +113,20 @@
     background-color: #060607;
     font-size: 100%;
   }
+  .showAll {
+    margin: 10%;
+    color: white;
+    background-color: #060607;
+    font-size: 100%;
+    position: absolute;
+    right: 990px;
+    top: 479px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    z-index: 10;
+  }
   .Register:hover {
     font-size: 120%;
     transition-duration: 1s;
@@ -126,4 +147,9 @@
     font-size: 120%;
     transition-duration: 1s;
   }
+  .showAll:hover {
+    font-size: 120%;
+    transition-duration: 1s;
+  }
+
 }
