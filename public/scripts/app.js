@@ -308,7 +308,7 @@ function createOneUserElement(resource){
                       </form>
                     </div>
                   </div>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Visit</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary"><a target="_blank" rel="noopener noreferrer" href="${resource.resource_url}">Visit</a></button>
                   </div>
                 </div>
 
