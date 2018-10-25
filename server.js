@@ -44,12 +44,39 @@ app.use(
   })
 );
 
+// app.use((req, res, next) => {
+//   const token = req.session.token;
+//   const anonUser = {
+//     id: -1,
+//     username: "Anonymous"
+//   };
+
+//   if (token) {
+//     return users
+//       .findByToken(token)
+//       .then(([user]) => {
+//         if (user) {
+//           req.currentUser = user;
+//         } else {
+//           req.currentUser = anonUser;
+//         }
+//       })
+//       .catch(() => {
+//         req.currentUser = anonUser;
+//       })
+//       .then(next, next);
+//   }
+
+//   req.currentUser = anonUser;
+//   next();
+// });
+
 // Mount all resource routes
 app.use("/planetLHL", usersRoutes(knex));
 
 // Home page
 app.get("/resources", (req, res) => {
-  console.log("This is current user : ", usersRoutes.currentUser)
+
   res.render("index", usersRoutes.currentUser);
 });
 
@@ -72,6 +99,15 @@ app.get("/resources/:id", (req, res) => {
 //test page
 app.get("/comments", (req, res) => {
   res.render("comments.ejs");
+});
+
+app.post("/register", (req, res) => {
+  let username = req.body.UserName
+  let password = req.body.UserPassword
+  console.log("username: ", username, "password", password)
+  console.log(usersRoutes)
+  usersRoutes.registerUser(username, password)
+  res.render("index.ejs")
 });
 
 app.listen(PORT, () => {

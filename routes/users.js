@@ -77,7 +77,6 @@ module.exports =  (knex) => {
     });
   });
 
-
   router.get("/resources", (req, res) => {
     knex
       .select("*")
@@ -219,6 +218,44 @@ module.exports =  (knex) => {
     res.redirect("/")
   });
 
+
+  //THIS IS THE REGISTER POST
+
+    const registerUser = (username, password) => {
+
+
+    let hashedPassword = bcrypt.hashSync(password, 10);
+
+    const newUser = {
+      name: username,
+      password: hashedPassword,
+      token: uuid()   //Will be used to set cookie after user created
+    }
+
+     knex("users")
+      .select("*")
+      .where("name", "=", username)
+      .then((user) => {
+        if (user.length < 1) { //If user doesnt exist yet then insert user
+          knex("users")
+            .insert(newUser)
+            .returning("*")
+            .then((createdUser) => {
+              //Worry about setting cookie here
+              console.log("Registered ", newUser)
+             })
+        } else {
+         console.log("Username Already Exists")
+         res.send("Username Already Exists")
+        }
+      })
+      .catch(e => {
+        console.log("Oops something went wrong", e)
+        res.redirect("/")
+      })
+    }
+    module.exports.registerUser = registerUser
+
 // THIS IS THE LOGIN POST
   router.post("/login", (req, res) => {
     let username = req.body.username
@@ -249,48 +286,12 @@ module.exports =  (knex) => {
       })
   });
 
-  //THIS IS THE REGISTER POST
-
-  router.post("/register", (req, res) => {
-    let username = req.body.username;
-    let password = req.body.password;
-
-    let hashedPassword = bcrypt.hashSync(password, 10);
-
-    const newUser = {
-      name: username,
-      password: hashedPassword,
-      token: uuid()   //Will be used to set cookie after user created
-    }
-
-    if (!username || !password) { //Checks to see if password or username is empty
-      console.log("Username or Password is empty")
-      res.redirect("/")
-    } else { //
-     knex("users")
-      .select("*")
-      .where("name", "=", username)
-      .then((user) => {
-        if (user.length < 1) { //If user doesnt exist yet then insert user
-          knex("users")
-            .insert(newUser)
-            .returning("*")
-            .then((createdUser) => {
-              req.session.token = createdUser[0].token;
-              currentUser = createdUser[0];
-              module.exports.currentUser = currentUser
-              res.redirect("/")
-             })
-        } else {
-         console.log("Username Already Exists")
-         res.send("Username Already Exists")
-        }
-      })
-      .catch(e => {
-        console.log("Oops something went wrong", e)
-        res.redirect("/")
-      })
-    }
+  router.post("/logout", (req, res) => {
+    req.session.token = null
+    currentUser = anonUser
+    module.exports.currentUser = currentUser
+    console.log("Logged out current user is now : ", currentUser)
+    res.redirect("/")
   })
 
 //THIS INSERTS A LIKE TO THE DATABASE AND UPDATES THE LIKES VALUE IN RESOURCE TABLE
@@ -377,14 +378,6 @@ module.exports =  (knex) => {
           res.redirect("/")
         }
       })
-  })
-
-  router.post("/logout", (req, res) => {
-    req.session.token = null
-    currentUser = anonUser
-    module.exports.currentUser = currentUser
-    console.log("Logged out current user is now : ", currentUser)
-    res.redirect("/")
   })
 
   router.post("/resources/:id/comments", (req, res) => {

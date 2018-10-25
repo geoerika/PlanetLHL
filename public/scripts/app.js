@@ -4,7 +4,7 @@
   searchResources();
   createNewResource();
   login();
-  register();
+  // register();
   showCreated();
   showLiked();
   logout();
@@ -110,39 +110,39 @@ function createNewResource() {
     })
 }
 
-function register() {
-  var $form = $('#newRegisterForm');
-    $form.on('submit', function (event) {
-      event.preventDefault();
+// function register() {
+//   var $form = $('#newRegisterForm');
+//     $form.on('submit', function (event) {
+//       event.preventDefault();
 
-      //Create Safe Url
-      let username = $(this).children('#UserName').val()
-      let cleanUsername = escape(username) //escapes
-      let password = $(this).children('#UserPassword').val()
+//       //Create Safe Url
+//       let username = $(this).children('#UserName').val()
+//       let cleanUsername = escape(username) //escapes
+//       let password = $(this).children('#UserPassword').val()
 
-      if (!username || !password) {
-        alert("Password or Username are empty")
-      } else {
-        $.ajax({
-          method: "POST",
-          url: "/planetLHL/register",
-          data: {
-            username: cleanUsername,
-            password: password
-          },
-          success: function(result) {
-            if (result === "Username Already Exists") {
-              alert(result)
-            } else {
-                    window.location.reload(true)
-                    console.log("Register successful")
-                   }
-            }
-        });
-      }
-      // $(this).trigger('reset')
-    })
-}
+//       if (!username || !password) {
+//         alert("Password or Username are empty")
+//       } else {
+//         $.ajax({
+//           method: "POST",
+//           url: "/planetLHL/register",
+//           data: {
+//             username: cleanUsername,
+//             password: password
+//           },
+//           success: function(result) {
+//             if (result === "Username Already Exists") {
+//               alert(result)
+//             } else {
+//                     window.location.reload(true)
+//                     console.log("Register successful")
+//                    }
+//             }
+//         });
+//       }
+//       // $(this).trigger('reset')
+//     })
+// }
 
 function login() {
   let $form = $('#newLoginForm');
