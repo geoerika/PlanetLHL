@@ -5,14 +5,16 @@
 
 ## Getting Started
 
-1. Install dependencies: `npm i`
-2. Fix to binaries for sass: `npm rebuild node-sass`
-3. Run migrations: `npm run knex migrate:latest`
-  - create table into an existing database midterm
-4. Run the seed: `npm run knex seed:run`
-5. Run the server: `npm run local`
-6. Visit `http://localhost:8080/`
-7. Register as a user with username and password to have access to our nature-learning site!
+1. Create the .env by using .env.example as a reference: cp .env.example .env
+2. Update the .env file with your correct local information
+3. Install dependencies: `npm i`
+4. Fix to binaries for sass: `npm rebuild node-sass`
+5. Create a PostgreSQL database called "midterm"
+6. Run migrations: `npm run knex migrate:latest`
+7. Run the seed: `npm run knex seed:run`
+8. Run the server: `npm run local`
+9. Visit `http://localhost:8080/`
+10. Register as a user with username and password to have access to our nature-learning site!
 
 ## Dependencies
 
