@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
         .createTable('users', function (table) {
           table.increments();
           table.string('name').unique().notNullable();
-          table.string('password').unique().notNullable();
+          table.string('password').notNullable();
           table.uuid('token');
         })
 
